@@ -1,48 +1,5 @@
 @extends('layouts.user.mst_user')
 @section('title', 'SSW - Surabaya Single Window | Beranda')
-@section('navigation')
-    <ul>
-        <li class="active"><a href="{{route('dashboard')}}">Home</a></li>
-        <li><a href="practice.html">Practice Areas</a></li>
-        <li><a href="won.html">Won Cases</a></li>
-        <li class="has-dropdown">
-            <a href="blog.html">Blog</a>
-            <ul class="dropdown">
-                <li><a href="#">Web Design</a></li>
-                <li><a href="#">eCommerce</a></li>
-                <li><a href="#">Branding</a></li>
-                <li><a href="#">API</a></li>
-            </ul>
-        </li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        @if(Auth::guest())
-            <li class="btn-cta"><a href="{{route('login')}}"><span>Register/Login</span></a></li>
-        @else
-            <li class="has-dropdown">
-                <a href="#">{{Auth::user()->email}}</a>
-                <ul class="dropdown">
-                    <li><a href="{{url('/member/'.Auth::user()->id.'/history')}}">Order
-                            History</a></li>
-                    <li><a href="{{url('/member/'.Auth::user()->id.'/settings')}}">Account
-                            Settings</a></li>
-                    <li>
-                        <a href="{{ route('logout') }}"
-                           onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                            <i class="fa fa-sign-out"></i> Logout
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                              style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    </li>
-                </ul>
-            </li>
-        @endif
-    </ul>
-@endsection
-
 @section('content')
     <div class="fh5co-loader"></div>
 

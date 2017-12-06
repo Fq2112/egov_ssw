@@ -16,10 +16,10 @@ Route::get('/', 'User\EgovController@index')->name('dashboard');
 Route::post('/contact', 'EgovController@postContact')->name('submit_contact');
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'member'], function () {
-    Route::get('{user}/settings', 'Auth\UserController@showAccountSettings');
-    Route::put('{user}', 'Auth\UserController@updateAccount');
-    Route::get('{user}/history', 'Auth\UserController@showOrderHistory');
-    Route::get('{user}/history/print', 'Auth\UserController@printOrderHistory');
+    Route::get('{user}/settings', 'User\UserController@showAccountSettings');
+    Route::put('{user}', 'User\UserController@updateAccount');
+    Route::get('{user}/history', 'User\UserController@showOrderHistory');
+    Route::get('{user}/history/print', 'User\UserController@printOrderHistory');
 });
 
 Route::prefix('admin')->group(function () {

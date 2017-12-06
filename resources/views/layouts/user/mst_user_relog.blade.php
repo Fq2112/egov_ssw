@@ -67,24 +67,11 @@
                     <div class="col-xs-10 text-right menu-1">
                         <ul>
                             <li class="active"><a href="{{route('dashboard')}}">Home</a></li>
-                            <li><a href="practice.html">Practice Areas</a></li>
-                            <li><a href="won.html">Won Cases</a></li>
-                            <li class="has-dropdown">
-                                <a href="blog.html">Blog</a>
-                                <ul class="dropdown">
-                                    <li><a href="#">Web Design</a></li>
-                                    <li><a href="#">eCommerce</a></li>
-                                    <li><a href="#">Branding</a></li>
-                                    <li><a href="#">API</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="contact.html">Contact</a></li>
                             @if(Auth::guest())
                                 <li class="btn-cta"><a href="{{route('login')}}"><span>Register/Login</span></a></li>
                             @else
                                 <li class="has-dropdown">
-                                <a href="#" class="myBtn"><span>{{Auth::user()->email}}</span></a>
+                                    <a href="#" class="myBtn"><span>{{Auth::user()->email}}</span></a>
                                     <ul class="dropdown">
                                         <li><a href="{{url('/member/'.Auth::user()->id.'/history')}}">Riwayat Perizinan</a></li>
                                         <li><a href="{{url('/member/'.Auth::user()->id.'/settings')}}">Edit
@@ -223,7 +210,28 @@
 <script src="{{asset('js/google_map.js')}}"></script>
 <!-- Main -->
 <script src="{{asset('js/main.js')}}"></script>
-
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+    function hanyaAngka(e, decimal) {
+        var key;
+        var keychar;
+        if (window.event) {
+            key = window.event.keyCode;
+        } else if (e) {
+            key = e.which;
+        } else return true;
+        keychar = String.fromCharCode(key);
+        if ((key == null) || (key == 0) || (key == 8) || (key == 9) || (key == 13) || (key == 27)) {
+            return true;
+        } else if ((("0123456789").indexOf(keychar) > -1)) {
+            return true;
+        } else if (decimal && (keychar == ".")) {
+            return true;
+        } else return false;
+    }
+</script>
 </body>
 </html>
 

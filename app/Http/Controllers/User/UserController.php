@@ -22,11 +22,11 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|string|max:255',
-            'nama_band' => 'required|string|max:255',
+            'pekerjaan' => 'required|string|max:255',
             'alamat' => 'required|string|max:255',
-            'no_telp' => 'required|string|max:13',
-            'gambar_user' => 'mimes:jpeg,bmp,png',
-            'email' => 'required|string|email|max:255|unique:users',
+            'phone' => 'required|string|max:13',
+            'ava' => 'mimes:jpeg,bmp,png',
+            'email' => 'required|string|email|max:255',
             'password' => 'required|string|min:6',
             'new_password' => 'required|string|min:6',
             'password_confirmation' => 'required|same:new_password',
@@ -36,27 +36,32 @@ class UserController extends Controller
         if (!Hash::check($input['password'], $data->password)) {
             Session::flash('status', 'Your current password is incorrect!');
             return back();
-        } else {
-            if ($request->hasFile('gambar_user')) {
+        }
+        else {
+            if ($request->hasFile('ava')) {
                 $old = Storage::files('public/member');
                 if ($old) {
-                    Storage::delete('public/member/' . $user->gambar_user);
+                    Storage::delete('public/member/' . $user->ava);
                 }
 
-                $img = $request->file('gambar_user');
+                $img = $request->file('ava');
                 $name = $img->getClientOriginalName();
-                if ($request->file('gambar_user')->isValid()) {
-                    $request->gambar_user->storeAs('public/member', $name);
+                if ($request->file('ava')->isValid()) {
+                    $request->ava->storeAs('public/member', $name);
                     $user->update([
                         'name' => $request->name,
-                        'nama_band' => $request->nama_band,
+                        'pekerjaan' => $request->pekerjaan,
                         'alamat' => $request->alamat,
-                        'no_telp' => $request->no_telp,
-                        'gambar_user' => $name,
+                        'phone' => $request->phone,
+                        'ava' => $name,
                         'email' => $request->email,
                         'password' => bcrypt($request->new_password),
                     ]);
                     Session::flash('ok', 'Successfully, updated!');
+                    return back();
+                }
+                elseif ($request->email == $data->email){
+                    Session::flash('email', 'This email is already exist!');
                     return back();
                 }
             } else {
