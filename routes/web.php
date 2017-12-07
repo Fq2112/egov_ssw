@@ -12,8 +12,14 @@
 */
 Auth::routes();
 
-Route::get('/', 'User\EgovController@index')->name('dashboard');
-Route::post('/contact', 'EgovController@postContact')->name('submit_contact');
+Route::prefix('/')->group(function () {
+    Route::get('/', 'User\EgovController@index')->name('dashboard');
+    Route::get('blog', 'User\EgovController@showBlog')->name('dashboard.blog');
+    Route::get('about', 'User\EgovController@showAbout')->name('dashboard.about');
+    Route::get('contact', 'User\EgovController@showContact')->name('dashboard.contact');
+    Route::post('contact', 'EgovController@postContact')->name('submit_contact');
+});
+
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'member'], function () {
     Route::get('{user}/settings', 'User\UserController@showAccountSettings');

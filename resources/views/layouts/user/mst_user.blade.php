@@ -66,28 +66,15 @@
                     </div>
                     <div class="col-xs-10 text-right menu-1">
                         <ul>
-                            <li class="active"><a href="{{route('dashboard')}}">Home</a></li>
-                            <li><a href="practice.html">Practice Areas</a></li>
-                            <li><a href="won.html">Won Cases</a></li>
-                            <li class="has-dropdown">
-                                <a href="blog.html">Blog</a>
-                                <ul class="dropdown">
-                                    <li><a href="#">Web Design</a></li>
-                                    <li><a href="#">eCommerce</a></li>
-                                    <li><a href="#">Branding</a></li>
-                                    <li><a href="#">API</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            @yield('nav')
                             @if(Auth::guest())
                                 <li class="btn-cta"><a href="{{route('login')}}"><span>Register/Login</span></a></li>
                             @else
                                 <li class="has-dropdown">
                                 <a href="#" class="myBtn"><span>{{Auth::user()->email}}</span></a>
                                     <ul class="dropdown">
-                                        <li><a href="{{url('/member/'.Auth::user()->id.'/history')}}">Riwayat Perizinan</a></li>
-                                        <li><a href="{{url('/member/'.Auth::user()->id.'/settings')}}">Edit
+                                        <li><a href="{{url('/member/'.Auth::user()->id.'/history')}}"><i class="fa fa-history"></i> Riwayat Perizinan</a></li>
+                                        <li><a href="{{url('/member/'.Auth::user()->id.'/settings')}}"><i class="fa fa-edit"></i> Edit
                                                 Profile</a></li>
                                         <li>
                                             <a href="{{ route('logout') }}"
@@ -111,7 +98,6 @@
         </div>
     </nav>
     @yield('content')
-    <div id="map" class="fh5co-map"></div>
     <div id="fh5co-started" style="background-image:url({{asset('images/img_bg_2.jpg')}});">
         <div class="overlay"></div>
         <div class="container">
@@ -139,11 +125,13 @@
                 <div class="col-md-3 col-md-push-1">
                     <h4>Navigation</h4>
                     <ul class="fh5co-footer-links">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Practice Areas</a></li>
-                        <li><a href="#">Won Cases</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">About us</a></li>
+                        <li><a href="{{route('dashboard')}}">Home</a></li>
+                        <li><a href="{{route('dashboard.blog')}}">Blog</a></li>
+                        <li><a href="{{route('dashboard.about')}}">About</a></li>
+                        <li><a href="{{route('dashboard.contact')}}">Contact</a></li>
+                        @if(Auth::guest())
+                            <li><a href="{{route('login')}}">Register/Login</a></li>
+                        @endif
                     </ul>
                 </div>
 

@@ -15,6 +15,21 @@ class EgovController extends Controller
         return view('user.dashboard');
     }
 
+    public function showBlog()
+    {
+        return view('user.dashboard_blog');
+    }
+
+    public function showAbout()
+    {
+        return view('user.dashboard_about');
+    }
+
+    public function showContact()
+    {
+        return view('user.dashboard_contact');
+    }
+
     public function postContact(Request $request)
     {
         Contact::create($request->all());
