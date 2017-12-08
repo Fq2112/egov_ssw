@@ -346,8 +346,14 @@
                                         <div class="form-group{{ $errors->has('lastname') ? ' has-error' : '' }} has-feedback">
                                             <label for="inputName" class="col-sm-3 control-label">Job Title</label>
                                             <div class="col-sm-9">
-                                                <input placeholder="Job title" type="text" class="form-control"
-                                                       name="lastname" id="inputName">
+                                                <select class="form-control" name="lastname">
+                                                    <option value="" disabled selected>-- Choose Title --</option>
+                                                    <option value="UPTSA">UPTSA</option>
+                                                    <option value="KASIE">KASIE</option>
+                                                    <option value="KABID">KEPALA BIDANG</option>
+                                                    <option value="SEKRETARIS">SEKRETARIS</option>
+                                                    <option value="KADIN">KEPALA DINAS</option>
+                                                </select>
                                                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
                                                 @if ($errors->has('lastname'))
                                                     <span class="help-block">

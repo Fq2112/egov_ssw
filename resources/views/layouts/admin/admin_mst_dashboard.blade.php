@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SISTUM - ADMIN PANEL</title>
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/icon.png')}}">
+    <title>SSWS - ADMIN PANEL</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/logo-sby.png')}}">
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -42,9 +42,9 @@
         <!-- Logo -->
         <a href="{{route('admin.dashboard')}}" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b><span class="fa fa-paper-plane"></span></b> STU</span>
+            <span class="logo-mini"><b><span class="fa fa-user"></span></b> SSWS</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b><span class="fa fa-paper-plane"></span> SISTUM</b> ADMIN</span>
+            <span class="logo-lg"><b><span class="fa fa-user"></span> SSWS</b> ADMIN</span>
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->
@@ -102,27 +102,40 @@
                             <li>
                                 <!-- inner menu: contains the actual data -->
                                 <ul class="menu">
-                                    @if($stud_order >= 1)
+                                    @if($c_apotik >= 1)
                                         <li>
-                                            <a href="{{url('admin/tables#studio')}}">
-                                                @if($stud_order > 1)
-                                                    <i class="fa fa-globe text-teal"></i> {{$stud_order}} new studio
+                                            <a href="{{url('admin/tables#apotek')}}">
+                                                @if($c_apotik > 1)
+                                                    <i class="fa fa-medkit text-teal"></i> {{$c_apotik}} new apotek
                                                     orders submitted today
                                                 @else
-                                                    <i class="fa fa-globe text-teal"></i> a new studio
+                                                    <i class="fa fa-medkit text-teal"></i> a new apotek
                                                     order submitted today
                                                 @endif
                                             </a>
                                         </li>
                                     @endif
-                                    @if($rec_order >= 1)
+                                    @if($c_air >= 1)
                                         <li>
-                                            <a href="{{url('admin/tables#recorder')}}#">
-                                                @if($rec_order > 1)
-                                                    <i class="fa fa-bus text-teal"></i> {{$rec_order}} new recorder
+                                            <a href="{{url('admin/tables#air')}}#">
+                                                @if($c_air > 1)
+                                                    <i class="fa fa-bitbucket text-teal"></i> {{$c_air}} new depot air
                                                     orders submitted today
                                                 @else
-                                                    <i class="fa fa-bus text-teal"></i> a new recorder
+                                                    <i class="fa fa-bitbucket text-teal"></i> a new depot air
+                                                    order submitted today
+                                                @endif
+                                            </a>
+                                        </li>
+                                    @endif
+                                    @if($c_hama >= 1)
+                                        <li>
+                                            <a href="{{url('admin/tables#hama')}}#">
+                                                @if($c_hama > 1)
+                                                    <i class="fa fa-bug text-purple"></i> {{$c_hama}} new pengendalian hama
+                                                    orders submitted today
+                                                @else
+                                                    <i class="fa fa-bug text-purple"></i> a new pengendalian hama
                                                     order submitted today
                                                 @endif
                                             </a>
@@ -275,9 +288,9 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{url('admin/tables#studio')}}"><i class="fa fa-globe text-aqua"></i> Studio Orders</a>
+                        <li><a href="{{url('admin/tables#apotek')}}"><i class="fa fa-globe text-aqua"></i> Apotek Orders</a>
                         </li>
-                        <li><a href="{{url('admin/tables#recorder')}}"><i class="fa fa-bus text-teal"></i> Recorder
+                        <li><a href="{{url('admin/tables#depot air')}}"><i class="fa fa-bus text-teal"></i> depot air
                                 Orders</a></li>
                         <li><a href="{{url('admin/tables#member')}}"><i class="fa fa-users text-yellow"></i> Member
                                 Lists</a></li>
@@ -288,34 +301,34 @@
                 <li class="header">FOR USERS</li>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-globe"></i> <span>Studio</span>
+                        <i class="fa fa-globe"></i> <span>apotek</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{url('admin/studiocontent#addstudio')}}"><i
-                                        class="fa fa-pencil-square-o text-aqua"></i> Add Studio</a>
+                        <li><a href="{{url('admin/apotekcontent#addapotek')}}"><i
+                                        class="fa fa-pencil-square-o text-aqua"></i> Add apotek</a>
                         </li>
-                        <li><a href="{{url('admin/studiocontent#studio')}}"><i class="fa fa-table text-aqua"></i> View
-                                Studio</a>
+                        <li><a href="{{url('admin/apotekcontent#apotek')}}"><i class="fa fa-table text-aqua"></i> View
+                                apotek</a>
                         </li>
                     </ul>
                 </li>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-bus"></i> <span>Recorder</span>
+                        <i class="fa fa-bus"></i> <span>depot air</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{url('admin/recordercontent#addrecorder')}}"><i
+                        <li><a href="{{url('admin/depot aircontent#adddepot air')}}"><i
                                         class="fa fa-pencil-square-o text-teal"></i> Add
-                                Recorder</a></li>
-                        <li><a href="{{url('admin/recordercontent#recorder')}}"><i class="fa fa-table text-teal"></i>
+                                depot air</a></li>
+                        <li><a href="{{url('admin/depot aircontent#depot air')}}"><i class="fa fa-table text-teal"></i>
                                 View
-                                Recorder</a>
+                                depot air</a>
                     </ul>
                 </li>
             </ul>

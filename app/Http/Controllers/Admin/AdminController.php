@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 use App\order;
 use App\order_recorder;
 use App\order_studio;
+use App\trPerizinanApotik;
+use App\trPerizinanDepo;
+use App\trPerizinanHama;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -24,26 +27,29 @@ class AdminController extends Controller
 
     public function index()
     {
-        $rec_order = order_recorder::whereraw('created_at = curdate()')->count();
-        $stud_order = order_studio::whereraw('created_at = curdate()')->count();
+        $c_apotik = trPerizinanApotik::whereraw('created_at = curdate()')->count();
+        $c_air = trPerizinanDepo::whereraw('created_at = curdate()')->count();
+        $c_hama = trPerizinanHama::whereraw('created_at = curdate()')->count();
         $feedback = Contact::whereraw('created_at = curdate()')->count();
         $feedback_t = Contact::whereraw('created_at = curdate()')->get();
         $member = User::whereraw('created_at = curdate()')->count();
-        $notif = $rec_order + $stud_order + $feedback + $member;
+        $notif = $c_apotik + $c_air + $c_hama + $feedback + $member;
 
-        return view('admin.dashboard', compact('rec_order', 'stud_order', 'feedback', 'feedback_t', 'member', 'notif'));
+        return view('admin.dashboard', compact('c_apotik','c_air', 'c_hama', 'feedback', 'feedback_t', 'member', 'notif'));
     }
 
     public function showEditProfileForm(Admin $admin)
     {
-        $rec_order = order_recorder::whereraw('created_at = curdate()')->count();
-        $stud_order = order_studio::whereraw('created_at = curdate()')->count();
+        $c_apotik = trPerizinanApotik::whereraw('created_at = curdate()')->count();
+        $c_air = trPerizinanDepo::whereraw('created_at = curdate()')->count();
+        $c_hama = trPerizinanHama::whereraw('created_at = curdate()')->count();
         $feedback = Contact::whereraw('created_at = curdate()')->count();
         $feedback_t = Contact::whereraw('created_at = curdate()')->get();
         $member = User::whereraw('created_at = curdate()')->count();
-        $notif = $rec_order + $stud_order + $feedback + $member;
+        $notif = $c_apotik + $c_air + $c_hama + $feedback + $member;
         $admins = Admin::all();
-        return view('auth.admin.settings', compact('admin', 'rec_order', 'stud_order', 'feedback', 'feedback_t', 'member', 'notif', 'admins'));
+
+        return view('auth.admin.settings', compact('c_apotik','c_air', 'c_hama', 'feedback', 'feedback_t', 'member', 'notif','admins','admin'));
     }
 
     public function updateAdmin(Request $request, Admin $admin)

@@ -54,6 +54,11 @@
 
 </head>
 <body>
+@if(session('success'))
+    <script>
+        alert("{{session('success')}}");
+    </script>
+@endif
 <div id="page">
     <nav class="fh5co-nav" role="navigation">
         <div class="top-menu">

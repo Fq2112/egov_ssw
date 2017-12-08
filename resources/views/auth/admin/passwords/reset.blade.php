@@ -1,4 +1,4 @@
-@extends('layouts.mst_dashboard_relog')
+@extends('layouts.user.mst_user_relog')
 @section('title', 'SSWS - Surabaya Single Window Sanitary | Admin Reset Password')
 @section('content')
     <div class="service-area-4 fix" id="service">

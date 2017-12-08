@@ -22,15 +22,11 @@
                     <!-- small box -->
                     <div class="small-box bg-aqua">
                         <div class="inner">
-                            <h3>{{$stud_order}}</h3>
-                            @if($stud_order > 1)
-                                <p>New Studio Orders</p>
-                            @else
-                                <p>New Studio Order</p>
-                            @endif
+                            <h3>{{$c_apotik}}</h3>
+                            <p>New Perizinan Apotek</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-bag"></i>
+                            <i class="fa fa-medkit"></i>
                         </div>
                         <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
@@ -40,15 +36,15 @@
                     <!-- small box -->
                     <div class="small-box bg-green">
                         <div class="inner">
-                            <h3>{{$rec_order}}</h3>
-                            @if($rec_order > 1)
-                                <p>New Recorder Orders</p>
+                            <h3>{{$c_air}}</h3>
+                            @if($c_air > 1)
+                                <p>New Depot Air Orders</p>
                             @else
-                                <p>New Recorder Order</p>
+                                <p>New Depot Air Order</p>
                             @endif
                         </div>
                         <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
+                            <i class="fa fa-bitbucket"></i>
                         </div>
                         <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
@@ -58,15 +54,15 @@
                     <!-- small box -->
                     <div class="small-box bg-yellow">
                         <div class="inner">
-                            <h3>{{$member}}</h3>
-                            @if($member > 1)
-                                <p>New Members</p>
+                            <h3>{{$c_hama}}</h3>
+                            @if($c_hama > 1)
+                                <p>New Pengendalian Hama</p>
                             @else
-                                <p>New Member</p>
+                                <p>New Pengendalian Hama</p>
                             @endif
                         </div>
                         <div class="icon">
-                            <i class="ion ion-person-add"></i>
+                            <i class="fa fa-bug"></i>
                         </div>
                         <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
@@ -80,7 +76,7 @@
                             <p>New Feedback</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-pie-graph"></i>
+                            <i class="fa fa-comments"></i>
                         </div>
                         <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
@@ -95,7 +91,7 @@
                     <div class="box box-info">
                         <div class="box-header with-border">
                             <i class="fa fa-globe"></i>
-                            <h3 class="box-title">Latest Studio Orders</h3>
+                            <h3 class="box-title">Latest Perizinan Apoteks</h3>
 
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -132,7 +128,7 @@
                         <div class="box-footer clearfix">
                             <a href="{{url('admin/tables#Studio')}}" class="btn btn-sm btn-info btn-flat pull-left">View
                                 All
-                                Studio Orders</a>
+                                Perizinan Apoteks</a>
                         </div>
                         <!-- /.box-footer -->
                     </div>
@@ -142,7 +138,7 @@
                     <div class="box box-success">
                         <div class="box-header with-border">
                             <i class="fa fa-bus"></i>
-                            <h3 class="box-title">Latest Recorder Orders</h3>
+                            <h3 class="box-title">Latest Depot Air Orders</h3>
 
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -180,10 +176,10 @@
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer clearfix">
-                            <a href="{{url('admin/tables#Recorder')}}"
+                            <a href="{{url('admin/tables#Depot Air')}}"
                                class="btn btn-sm btn-success btn-flat pull-right">View
                                 All
-                                Recorder Orders</a>
+                                Depot Air Orders</a>
                         </div>
                         <!-- /.box-footer -->
                     </div>
@@ -236,7 +232,7 @@
                     <div class="box box-success">
                         <div class="box-header with-border">
                             <i class="fa fa-bus"></i>
-                            <h3 class="box-title">Recently Added Recorder Contents</h3>
+                            <h3 class="box-title">Recently Added Depot Air Contents</h3>
 
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -251,7 +247,7 @@
                             <ul class="products-list product-list-in-box">
                                 <li class="item">
                                     <div class="product-img">
-                                        <img src="/images/Recorder/bus/pahala_kencana1.JPG" alt="Studio Image"/>
+                                        <img src="/images/Depot Air/bus/pahala_kencana1.JPG" alt="Studio Image"/>
                                     </div>
                                     <div class="product-info">
                                         <a href="#"
@@ -269,7 +265,7 @@
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer text-center">
-                            <a href="{{url('admin/Recordercontent#Recorder')}}" class="uppercase">View All Recorder</a>
+                            <a href="{{url('admin/Depot Aircontent#Depot Air')}}" class="uppercase">View All Depot Air</a>
                         </div>
                         <!-- /.box-footer -->
                     </div>
