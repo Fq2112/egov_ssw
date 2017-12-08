@@ -4,6 +4,9 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\order;
+use App\trPerizinanApotik;
+use App\trPerizinanDepo;
+use App\trPerizinanHama;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -70,5 +73,28 @@ class UserController extends Controller
             }
         }
         return redirect('/');
+    }
+
+    public function showRiwayat()
+    {
+        $c_apotek = trPerizinanApotik::count();
+        $c_air = trPerizinanDepo::count();
+        $c_hama = trPerizinanHama::count();
+        return view('auth.riwayat',compact('c_apotek','c_air','c_hama'));
+    }
+
+    public function printRiwayatApotek()
+    {
+        return view('user.apotek.print');
+    }
+
+    public function printRiwayatDepotAir()
+    {
+        return view('user.air.print');
+    }
+
+    public function printRiwayatHama()
+    {
+        return view('user.hama.print');
     }
 }

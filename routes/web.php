@@ -25,11 +25,25 @@ Route::prefix('/')->group(function () {
     Route::post('contact', 'User\EgovController@postContact')->name('submit_contact');
 });
 
+Route::prefix('apotek')->group(function () {
+    Route::get('/', 'User\ApotekController@index')->name('apotek.dashboard');
+});
+
+Route::prefix('depot-air')->group(function () {
+    Route::get('/', 'User\DepotAirController@index')->name('air.dashboard');
+});
+
+Route::prefix('hama')->group(function () {
+    Route::get('/', 'User\HamaController@index')->name('hama.dashboard');
+});
+
 Route::group(['middleware' => ['auth'], 'prefix' => 'member'], function () {
     Route::get('{user}/settings', 'User\UserController@showAccountSettings');
     Route::put('{user}', 'User\UserController@updateAccount');
-    Route::get('{user}/history', 'User\UserController@showOrderHistory');
-    Route::get('{user}/history/print', 'User\UserController@printOrderHistory');
+    Route::get('{user}/history', 'User\UserController@showRiwayat');
+    Route::get('{user}/history/print-apotek', 'User\UserController@printRiwayatApotek');
+    Route::get('{user}/history/print-air', 'User\UserController@printRiwayatDepotAir');
+    Route::get('{user}/history/print-hama', 'User\UserController@printRiwayatHama');
 });
 
 Route::prefix('admin')->group(function () {

@@ -19,7 +19,8 @@
                                 <div class="slider-text-inner">
                                     <h1>Perizinan Apotek</h1>
                                     <h2>Melakukan proses pengajuan permohonan Surat Izin Apotek</h2>
-                                    <p><a class="btn btn-primary btn-lg" href="#apotek">AJUKAN PERMOHONAN SEKARANG</a></p>
+                                    <p><a class="btn btn-primary btn-lg" href="{{route('apotek.dashboard')}}">AJUKAN
+                                            PERMOHONAN SEKARANG</a></p>
                                 </div>
                             </div>
                         </div>
@@ -50,7 +51,8 @@
                                     <h1>Perizinan Pengendalian Hama</h1>
                                     <h2>Melakukan proses pengajuan permohonan Surat Izin
                                         Operasional Perusahaan Pengendalian Hama</h2>
-                                    <p><a class="btn btn-primary btn-lg btn-learn" href="#hama">AJUKAN PERMOHONAN SEKARANG</a></p>
+                                    <p><a class="btn btn-primary btn-lg btn-learn" href="#hama">AJUKAN PERMOHONAN
+                                            SEKARANG</a></p>
                                 </div>
                             </div>
                         </div>
@@ -101,42 +103,55 @@
             <div class="row animate-box">
                 <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
                     <h2>Layanan Perizinan Kami</h2>
-                    <p>{{config('app.name')}} (Surabaya Single Window - Sanitary), yang akan selalu siap membantu Anda untuk melakukan semua proses perizinan yang berkaitan dengan Kesehatan.</p>
+                    <p>{{config('app.name')}} (Surabaya Single Window - Sanitary), yang akan selalu siap membantu Anda
+                        untuk melakukan semua proses perizinan yang berkaitan dengan Kesehatan.</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4 text-center animate-box">
-                    <div class="services">
-						<span class="icon">
-							<i class="fa fa-medkit"></i>
-						</span>
-                        <div class="desc">
-                            <h3><a href="#apotek">Apotek</a></h3>
-                            <p>Apakah Anda ingin mengajukan permohonan Surat Izin Apotek? Kami {{config('app.name')}} akan membantu dan memudahkan Anda untuk mendapatkan surat izin tersebut.</p>
+                    <a href="{{route('apotek.dashboard')}}">
+                        <div class="services">
+                            <span class="icon">
+                                <i class="fa fa-medkit"></i>
+                            </span>
+                            <div class="desc">
+                                <h3><a href="{{route('apotek.dashboard')}}">Apotek</a></h3>
+                                <p>Apakah Anda ingin mengajukan permohonan Surat Izin Apotek?
+                                    Kami {{config('app.name')}} akan membantu dan memudahkan Anda untuk mendapatkan
+                                    surat izin tersebut.</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-md-4 text-center animate-box">
-                    <div class="services">
-						<span class="icon">
-							<i class="fa fa-bitbucket"></i>
-						</span>
-                        <div class="desc">
-                            <h3><a href="#air">Depot Air Minum</a></h3>
-                            <p>Apakah Anda ingin mengajukan perizinan Penyelenggaraan Depot Air Minum? Kami {{config('app.name')}} akan membantu dan memudahkan Anda untuk mendapatkan surat izin tersebut.</p>
+                    <a href="{{route('air.dashboard')}}">
+                        <div class="services">
+                            <span class="icon">
+                                <i class="fa fa-bitbucket"></i>
+                            </span>
+                            <div class="desc">
+                                <h3><a href="{{route('air.dashboard')}}">Depot Air Minum</a></h3>
+                                <p>Apakah Anda ingin mengajukan perizinan Penyelenggaraan Depot Air Minum?
+                                    Kami {{config('app.name')}} akan membantu dan memudahkan Anda untuk mendapatkan surat
+                                    izin tersebut.</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-md-4 text-center animate-box">
-                    <div class="services">
-						<span class="icon">
-							<i class="fa fa-bug"></i>
-						</span>
-                        <div class="desc">
-                            <h3><a href="#hama">Pengendalian Hama</a></h3>
-                            <p>Apakah Anda ingin mengajukan perizinan Perusahaan Pengendalian Hama? Kami {{config('app.name')}} akan membantu dan memudahkan Anda untuk mendapatkan surat izin tersebut.</p>
+                    <a href="{{route('hama.dashboard')}}">
+                        <div class="services">
+                            <span class="icon">
+                                <i class="fa fa-bug"></i>
+                            </span>
+                            <div class="desc">
+                                <h3><a href="{{route('hama.dashboard')}}">Pengendalian Hama</a></h3>
+                                <p>Apakah Anda ingin mengajukan perizinan Perusahaan Pengendalian Hama?
+                                    Kami {{config('app.name')}} akan membantu dan memudahkan Anda untuk mendapatkan surat
+                                    izin tersebut.</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 {{--<div class="col-md-12 text-center animate-box">
                     <p><a class="btn btn-primary btn-lg btn-learn" href="#">View More</a></p>

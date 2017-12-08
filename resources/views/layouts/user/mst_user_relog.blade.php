@@ -24,6 +24,7 @@
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,700,800" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/logo-sby.png')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('fonts/font-awesome.min.css')}}">
+    <link href="{{asset('plugins/datatables/dataTables.bootstrap.css')}}" rel="stylesheet">
 
     <!-- Animate.css -->
     <link rel="stylesheet" href="{{asset('css/animate.css')}}">
@@ -215,6 +216,10 @@
 <script src="{{asset('js/google_map.js')}}"></script>
 <!-- Main -->
 <script src="{{asset('js/main.js')}}"></script>
+<script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
+<script src="{{ asset('dataTables/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('dataTables/js/dataTables.bootstrap.min.js') }}"></script>
 <script>
     $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
@@ -236,6 +241,11 @@
             return true;
         } else return false;
     }
+    $(function () {
+        $("#example1").DataTable();
+        $("#example2").DataTable();
+        $("#example3").DataTable();
+    });
 </script>
 </body>
 </html>
