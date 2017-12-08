@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\Auth\UserActivationEmail;
+use App\Mail\verifyEmail;
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -69,6 +76,25 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'status' => false,
+            'verifyToken' => Str::random(255),
         ]);
+    }
+
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function registered(Request $request, $user)
+    {
+        //sending mail
+        event(new UserActivationEmail($user));
+
+        $this->guard()->logout();
+
+        return redirect()->route('login')->withSuccess('Register berhasil. Mohon cek email anda untuk melakukan proses aktivasi.');
     }
 }

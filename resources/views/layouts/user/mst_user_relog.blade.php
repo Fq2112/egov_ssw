@@ -50,8 +50,10 @@
     <!-- FOR IE9 below -->
     <!--[if lt IE 9]>
     <script src="{{asset('js/respond.min.js')}}"></script>
+
     <![endif]-->
 
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
 <div id="page">
@@ -60,8 +62,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-2">
-                        <div id="fh5co-logo"><a
-                                    href="{{route('dashboard')}}">S<span>.</span>S<span>.</span>W<span>.</span></a>
+                        <div id="fh5co-logo">
+                            <a href="{{route('dashboard')}}">S<span>.</span>S<span>.</span>W<span>.</span>S<span>.</span></a>
                         </div>
                     </div>
                     <div class="col-xs-10 text-right menu-1">
@@ -71,7 +73,7 @@
                                 <li><a href="{{route('login')}}" id="hover_active"><span>Register/Login</span></a></li>
                             @else
                                 <li class="has-dropdown">
-                                    <a href="#" class="myBtn"><span>{{Auth::user()->email}}</span></a>
+                                    <a href="#" class="myBtn"><span>{{Auth::user()->name}}</span></a>
                                     <ul class="dropdown">
                                         <li><a href="{{url('/member/'.Auth::user()->id.'/history')}}"><i class="fa fa-history"></i> Riwayat Perizinan</a></li>
                                         <li><a href="{{url('/member/'.Auth::user()->id.'/settings')}}"><i class="fa fa-edit"></i> Edit
@@ -98,19 +100,20 @@
         </div>
     </nav>
     @yield('content')
-    <div id="fh5co-started" style="background-image:url({{asset('images/img_bg_2.jpg')}});">
+    <div id="fh5co-started" style="background-image:url({{asset('images/legal.jpeg')}});">
         <div class="overlay"></div>
         <div class="container">
             <div class="row animate-box">
                 <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
                     <h2>Legal Advice</h2>
-                    <p>We help people effectively fight their offenders back and successfully defend their own
-                        stand!</p>
+                    <p>Kami ada untuk memudahkan Anda melakukan proses permohonan Surat Izin Apotek, Penyelenggaraan Depot Air Minum, dan Operasional Perusahaan Pengendalian Hama.</p>
                 </div>
             </div>
             <div class="row animate-box">
                 <div class="col-md-8 col-md-offset-2 text-center">
-                    <p><a href="#" class="btn btn-default btn-lg">Consultation</a></p>
+                    <p>
+                        <a href="{{route('dashboard')}}#fh5co-practice" class="btn btn-default btn-lg">DAFTAR SEKARANG</a>
+                    </p>
                 </div>
             </div>
         </div>
@@ -126,11 +129,11 @@
                     <h4>Navigation</h4>
                     <ul class="fh5co-footer-links">
                         <li><a href="{{route('dashboard')}}">Home</a></li>
-                        <li><a href="{{route('dashboard.blog')}}">Blog</a></li>
                         <li><a href="{{route('dashboard.about')}}">About</a></li>
                         <li><a href="{{route('dashboard.contact')}}">Contact</a></li>
                         @if(Auth::guest())
-                            <li><a href="{{route('login')}}">Register/Login</a></li>
+                            <li><a href="{{route('login')}}">Login</a></li>
+                            <li><a href="{{route('register')}}">Register</a></li>
                         @endif
                     </ul>
                 </div>
@@ -138,9 +141,10 @@
                 <div class="col-md-3 col-md-push-1">
                     <h4>Contact Information</h4>
                     <ul class="fh5co-footer-links">
-                        <li>Jl. Jimerto 25-27, Ketabang,<br> Genteng, Surabaya, Jawa Timur, Indonesia 60295</li>
-                        <li><a href="tel://+62315312144">+6231-5312144</a> | <a href="tel://+62315343051">+6231-5343051</a></li>
-                        <li><a href="mailto:info@ssw.go.id">info@ssw.go.id</a> | <a href="http://surabaya.go.id/">surabaya.go.id</a></li>
+                        <li>Jl. Jemursari 197 Surabaya,<br>Surabaya, Jawa Timur, 60243</li>
+                        <li>Telp. : <a href="tel://+62318439473">+6231-8439473</a></li>
+                        <li>Dian : <a href="tel://+6281939100249">+6281-93910-0249</a></li>
+                        <li><a href="mailto:dinkes.surabaya@gmail.com">dinkes.surabaya@gmail.com</a></li>
                     </ul>
                 </div>
 

@@ -1,5 +1,5 @@
 @extends('layouts.user.mst_user_relog')
-@section('title', 'SSW - Surabaya Single Window | Member Login')
+@section('title', 'SSWS - Surabaya Single Window Sanitary | Member Login')
 @section('content')
     <div style="padding: 3em 0;" id="fh5co-contact">
         <div class="container">
@@ -10,12 +10,26 @@
                             <div class="w3-panel w3-card">
                                 <h2 style="padding-top: 5%" class="text-center">Member Login</h2>
 
-                                {{--@if($token && $recaptcha)
-                                    <div class="alert alert-success">
-                                        <strong>Confirmed!</strong> Anda 100% manusia yang hidup dan bukanlah sebuah robot.
-                                        Silahkan login dengan akun anda.
+                                @if($token && $recaptcha)
+                                    <div class="alert alert-success alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert"
+                                                aria-hidden="true">
+                                            &times;
+                                        </button>
+                                        <strong>Confirmed!</strong> Anda 100% manusia yang hidup dan bukanlah sebuah
+                                        robot. Silahkan login dengan akun anda.
                                     </div>
-                                @endif--}}
+                                @endif
+                                @if(session('success'))
+                                    <div class="alert alert-success alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert"
+                                                aria-hidden="true">
+                                            &times;
+                                        </button>
+                                        <h4><i class="icon fa fa-check"></i> Alert!</h4>
+                                        {{session('success')}}
+                                    </div>
+                                @endif
                                 <form style="padding: 5%" method="POST" action="{{ route('login') }}">
                                     {{ csrf_field() }}
 
@@ -36,21 +50,20 @@
                                             <input name="password" type="password" id="password" class="form-control"
                                                    placeholder="Password">
                                             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                                            @if ($errors->has('password'))
-                                                <span class="help-block">
-                                                    <strong>{{ $errors->first('password') }}</strong>
-                                                    <a href="{{ route('password.request') }}">
-                                                     Lupa password anda?
-                                                    </a>
-                                                </span>
-                                            @endif
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('password') }}</strong>
+                                                <a href="{{ route('password.request') }}">
+                                                    Lupa password anda?
+                                                </a>
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="checkbox">
                                             <label>
                                                 <input type="checkbox"
-                                                       name="remember" {{ old('remember') ? 'checked' : '' }}> Ingat Saya
+                                                       name="remember" {{ old('remember') ? 'checked' : '' }}> Ingat
+                                                Saya
                                             </label>
                                         </div>
                                     </div>

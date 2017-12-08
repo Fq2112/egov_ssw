@@ -12,14 +12,18 @@
 */
 Auth::routes();
 
-Route::prefix('/')->group(function () {
-    Route::get('/', 'User\EgovController@index')->name('dashboard');
-    Route::get('blog', 'User\EgovController@showBlog')->name('dashboard.blog');
-    Route::get('about', 'User\EgovController@showAbout')->name('dashboard.about');
-    Route::get('contact', 'User\EgovController@showContact')->name('dashboard.contact');
-    Route::post('contact', 'EgovController@postContact')->name('submit_contact');
+Route::prefix('account')->group(function () {
+    Route::get('activate','Auth\ActivationController@activate')->name('auth.activate');
+    Route::get('captcha', 'Auth\ActivationController@showCaptcha')->name('captcha');
+    Route::post('captcha', 'Auth\ActivationController@postCaptcha')->name('submit_captcha');
 });
 
+Route::prefix('/')->group(function () {
+    Route::get('/', 'User\EgovController@index')->name('dashboard');
+    Route::get('about', 'User\EgovController@showAbout')->name('dashboard.about');
+    Route::get('contact', 'User\EgovController@showContact')->name('dashboard.contact');
+    Route::post('contact', 'User\EgovController@postContact')->name('submit_contact');
+});
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'member'], function () {
     Route::get('{user}/settings', 'User\UserController@showAccountSettings');

@@ -1,5 +1,5 @@
 @extends('layouts.user.mst_user_relog')
-@section('title', 'SSW - Surabaya Single Window | '.$user->name.'`s Profile')
+@section('title', 'SSWS - Surabaya Single Window Sanitary | '.$user->name.'`s Profile')
 @section('content')
     <div style="padding: 1em 0;" id="fh5co-contact">
         <div class="container">

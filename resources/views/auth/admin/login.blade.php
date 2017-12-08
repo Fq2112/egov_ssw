@@ -1,5 +1,5 @@
 @extends('layouts.mst_dashboard_relog')
-
+@section('title', 'SSWS - Surabaya Single Window Sanitary | Admin Login')
 @section('content')
     <div class="service-area-4 fix" id="service">
         <div class="container">

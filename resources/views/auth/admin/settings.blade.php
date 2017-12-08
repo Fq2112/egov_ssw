@@ -1,4 +1,5 @@
 @extends('layouts.admin.admin_mst_dashboard')
+@section('title', 'SSWS - Surabaya Single Window Sanitary | '.Auth::user()->name.'`s Profile')
 @section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
