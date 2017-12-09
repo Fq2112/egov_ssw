@@ -18,16 +18,17 @@ Route::prefix('account')->group(function () {
     Route::post('captcha', 'Auth\ActivationController@postCaptcha')->name('submit_captcha');
 });
 
+Route::get('/coba', 'CekDataController@coba');
+
 Route::prefix('/')->group(function () {
+
     Route::get('/', 'User\EgovController@index')->name('dashboard');
+    Route::get('blog', 'User\EgovController@showBlog')->name('dashboard.blog');
     Route::get('about', 'User\EgovController@showAbout')->name('dashboard.about');
     Route::get('contact', 'User\EgovController@showContact')->name('dashboard.contact');
     Route::post('contact', 'User\EgovController@postContact')->name('submit_contact');
 });
 
-Route::prefix('apotek')->group(function () {
-    Route::get('/', 'User\ApotekController@index')->name('apotek.dashboard');
-});
 
 Route::prefix('depot-air')->group(function () {
     Route::get('/', 'User\DepotAirController@index')->name('air.dashboard');
@@ -35,6 +36,39 @@ Route::prefix('depot-air')->group(function () {
 
 Route::prefix('hama')->group(function () {
     Route::get('/', 'User\HamaController@index')->name('hama.dashboard');
+});
+
+Route::group(['middleware' => ['auth'], 'prefix' => 'apotek'], function () {
+    Route::get('/', 'User\ApotekController@index')->name('apotek.dashboard');
+    Route::get('cekdata', 'CekDataController@carinik');
+    Route::get('carikota', 'CekDataController@carikota');
+    Route::get('carikecamatan', 'CekDataController@carikecamatan');
+    Route::get('caridesa', 'CekDataController@caridesa');
+
+    Route::get('data-pemohon', 'CekDataController@index')->name('apotik.data.pemohon');
+    Route::get('data-tempat', 'CekDataController@kedua')->name('apotik.data.tempat');
+    Route::get('data-pemilik', 'CekDataController@ketiga')->name('apotik.data.pemilik');
+    Route::get('data-alat', 'CekDataController@keempat')->name('apotik.data.alat');
+    Route::get('data-apoteker', 'CekDataController@kelima')->name('apotik.data.apoteker');
+    Route::get('data-cetak', 'CekDataController@keenam')->name('apotik.data.cetak');
+    Route::get('data-upload', 'CekDataController@ketujuh')->name('apotik.data.upload');
+    Route::get('data-konfirmasi', 'CekDataController@kedelapan')->name('apotik.data.konfirmasi');
+
+    Route::post('data-savepertama', 'CekDataController@savepertama')->name('save.pertama');
+    Route::post('data-savekedua', 'CekDataController@savekedua')->name('save.kedua');
+    Route::post('data-saveketiga', 'CekDataController@saveketiga')->name('save.ketiga');
+    Route::post('data-savekeempat', 'CekDataController@savekeempat')->name('save.keempat');
+    Route::post('data-savekelima', 'CekDataController@savekelima')->name('save.kelima');
+    Route::get('data-savekeenam', 'CekDataController@setsessionkeenam')->name('save.keenam');
+    Route::post('data-saveketujuh', 'CekDataController@storagefile')->name('save.ketujuh');
+
+    Route::get('data-cetak-permohonan', 'CekDataController@cetakpermohonan')->name('cetak.permohonan');
+    Route::get('data-cetak-alat', 'CekDataController@cetakalat')->name('cetak.alat');
+    Route::get('data-cetak-apoteker', 'CekDataController@cetakapoteker')->name('cetak.apoteker');
+    Route::get('data-cetak-sarana', 'CekDataController@cetaksarana')->name('cetak.sarana');
+    Route::get('data-cetak-uuapoteker', 'CekDataController@cetakuu')->name('cetak.uu');
+
+    Route::get('data-selesai', 'CekDataController@selesai')->name('save.selesai');
 });
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'member'], function () {
