@@ -33,15 +33,6 @@
                                     <span class="help-block">
                                         <strong>Last Updated: {{$user->updated_at}}</strong>
                                     </span>
-                                    <style>
-                                        .image-upload > input {
-                                            display: none;
-                                        }
-
-                                        .image-upload img {
-                                            cursor: pointer;
-                                        }
-                                    </style>
                                     <form class="form-horizontal" role="form" method="POST"
                                           action="{{ url('/member/'.$user->id) }}" enctype="multipart/form-data">
                                         {{ csrf_field() }}

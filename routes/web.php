@@ -38,8 +38,9 @@ Route::prefix('hama')->group(function () {
     Route::get('/', 'User\HamaController@index')->name('hama.dashboard');
 });
 
+Route::get('apotek', 'User\ApotekController@index')->name('apotek.dashboard');
+
 Route::group(['middleware' => ['auth'], 'prefix' => 'apotek'], function () {
-    Route::get('/', 'User\ApotekController@index')->name('apotek.dashboard');
     Route::get('cekdata', 'CekDataController@carinik');
     Route::get('carikota', 'CekDataController@carikota');
     Route::get('carikecamatan', 'CekDataController@carikecamatan');
@@ -74,7 +75,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'apotek'], function () {
 Route::group(['middleware' => ['auth'], 'prefix' => 'member'], function () {
     Route::get('{user}/settings', 'User\UserController@showAccountSettings');
     Route::put('{user}', 'User\UserController@updateAccount');
-    Route::get('{user}/history', 'User\UserController@showRiwayat');
+    Route::get('history', 'User\UserController@showRiwayat');
     Route::get('{user}/history/print-apotek', 'User\UserController@printRiwayatApotek');
     Route::get('{user}/history/print-air', 'User\UserController@printRiwayatDepotAir');
     Route::get('{user}/history/print-hama', 'User\UserController@printRiwayatHama');
@@ -95,3 +96,12 @@ Route::prefix('admin')->group(function () {
     Route::get('{admin}/settings', 'Admin\AdminController@showEditProfileForm');
     Route::put('{admin}', 'Admin\AdminController@updateAdmin');
 });
+
+Route::prefix('uptsa')->group(function () {
+    Route::get('dashboard', 'Admin\Sub\UPTSAController@index')->name('uptsa.dashboard');
+});
+
+/*Route::group(['middleware' => 'UPTSA', 'prefix' => 'uptsa'],function (){
+    Route::get('dashboard', 'Admin\Sub\UPTSAController@index')->name('uptsa.dashboard');
+});*/
+

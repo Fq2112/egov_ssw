@@ -1,50 +1,117 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="{{ asset('sweetalert2/sweetalert2.min.js') }}"></script>
-    <link rel="stylesheet" href="{{ asset('/sweetalert2/sweetalert2.min.css') }}">
-</head>
-<body>
-<table>
-    <tr>
-        <td>NIK</td>
-        <td>:</td>
-        <td>{{$data->nik}}</td>
-    </tr>
-    <tr>
-        <td>Nama</td>
-        <td>:</td>
-        <td>{{$data->name}}</td>
-    </tr>
-    <tr>
-        <td>Tempat Tanggal Lahir</td>
-        <td>:</td>
-         <td>{{$data->tempat_lahir}}, {{\Carbon\Carbon::createFromFormat('Y-m-d',$data->tgl_lahir)->formatLocalized('%A %d %B %Y')}}</td>
-    </tr>
-    <tr>
-        <td>Tempat Pengambilan SK</td>
-        <td>:</td>
-        <td> {{$data2->tempat_sk}}<td>
-    </tr>
-
-</table>
-
-Dengan ini saya menyatakan bahwa data yang saya isikan adalah benar dan tanpa paksaan dari pihak manapun. Apabila dilain waktu data tersebut terbukti tidak benar, maka saya bersedia menerima sanksi apapun sesuai peraturan perundang-undangan yang berlaku.
-
-<br>
-
-<button onclick="window.location.href='{{route('save.selesai')}}'">Setuju</button>
-<script>@if(\Session::has('status'))
+@extends('layouts.user.mst_user_relog')
+@section('title', 'SSWS - Surabaya Single Window Sanitary | Form Perizinan Apotek')
+@section('content')
+    <div id="fh5co-content">
+        <div class="row animate-box">
+            <div class="col-md-8 col-md-offset-2 text-center fh5co-heading" style="margin-bottom: 1em">
+                <h2><i class="fa fa-medkit"></i> Berkas Permohonan</h2>
+            </div>
+            <div class="col-lg-12">
+                <nav>
+                    <ol class="cd-multi-steps text-bottom count">
+                        <li class="visited"><a href="#1">Identitas Pemohon</a></li>
+                        <li class="visited"><a href="#2">Identitas Apotek</a></li>
+                        <li class="visited"><a href="#3">Identitas Pemilik</a></li>
+                        <li class="visited"><a href="#4">Daftar Alat</a></li>
+                        <li class="visited"><a href="#5">Identitas Apoteker</a></li>
+                        <li class="visited"><a href="#6">Cetak Dokumen</a></li>
+                        <li class="visited"><a href="#7">Upload Dokumen</a></li>
+                        <li class="current"><a href="#8">Konfirmasi Permohonan</a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="video fh5co-video animate-box" style="background-image: url({{asset('images/konfirm.jpg')}})"></div>
+        <div class="choose animate-box">
+            <div class="row form-group">
+                <div class="col-lg-12 text-center">
+                    <label style="font-size: 25px">KONFIRMASI PERMOHONAN</label>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <label for="nik">NIK</label>
+                    <input type="text" id="nik" class="form-control" value="{{$data->nik}}" disabled>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-6">
+                    <label for="name">Nama Lengkap</label>
+                    <input type="text" id="name" class="form-control" value="{{$data->name}}" disabled>
+                </div>
+                <div class="col-md-6">
+                    <label for="jk">Jenis Kelamin</label>
+                    <select id="jk" class="form-control" disabled>
+                        <option value="Pria" <?php if ('Pria' == $data->jk) {
+                            echo 'selected';
+                        } ?>>Pria
+                        </option>
+                        <option value="Wanita" <?php if ('Wanita' == $data->jk) {
+                            echo 'selected';
+                        } ?>>Wanita
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <label for="tempat_lahir">Tempat, Tanggal Lahir</label>
+                    <input type="text" id="tempat_lahir" class="form-control"
+                           value="{{$data->tempat_lahir}}, {{\Carbon\Carbon::createFromFormat('Y-m-d',
+                               $data->tgl_lahir)->formatLocalized('%A %d %B %Y')}}" disabled>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <label for="alamat">Message</label>
+                    <textarea id="alamat" class="form-control" disabled>{{$data->alamat}}</textarea>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <label for="sk">Pengambilan SK</label>
+                    <select id="sk" class="form-control" disabled>
+                        <option value="UPTSA Pusat" <?php if ('UPTSA Pusat' == $data2->tempat_sk) {
+                            echo 'selected';
+                        } ?>>UPTSA PUSAT
+                        </option>
+                        <option value="UPTSA Timur" <?php if ('UPTSA Timur' == $data2->tempat_sk) {
+                            echo 'selected';
+                        } ?>>UPTSA TIMUR
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <div class="alert alert-danger">
+                        <p align="justify">Dengan ini saya menyatakan bahwa data yang saya isikan adalah benar dan
+                            tanpa paksaan dari pihak manapun. Apabila dilain waktu data tersebut terbukti tidak
+                            benar, maka saya bersedia menerima sanksi apapun sesuai peraturan perundang-undangan
+                            yang berlaku.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-lg-12">
+                    <button type="submit" value="KONFIRMASI" onclick="window.location.href='{{route('save.selesai')}}'"
+                            class="btn btn-primary btn-block">KONFIRMASI
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+@section('script')
+    <script src="{{ asset('js/validator.min.js') }}"></script>
+    <script>
+        @if(\Session::has('status'))
     swal({
-        title: '{{ session('status') }}',
-        type: 'info',
-        timer: '1500'
-    });
-    @endif</script>
-</body>
-</html>
+            title: '{{ session('status') }}',
+            type: 'info',
+            timer: '1500'
+        });
+        @endif
+    </script>
+@endsection

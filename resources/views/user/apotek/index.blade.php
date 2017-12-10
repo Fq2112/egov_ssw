@@ -45,7 +45,7 @@
                             </button>
                         </a>
                     @else
-                        <a href="{{route('')}}">
+                        <a href="{{route('apotik.data.pemohon')}}">
                             <button href="#formdaftar" type="button" class="btn btn-primary">
                                 <i class="fa fa-pencil-square-o"></i> Formulir Pendaftaran
                             </button>

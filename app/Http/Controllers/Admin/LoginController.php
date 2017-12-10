@@ -28,24 +28,25 @@ class LoginController extends Controller
     {
         // Validat the form data
         $this->validate($request, [
+            'lastname' => 'required|min:6',
             'email' => 'required|email',
             'password' => 'required|min:6',
         ]);
 
         // Attempt to log the user in
-        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
+        if (Auth::guard('admin')->attempt(['lastname' => $request->lastname, 'email' => $request->email, 'password' => $request->password], $request->remember)) {
             // if successful, then redirect to their intended location
-            return redirect()->intended(route('admin.dashboard'));
+            return redirect()->route('admin.dashboard');
         }
-
         // if unsuccessful, then redirect back to the login with the form data
         Session::flash('status', 'You`re not an ADMIN!');
         return redirect()->back()->withInput($request->only('email', 'remember'));
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         $this->guard('admin')->logout();
+        $request->session('admin')->invalidate();
         /*$request->session('admin')->flush();
         $request->session('admin')->regenerate();*/
         return redirect('/');

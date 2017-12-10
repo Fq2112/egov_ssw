@@ -194,17 +194,25 @@
                                             @else
                                                 <select class="form-control" name="lastname">
                                                     <option value="" disabled selected>-- Choose Title --</option>
-                                                    <option value="Admin" <?php if ('Admin' == $admin->lastname) {
+                                                    <option value="UPTSA" <?php if ('UPTSA' == $admin->lastname) {
                                                         echo 'selected';
-                                                    } ?>>Admin
+                                                    } ?>>UPTSA
                                                     </option>
-                                                    <option value="Editor" <?php if ('Editor' == $admin->lastname) {
+                                                    <option value="KASIE" <?php if ('KASIE' == $admin->lastname) {
                                                         echo 'selected';
-                                                    } ?>>Editor
+                                                    } ?>>KASIE
                                                     </option>
-                                                    <option value="UX/UI Designer" <?php if ('UX/UI Designer' == $admin->lastname) {
+                                                    <option value="KABID" <?php if ('KABID' == $admin->lastname) {
                                                         echo 'selected';
-                                                    } ?>>UX/UI Designer
+                                                    } ?>>KEPALA BIDANG
+                                                    </option>
+                                                    <option value="SEKRETARIS" <?php if ('SEKRETARIS' == $admin->lastname) {
+                                                        echo 'selected';
+                                                    } ?>>SEKRETARIS
+                                                    </option>
+                                                    <option value="KADIN" <?php if ('KADIN' == $admin->lastname) {
+                                                        echo 'selected';
+                                                    } ?>>KEPALA DINAS
                                                     </option>
                                                 </select>
                                             @endif
