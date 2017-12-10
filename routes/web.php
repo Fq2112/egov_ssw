@@ -97,11 +97,3 @@ Route::prefix('admin')->group(function () {
     Route::put('{admin}', 'Admin\AdminController@updateAdmin');
 });
 
-Route::prefix('uptsa')->group(function () {
-    Route::get('dashboard', 'Admin\Sub\UPTSAController@index')->name('uptsa.dashboard');
-});
-
-/*Route::group(['middleware' => 'UPTSA', 'prefix' => 'uptsa'],function (){
-    Route::get('dashboard', 'Admin\Sub\UPTSAController@index')->name('uptsa.dashboard');
-});*/
-
