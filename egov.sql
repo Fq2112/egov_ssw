@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 09 Des 2017 pada 17.43
+-- Generation Time: 11 Des 2017 pada 07.33
 -- Versi Server: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -86,7 +86,115 @@ INSERT INTO `berkas_apoteks` (`id`, `file`, `status`, `apotek_proses_id`, `creat
 (26, 'upload/berkasapotek/33d7f0c62c1b0cf8c44308bafa9883c0.jpg', 5, 7, '2017-12-09 12:11:20', '2017-12-09 12:11:20'),
 (27, 'upload/berkasapotek/2da3be1f3d0824e01fc466c0721d6f6e.jpg', 5, 7, '2017-12-09 12:11:20', '2017-12-09 12:11:20'),
 (28, 'upload/berkasapotek/08d363360964d1e45776a845ec4647ac.jpg', 6, 7, '2017-12-09 12:11:20', '2017-12-09 12:11:20'),
-(29, 'upload/berkasapotek/232ba4ce716e2e27200a012d1dac93e4.jpg', 6, 7, '2017-12-09 12:11:20', '2017-12-09 12:11:20');
+(29, 'upload/berkasapotek/232ba4ce716e2e27200a012d1dac93e4.jpg', 6, 7, '2017-12-09 12:11:20', '2017-12-09 12:11:20'),
+(30, 'upload/berkasapotek/3dd00154d513df172a55683b0eb5b1bd.jpg', 1, 10, '2017-12-10 07:41:32', '2017-12-10 07:41:32'),
+(31, 'upload/berkasapotek/272c6107f1776602cd7befc02b485138.jpg', 2, 10, '2017-12-10 07:41:33', '2017-12-10 07:41:33'),
+(32, 'upload/berkasapotek/946e2be90c1cc97c14094c7185000782.jpg', 3, 10, '2017-12-10 07:41:33', '2017-12-10 07:41:33'),
+(33, 'upload/berkasapotek/664a500349b0b79daa5a0bddff548a0b.jpg', 4, 10, '2017-12-10 07:41:33', '2017-12-10 07:41:33'),
+(34, 'upload/berkasapotek/c9dfb92ac98bf700f82acf7111729c3e.jpg', 5, 10, '2017-12-10 07:41:33', '2017-12-10 07:41:33'),
+(35, 'upload/berkasapotek/2ddd542714ca858a7ee9677f1482e7ae.jpg', 6, 10, '2017-12-10 07:41:33', '2017-12-10 07:41:33'),
+(36, 'upload/berkasapotek/daef30101b9d9fdac08ea9b25577095e.jpg', 1, 11, '2017-12-11 06:24:44', '2017-12-11 06:24:44'),
+(37, 'upload/berkasapotek/1de59d7e2baf30d03757e70698b7c381.jpg', 2, 11, '2017-12-11 06:24:44', '2017-12-11 06:24:44'),
+(38, 'upload/berkasapotek/0928bfd70901b7e2187b3ef3a55475e2.jpg', 3, 11, '2017-12-11 06:24:44', '2017-12-11 06:24:44'),
+(39, 'upload/berkasapotek/18c8faa740df41ab1ab92a0cf93a746f.jpg', 4, 11, '2017-12-11 06:24:44', '2017-12-11 06:24:44'),
+(40, 'upload/berkasapotek/9488a8016bea3ae655cd7a12bc296a5a.jpg', 5, 11, '2017-12-11 06:24:44', '2017-12-11 06:24:44'),
+(41, 'upload/berkasapotek/7a42e0391077826637cbc41a4a90ed25.jpg', 6, 11, '2017-12-11 06:24:45', '2017-12-11 06:24:45');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `berkas_depots`
+--
+
+CREATE TABLE `berkas_depots` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `file` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` int(11) NOT NULL,
+  `depot_proses_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `berkas_depots`
+--
+
+INSERT INTO `berkas_depots` (`id`, `file`, `status`, `depot_proses_id`, `created_at`, `updated_at`) VALUES
+(1, 'upload/berkasdepot/20171210-316c7024969982fd5675087ce42b2231.jpg', 1, 2, '2017-12-10 04:01:47', '2017-12-10 04:01:47'),
+(2, 'upload/berkasdepot/905beebd3ef0b31998d785b2b5f957b1.png', 2, 2, '2017-12-10 04:01:47', '2017-12-10 04:01:47'),
+(3, 'upload/berkasdepot/0b4020bc6cf01cb7e5fd39c234ed6c6e.jpeg', 3, 2, '2017-12-10 04:01:47', '2017-12-10 04:01:47'),
+(4, 'upload/berkasdepot/95fb6ded761863be6f786286eab5bdbd.jpg', 4, 2, '2017-12-10 04:01:47', '2017-12-10 04:01:47'),
+(5, 'upload/berkasdepot/35f5a86cf4c70c87fb783dd71f08c157.jpg', 5, 2, '2017-12-10 04:01:47', '2017-12-10 04:01:47'),
+(6, 'upload/berkasapotek/675c28167535e4defe1b56cbf261639f.jpg', 6, 2, '2017-12-10 04:01:48', '2017-12-10 04:01:48'),
+(7, 'upload/berkasdepot/20171210-76df729ff330ca9e71375d45e105f9d8.jpg', 1, 3, '2017-12-10 06:34:43', '2017-12-10 06:34:43'),
+(8, 'upload/berkasdepot/20171210-52c49ff425bd00d2b5889a9c1cd2ca15.jpg', 2, 3, '2017-12-10 06:34:43', '2017-12-10 06:34:43'),
+(9, 'upload/berkasdepot/20171210-3b8b106bab4ffedc8f40bd9b6c45a981.jpg', 3, 3, '2017-12-10 06:34:43', '2017-12-10 06:34:43'),
+(10, 'upload/berkasdepot/20171210-02ade4b302ed6b95888a966f37483e0f.jpg', 4, 3, '2017-12-10 06:34:44', '2017-12-10 06:34:44'),
+(11, 'upload/berkasdepot/20171210-2e27f34e60fa45f915ebe74487c070a0.jpg', 5, 3, '2017-12-10 06:34:44', '2017-12-10 06:34:44'),
+(12, 'upload/berkasapotek/20171210-8d18dde5dd5caf47c8168e397a614dc9.jpg', 6, 3, '2017-12-10 06:34:44', '2017-12-10 06:34:44'),
+(13, 'upload/berkasdepot/20171210-c7e4a93f9a1ca16e30f01b4f2ec1635c.jpg', 1, 4, '2017-12-10 15:29:41', '2017-12-10 15:29:41'),
+(14, 'upload/berkasdepot/20171210-e452a035364619cb6be5b8ad442d6694.jpg', 2, 4, '2017-12-10 15:29:41', '2017-12-10 15:29:41'),
+(15, 'upload/berkasdepot/20171210-921cbf4d1c75d4162b827d63fe56e94f.jpg', 3, 4, '2017-12-10 15:29:42', '2017-12-10 15:29:42'),
+(16, 'upload/berkasdepot/20171210-c489c71754f466c5fe831869186cc6f3.jpg', 4, 4, '2017-12-10 15:29:42', '2017-12-10 15:29:42'),
+(17, 'upload/berkasdepot/20171210-829378bc31b82e0c7dcdb31a984cbe85.jpg', 5, 4, '2017-12-10 15:29:42', '2017-12-10 15:29:42'),
+(18, 'upload/berkasapotek/20171210-e65bd18debac1962bfb895cc5ddfa1b9.jpg', 6, 4, '2017-12-10 15:29:42', '2017-12-10 15:29:42'),
+(19, 'upload/berkasdepot/20171211-1ee2a7b4c95bc6040ed21f0f8944d4d7.jpg', 1, 5, '2017-12-11 06:29:43', '2017-12-11 06:29:43'),
+(20, 'upload/berkasdepot/20171211-fa19ddd73ee99dccd9c6e8035fcdcb86.jpg', 2, 5, '2017-12-11 06:29:43', '2017-12-11 06:29:43'),
+(21, 'upload/berkasdepot/20171211-1f971bfa9cb8c12dc835baf52f2ef54e.jpg', 3, 5, '2017-12-11 06:29:43', '2017-12-11 06:29:43'),
+(22, 'upload/berkasdepot/20171211-094a622667aa380aea35738b68f506c2.jpg', 4, 5, '2017-12-11 06:29:43', '2017-12-11 06:29:43'),
+(23, 'upload/berkasdepot/20171211-1156d86235482b2dca23150bc58e87dc.jpg', 5, 5, '2017-12-11 06:29:43', '2017-12-11 06:29:43'),
+(24, 'upload/berkasapotek/20171211-3534f4dacfe619d1c2ede8201bb3e204.jpg', 6, 5, '2017-12-11 06:29:43', '2017-12-11 06:29:43');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `berkas_hamas`
+--
+
+CREATE TABLE `berkas_hamas` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `file` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` int(11) NOT NULL,
+  `hama_proses_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `berkas_hamas`
+--
+
+INSERT INTO `berkas_hamas` (`id`, `file`, `status`, `hama_proses_id`, `created_at`, `updated_at`) VALUES
+(1, 'upload/berkashama/20171210-34af3255275526c114a3004a76875c29.jpg', 1, 1, '2017-12-10 15:01:37', '2017-12-10 15:01:37'),
+(2, 'upload/berkashama/20171210-c61f44874bf65308864736de9854d98d.jpg', 2, 1, '2017-12-10 15:01:37', '2017-12-10 15:01:37'),
+(3, 'upload/berkashama/20171210-2fa8e8e29fcb0efad2422409c200b71b.jpg', 3, 1, '2017-12-10 15:01:37', '2017-12-10 15:01:37'),
+(4, 'upload/berkashama/20171210-8b7db1d02a8abd216b94a65cdb148faa.jpg', 4, 1, '2017-12-10 15:01:37', '2017-12-10 15:01:37'),
+(5, 'upload/berkashama/20171210-ebdefe1a907232a68d83a377542896c5.jpg', 5, 1, '2017-12-10 15:01:37', '2017-12-10 15:01:37'),
+(6, 'upload/berkashama/20171210-6bd162ccc6c0569fea5f6a29494f3db8.jpg', 6, 1, '2017-12-10 15:01:37', '2017-12-10 15:01:37'),
+(7, 'upload/berkashama/20171210-e61d518f3ccf1ce37268e528c64582fd.jpg', 1, 2, '2017-12-10 15:17:58', '2017-12-10 15:17:58'),
+(8, 'upload/berkashama/20171210-da83bce3fedff773917924f3b732d9c2.jpg', 2, 2, '2017-12-10 15:17:59', '2017-12-10 15:17:59'),
+(9, 'upload/berkashama/20171210-cf29fbb6e7c03449d87682eef707ca05.jpg', 3, 2, '2017-12-10 15:17:59', '2017-12-10 15:17:59'),
+(10, 'upload/berkashama/20171210-edd2530d94f4f87698bb09cfa9d34934.jpg', 4, 2, '2017-12-10 15:17:59', '2017-12-10 15:17:59'),
+(11, 'upload/berkashama/20171210-5d4eb351910bc1ad264c7adf64b40bca.jpg', 5, 2, '2017-12-10 15:17:59', '2017-12-10 15:17:59'),
+(12, 'upload/berkashama/20171210-9b734d572993b86f8d4854fd86f89613.jpg', 6, 2, '2017-12-10 15:17:59', '2017-12-10 15:17:59'),
+(13, 'upload/berkashama/20171210-df534b73cb15042ab30da4f3cdbfde01.jpg', 1, 3, '2017-12-10 15:23:21', '2017-12-10 15:23:21'),
+(14, 'upload/berkashama/20171210-8a36643f06153085bb91f43744b50ebb.jpg', 2, 3, '2017-12-10 15:23:21', '2017-12-10 15:23:21'),
+(15, 'upload/berkashama/20171210-88305671fe05a7d99f7444f9241710bd.jpg', 3, 3, '2017-12-10 15:23:21', '2017-12-10 15:23:21'),
+(16, 'upload/berkashama/20171210-3e95c62c3b1ea0159b74df42b5de0293.jpg', 4, 3, '2017-12-10 15:23:21', '2017-12-10 15:23:21'),
+(17, 'upload/berkashama/20171210-e851c2d8998f0bd68bbc4acc3e09f19b.jpg', 5, 3, '2017-12-10 15:23:21', '2017-12-10 15:23:21'),
+(18, 'upload/berkashama/20171210-a2aa6094169320990f9dae9783087c9e.jpg', 6, 3, '2017-12-10 15:23:21', '2017-12-10 15:23:21'),
+(19, 'upload/berkashama/20171210-2c6af32096d781a56cfd631f3116a6d5.jpg', 1, 4, '2017-12-10 15:36:21', '2017-12-10 15:36:21'),
+(20, 'upload/berkashama/20171210-14767a5a820f1aac6319cd6ddcf55465.jpg', 2, 4, '2017-12-10 15:36:21', '2017-12-10 15:36:21'),
+(21, 'upload/berkashama/20171210-1f4f1bceacb49c046cc94f83021c9bc6.jpg', 3, 4, '2017-12-10 15:36:21', '2017-12-10 15:36:21'),
+(22, 'upload/berkashama/20171210-341b73e1c4a6ed2df0507a16761af5af.jpg', 4, 4, '2017-12-10 15:36:21', '2017-12-10 15:36:21'),
+(23, 'upload/berkashama/20171210-97080e857e70e65efe51901f85097e57.jpg', 5, 4, '2017-12-10 15:36:22', '2017-12-10 15:36:22'),
+(24, 'upload/berkashama/20171210-38a8282d65a20d6e1bea3563283e6fb4.jpg', 6, 4, '2017-12-10 15:36:22', '2017-12-10 15:36:22'),
+(25, 'upload/berkashama/20171211-3edc1c84a551eef383d7708b43244cc4.jpg', 1, 5, '2017-12-11 06:31:27', '2017-12-11 06:31:27'),
+(26, 'upload/berkashama/20171211-55f240eb3956d20d09773d1d668749ce.jpg', 2, 5, '2017-12-11 06:31:27', '2017-12-11 06:31:27'),
+(27, 'upload/berkashama/20171211-e48b42e7fbe618d3a83f95d0918ebcae.jpg', 3, 5, '2017-12-11 06:31:27', '2017-12-11 06:31:27'),
+(28, 'upload/berkashama/20171211-ea95aecea4ddbb12ad02e3b66ede9dfd.jpg', 4, 5, '2017-12-11 06:31:27', '2017-12-11 06:31:27'),
+(29, 'upload/berkashama/20171211-b99a3cb1bc6a32c9bc6c60179c69b33a.jpg', 5, 5, '2017-12-11 06:31:27', '2017-12-11 06:31:27'),
+(30, 'upload/berkashama/20171211-dc2d8206299ba6b6c55db1a3537d9616.jpg', 6, 5, '2017-12-11 06:31:27', '2017-12-11 06:31:27');
 
 -- --------------------------------------------------------
 
@@ -103,6 +211,13 @@ CREATE TABLE `contacts` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `name`, `email`, `subject`, `message`, `created_at`, `updated_at`) VALUES
+(1, 'Fahmi Rizky', 'vreallyla@gmail.com', 'ldfjsdf', 'sdldfjsdf', '2017-12-11 06:27:28', '2017-12-11 06:27:28');
 
 -- --------------------------------------------------------
 
@@ -7374,7 +7489,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (15, '2017_12_08_060425_create_kotas_table', 5),
 (16, '2017_12_08_060446_create_kecamatans_table', 5),
 (17, '2017_12_08_060505_create_desas_table', 5),
-(18, '2017_12_09_154644_create_berkas_apoteks_table', 6);
+(18, '2017_12_09_154644_create_berkas_apoteks_table', 6),
+(19, '2017_12_10_102248_create_berkas_depots_table', 7),
+(20, '2017_12_10_214409_create_berkas_hamas_table', 8);
 
 -- --------------------------------------------------------
 
@@ -7505,7 +7622,79 @@ INSERT INTO `m_alat_apotiks` (`id`, `pemohon_id`, `name`, `jumlah`, `ukuran`, `t
 (213, 7, 'Lemari untuk penyimpanan narkotika, psikotropika dan bahan bahaya lainnya', 1, NULL, 2, NULL, NULL),
 (214, 7, 'FI edisi IV', 1, NULL, 3, NULL, NULL),
 (215, 7, 'ISO edisi terbaru', 1, NULL, 3, NULL, NULL),
-(216, 7, 'UU narkotika dan psikotropika', 1, NULL, 3, NULL, NULL);
+(216, 7, 'UU narkotika dan psikotropika', 1, NULL, 3, NULL, NULL),
+(217, 10, 'Gelas', 32, 10, 1, NULL, NULL),
+(218, 10, 'Gelas', 6, 100, 1, NULL, NULL),
+(219, 10, 'Gelas', 7, 250, 1, NULL, NULL),
+(220, 10, 'Benker Gelas', 8, 100, 1, NULL, NULL),
+(221, 10, 'Benker Gelas', 7, 500, 1, NULL, NULL),
+(222, 10, 'Benker Gelas', 5, 1000, 1, NULL, NULL),
+(223, 10, 'Labu Elemeyer', 7, 100, 1, NULL, NULL),
+(224, 10, 'Labu Elemeyer', 9, 500, 1, NULL, NULL),
+(225, 10, 'Labu Elemeyer', 7, 1000, 1, NULL, NULL),
+(226, 10, 'Panci Pengukur', 5, 10, 1, NULL, NULL),
+(227, 10, 'Corong', 7, 6, 1, NULL, NULL),
+(228, 10, 'Corong', 8, 8, 1, NULL, NULL),
+(229, 10, 'Spantel Tanduk', 9, NULL, 1, NULL, NULL),
+(230, 10, 'Cawan Penguap Bergaris Tengah', 8, 6, 1, NULL, NULL),
+(231, 10, 'Cawan Penguap Bergaris Tengah', 3, 7, 1, NULL, NULL),
+(232, 10, 'Cawan Penguap Bergaris Tengah', 2, 8, 1, NULL, NULL),
+(233, 10, 'Cawan Penguap Bergaris Tengah', 3, 9, 1, NULL, NULL),
+(234, 10, 'Batang Pengaduk', 3, NULL, 1, NULL, NULL),
+(235, 10, 'Batang Pengaduk', 3, NULL, 1, NULL, NULL),
+(236, 10, 'Pemanas Air', 1, NULL, 1, NULL, NULL),
+(237, 10, 'Kompor/Alat pemanas lainnya', 3, NULL, 1, NULL, NULL),
+(238, 10, 'Panci', 3, NULL, 1, NULL, NULL),
+(239, 10, 'Rak tempat pengeringan alat', 2, NULL, 1, NULL, NULL),
+(240, 10, 'Thermometer berkala 100 C', 1, NULL, 1, NULL, NULL),
+(241, 10, 'Mortir bergaris tengah', 4, 10, 1, NULL, NULL),
+(242, 10, 'Mortir bergaris tengah', 4, 13, 1, NULL, NULL),
+(243, 10, 'Mortir bergaris tengah', 4, 16, 1, NULL, NULL),
+(244, 10, 'Timbangan Miligram', 2, NULL, 1, NULL, NULL),
+(245, 10, 'Timbangan Gram', 4, NULL, 1, NULL, NULL),
+(246, 10, 'Botol dalam segala ukuran', 1, NULL, 2, NULL, NULL),
+(247, 10, 'Lemari dan rak untuk Penyimpanan Obat yang sesuai kebutuhan', 1, NULL, 2, NULL, NULL),
+(248, 10, 'Lemari Pendingin', 1, NULL, 2, NULL, NULL),
+(249, 10, 'Lemari untuk penyimpanan narkotika, psikotropika dan bahan bahaya lainnya', 1, NULL, 2, NULL, NULL),
+(250, 10, 'FI edisi IV', 1, NULL, 3, NULL, NULL),
+(251, 10, 'ISO edisi terbaru', 1, NULL, 3, NULL, NULL),
+(252, 10, 'UU narkotika dan psikotropika', 1, NULL, 3, NULL, NULL),
+(253, 11, 'Gelas', NULL, 10, 1, NULL, NULL),
+(254, 11, 'Gelas', NULL, 100, 1, NULL, NULL),
+(255, 11, 'Gelas', NULL, 250, 1, NULL, NULL),
+(256, 11, 'Benker Gelas', NULL, 100, 1, NULL, NULL),
+(257, 11, 'Benker Gelas', NULL, 500, 1, NULL, NULL),
+(258, 11, 'Benker Gelas', NULL, 1000, 1, NULL, NULL),
+(259, 11, 'Labu Elemeyer', NULL, 100, 1, NULL, NULL),
+(260, 11, 'Labu Elemeyer', NULL, 500, 1, NULL, NULL),
+(261, 11, 'Labu Elemeyer', NULL, 1000, 1, NULL, NULL),
+(262, 11, 'Panci Pengukur', NULL, 10, 1, NULL, NULL),
+(263, 11, 'Corong', NULL, 6, 1, NULL, NULL),
+(264, 11, 'Corong', NULL, 8, 1, NULL, NULL),
+(265, 11, 'Spantel Tanduk', 9, NULL, 1, NULL, NULL),
+(266, 11, 'Cawan Penguap Bergaris Tengah', NULL, 6, 1, NULL, NULL),
+(267, 11, 'Cawan Penguap Bergaris Tengah', NULL, 7, 1, NULL, NULL),
+(268, 11, 'Cawan Penguap Bergaris Tengah', NULL, 8, 1, NULL, NULL),
+(269, 11, 'Cawan Penguap Bergaris Tengah', NULL, 9, 1, NULL, NULL),
+(270, 11, 'Batang Pengaduk', NULL, NULL, 1, NULL, NULL),
+(271, 11, 'Batang Pengaduk', NULL, NULL, 1, NULL, NULL),
+(272, 11, 'Pemanas Air', NULL, NULL, 1, NULL, NULL),
+(273, 11, 'Kompor/Alat pemanas lainnya', NULL, NULL, 1, NULL, NULL),
+(274, 11, 'Panci', NULL, NULL, 1, NULL, NULL),
+(275, 11, 'Rak tempat pengeringan alat', NULL, NULL, 1, NULL, NULL),
+(276, 11, 'Thermometer berkala 100 C', NULL, NULL, 1, NULL, NULL),
+(277, 11, 'Mortir bergaris tengah', NULL, 10, 1, NULL, NULL),
+(278, 11, 'Mortir bergaris tengah', NULL, 13, 1, NULL, NULL),
+(279, 11, 'Mortir bergaris tengah', NULL, 16, 1, NULL, NULL),
+(280, 11, 'Timbangan Miligram', NULL, NULL, 1, NULL, NULL),
+(281, 11, 'Timbangan Gram', NULL, NULL, 1, NULL, NULL),
+(282, 11, 'Botol dalam segala ukuran', 0, NULL, 2, NULL, NULL),
+(283, 11, 'Lemari dan rak untuk Penyimpanan Obat yang sesuai kebutuhan', 1, NULL, 2, NULL, NULL),
+(284, 11, 'Lemari Pendingin', 0, NULL, 2, NULL, NULL),
+(285, 11, 'Lemari untuk penyimpanan narkotika, psikotropika dan bahan bahaya lainnya', 1, NULL, 2, NULL, NULL),
+(286, 11, 'FI edisi IV', 0, NULL, 3, NULL, NULL),
+(287, 11, 'ISO edisi terbaru', 1, NULL, 3, NULL, NULL),
+(288, 11, 'UU narkotika dan psikotropika', 0, NULL, 3, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -7541,7 +7730,9 @@ INSERT INTO `m_apotekers` (`id`, `nik`, `name`, `tempat_lahir`, `tgl_lahir`, `jk
 (1, '8113692705970004', 'Jerrod Mitchell', 'Lake Albaton', '2000-06-15', 'Pria', 'Kristen', '6415 Collins Mountain Apt. 951', 2398, 'fkaj@Lkjdas.com', '234234', 's1', '2015', '234', '2016-12-01', '2017-12-08 11:27:26', '2017-12-08 11:27:26'),
 (2, '7593732705970004', 'Kory Hintz', 'Waylonmouth', '2001-08-07', 'Pria', 'Kristen', '4577 Volkman Walks', 234234, 'asjhd@kjd.com', '23498', 'kajisehd', '2023', '23423', '2017-11-30', '2017-12-08 20:12:39', '2017-12-08 20:12:39'),
 (3, '0260982705970000', 'Kurtis Kub', 'New Peyton', '1998-12-10', 'Wanita', 'Hindu', '7777 Fay Curve', 2934, '94823@kjashd.cp', '02394823', 'alskdj', '1940', '1109283', '2017-01-01', '2017-12-09 07:28:40', '2017-12-09 07:28:40'),
-(4, '7518622705970007', 'Dr. Horacio Durgan Sr.', 'East Alvera', '2001-10-01', 'Pria', 'Budha', '673 Lang Tunnel Apt. 520', 31231, 'rahasia@dkas.com', 'dasdas', 'Penjaskers', '2023', '21312', '2017-12-01', '2017-12-09 12:10:25', '2017-12-09 12:10:25');
+(4, '7518622705970007', 'Dr. Horacio Durgan Sr.', 'East Alvera', '2001-10-01', 'Pria', 'Budha', '673 Lang Tunnel Apt. 520', 31231, 'rahasia@dkas.com', 'dasdas', 'Penjaskers', '2023', '21312', '2017-12-01', '2017-12-09 12:10:25', '2017-12-09 12:10:25'),
+(5, '1802722705970002', 'Omer Hoppe', 'Lake Raeshire', '1998-02-02', 'Pria', 'Islam', '4847 Schmitt Radial', 34234, 'vreallyla@gmail.com', '083192837', 'tinggi', '3434', '204923', '2015-01-31', '2017-12-10 07:28:20', '2017-12-10 07:28:20'),
+(6, '6813692705970002', 'Della Rice', 'Dejahfort', '2000-05-15', 'Pria', 'Katolik', '864 Matilda Hill', 23402, 'vreallyla@gmail.com', '085731928391', 'S3', '2015', '2394823948', '2016-11-30', '2017-12-11 06:23:40', '2017-12-11 06:23:40');
 
 -- --------------------------------------------------------
 
@@ -7574,7 +7765,9 @@ INSERT INTO `m_apoteks` (`id`, `name`, `phone`, `provinsi`, `kota`, `kecamatan`,
 (5, 'kasjdh', '234', 'ACEH', 'KABUPATEN SIMEULUE', 'TEUPAH SELATAN', 'LATIUNG', 'aksjd', '2017-12-08 11:38:49', '2017-12-08 11:38:49'),
 (6, 'solo', '029300', 'ACEH', 'KABUPATEN ACEH TENGGARA', 'LAWE ALAS', 'MUARA BARU', 'rahasia bos', '2017-12-08 20:03:27', '2017-12-08 20:03:27'),
 (7, 'aksjda', '29823798', 'ACEH', 'KABUPATEN ACEH SINGKIL', 'PULAU BANYAK', 'PULAU BAGUK', 'ksjhdas', '2017-12-09 07:15:03', '2017-12-09 07:15:03'),
-(8, 'rahasia', '0824293434', 'ACEH', 'KABUPATEN ACEH SINGKIL', 'PULAU BANYAK', 'TELUK NIBUNG', '6415 Collins Mountain Apt. 951', '2017-12-09 12:08:32', '2017-12-09 12:08:32');
+(8, 'rahasia', '0824293434', 'ACEH', 'KABUPATEN ACEH SINGKIL', 'PULAU BANYAK', 'TELUK NIBUNG', '6415 Collins Mountain Apt. 951', '2017-12-09 12:08:32', '2017-12-09 12:08:32'),
+(9, 'disana ada apotik loh', '0831823719', 'ACEH', 'KABUPATEN SIMEULUE', 'SIMEULUE TIMUR', 'AIR PINANG', 'disini disitu ok', '2017-12-10 07:08:27', '2017-12-10 07:08:27'),
+(10, 'apotek kita', '085731928391', 'SUMATERA UTARA', 'KABUPATEN TOBA SAMOSIR', 'BORBOR', 'PARDOMUAN NAULI', 'rahasia', '2017-12-11 06:21:25', '2017-12-11 06:21:25');
 
 -- --------------------------------------------------------
 
@@ -7586,10 +7779,26 @@ CREATE TABLE `m_depo_airs` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `provinsi` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kota` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kecamatan` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desa` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `alamat` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `m_depo_airs`
+--
+
+INSERT INTO `m_depo_airs` (`id`, `name`, `phone`, `provinsi`, `kota`, `kecamatan`, `desa`, `alamat`, `created_at`, `updated_at`) VALUES
+(1, 'Depot rahasia', '0392842', 'SUMATERA BARAT', 'KABUPATEN KEPULAUAN MENTAWAI', 'PAGAI SELATAN', 'BULASAT', 'jl disana ada setan', '2017-12-09 19:36:47', '2017-12-09 19:36:47'),
+(2, 'Depot Kita', '429384', 'RIAU', 'KABUPATEN PELALAWAN', 'PANGKALAN KURAS', 'SOREK SATU', 'rahasia', '2017-12-09 19:47:54', '2017-12-09 19:47:54'),
+(3, 'depot rahasia', '0813981237', 'SUMATERA UTARA', 'KABUPATEN NIAS', 'ULUGAWO', 'ORAHILI', '1310293', '2017-12-10 02:37:12', '2017-12-10 02:37:12'),
+(4, 'disini ada depot', '029348230', 'ACEH', 'KABUPATEN ACEH TENGGARA', 'TANOH ALAS', 'LAWE TUNGKAL', 'di dekat sana', '2017-12-10 06:33:50', '2017-12-10 06:33:50'),
+(5, 'depot air lah', '239423092', 'ACEH', 'KABUPATEN SIMEULUE', 'TEUPAH SELATAN', 'LATIUNG', 'rhaasia', '2017-12-10 15:29:04', '2017-12-10 15:29:04'),
+(6, 'iarlah apa lagi', '203492834', 'SUMATERA UTARA', 'KABUPATEN TAPANULI SELATAN', 'BATANG ANGKOLA', 'PADANG KAHOMBU', 'rhasia', '2017-12-11 06:29:02', '2017-12-11 06:29:02');
 
 -- --------------------------------------------------------
 
@@ -7609,7 +7818,7 @@ CREATE TABLE `m_pemiliks` (
   `alamat` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `kodepos` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `npwp` int(100) NOT NULL,
+  `npwp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pekerjaan` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jabatan` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -7622,15 +7831,17 @@ CREATE TABLE `m_pemiliks` (
 --
 
 INSERT INTO `m_pemiliks` (`id`, `status`, `name`, `nik`, `tempat_lahir`, `tgl_lahir`, `jk`, `agama`, `alamat`, `kodepos`, `phone`, `npwp`, `email`, `pekerjaan`, `jabatan`, `created_at`, `updated_at`) VALUES
-(1, 'Pemilik', 'Isadore Murazik', '', 'Schmelerberg', '2002-03-30', 'Pria', 'Katolik', '5206 Swift Trace Apt. 609', '5343', '8563094333', 0, 'fiqy_a@yahoo.com', 'Mahasiswa', 'das', '2017-12-08 06:50:12', '2017-12-08 06:50:12'),
-(2, 'Pemilik', 'Keely Hettinger I', '', 'Yostchester', '1999-07-22', 'Wanita', 'Hindu', '516 Schulist Rapids Suite 201', '12312', '8563094333', 0, 'fiqy_a@yahoo.com', 'Mahasiswa', 'dasd', '2017-12-08 07:01:31', '2017-12-08 07:01:31'),
-(3, 'Pemilik', 'Jerrod Mitchell', '', 'Lake Albaton', '2000-06-15', 'Pria', 'Kristen', '6415 Collins Mountain Apt. 951', '1223', '8563094333', 0, 'fiqy_a@yahoo.com', 'Mahasiswa', 'asdas', '2017-12-08 09:01:40', '2017-12-08 09:01:40'),
-(4, 'Pemilik', 'Kory Hintz', '', 'Waylonmouth', '2001-08-07', 'Pria', 'Kristen', '4577 Volkman Walks', '23423', '8563094333', 0, 'fiqy_a@yahoo.com', 'Mahasiswa', 'asdas', '2017-12-08 11:39:14', '2017-12-08 11:39:14'),
-(5, 'Pemilik', 'Omer Hoppe', '', 'Lake Raeshire', '1998-02-02', 'Pria', 'Islam', '4847 Schmitt Radial', '2342', '8563094333', 0, 'fiqy_a@yahoo.com', 'Mahasiswa', 'askj', '2017-12-08 20:04:15', '2017-12-08 20:04:15'),
-(8, 'Pemilik', 'Omer Hoppe', '1802722705970002', 'Lake Raeshire', '1998-02-02', 'Pria', 'Islam', '4847 Schmitt Radial', '2342', '8563094333', 23823, 'fiqy_a@yahoo.com', 'Mahasiswa', 'askj', '2017-12-08 20:08:41', '2017-12-08 20:08:41'),
-(9, 'Pemilik', 'Omer Hoppe', '1802722705970002', 'Lake Raeshire', '1998-02-02', 'Pria', 'Islam', '4847 Schmitt Radial', '2342', '8563094333', 23823, 'fiqy_a@yahoo.com', 'Mahasiswa', 'askj', '2017-12-08 20:10:06', '2017-12-08 20:10:06'),
-(10, 'Pemilik', 'Omer Hoppe', '1802722705970002', 'Lake Raeshire', '1998-02-02', 'Pria', 'Islam', '4847 Schmitt Radial', '234234', '8563094333', 2309483, 'fiqy_a@yahoo.com', 'Mahasiswa', 'rahasia', '2017-12-09 07:20:42', '2017-12-09 07:20:42'),
-(11, 'Pemilik', 'Julian Brekke II', '2173332705970009', 'Bradtkeport', '2002-06-28', 'Pria', 'Hindu', '3590 McGlynn Fort Apt. 626', '131231', '8563094333', 3123123, 'fiqy_a@yahoo.com', 'Mahasiswa', 'dai', '2017-12-09 12:09:07', '2017-12-09 12:09:07');
+(1, 'Pemilik', 'Isadore Murazik', '', 'Schmelerberg', '2002-03-30', 'Pria', 'Katolik', '5206 Swift Trace Apt. 609', '5343', '8563094333', '0', 'fiqy_a@yahoo.com', 'Mahasiswa', 'das', '2017-12-08 06:50:12', '2017-12-08 06:50:12'),
+(2, 'Pemilik', 'Keely Hettinger I', '', 'Yostchester', '1999-07-22', 'Wanita', 'Hindu', '516 Schulist Rapids Suite 201', '12312', '8563094333', '0', 'fiqy_a@yahoo.com', 'Mahasiswa', 'dasd', '2017-12-08 07:01:31', '2017-12-08 07:01:31'),
+(3, 'Pemilik', 'Jerrod Mitchell', '', 'Lake Albaton', '2000-06-15', 'Pria', 'Kristen', '6415 Collins Mountain Apt. 951', '1223', '8563094333', '0', 'fiqy_a@yahoo.com', 'Mahasiswa', 'asdas', '2017-12-08 09:01:40', '2017-12-08 09:01:40'),
+(4, 'Pemilik', 'Kory Hintz', '', 'Waylonmouth', '2001-08-07', 'Pria', 'Kristen', '4577 Volkman Walks', '23423', '8563094333', '0', 'fiqy_a@yahoo.com', 'Mahasiswa', 'asdas', '2017-12-08 11:39:14', '2017-12-08 11:39:14'),
+(5, 'Pemilik', 'Omer Hoppe', '', 'Lake Raeshire', '1998-02-02', 'Pria', 'Islam', '4847 Schmitt Radial', '2342', '8563094333', '0', 'fiqy_a@yahoo.com', 'Mahasiswa', 'askj', '2017-12-08 20:04:15', '2017-12-08 20:04:15'),
+(8, 'Pemilik', 'Omer Hoppe', '1802722705970002', 'Lake Raeshire', '1998-02-02', 'Pria', 'Islam', '4847 Schmitt Radial', '2342', '8563094333', '23823', 'fiqy_a@yahoo.com', 'Mahasiswa', 'askj', '2017-12-08 20:08:41', '2017-12-08 20:08:41'),
+(9, 'Pemilik', 'Omer Hoppe', '1802722705970002', 'Lake Raeshire', '1998-02-02', 'Pria', 'Islam', '4847 Schmitt Radial', '2342', '8563094333', '23823', 'fiqy_a@yahoo.com', 'Mahasiswa', 'askj', '2017-12-08 20:10:06', '2017-12-08 20:10:06'),
+(10, 'Pemilik', 'Omer Hoppe', '1802722705970002', 'Lake Raeshire', '1998-02-02', 'Pria', 'Islam', '4847 Schmitt Radial', '234234', '8563094333', '2309483', 'fiqy_a@yahoo.com', 'Mahasiswa', 'rahasia', '2017-12-09 07:20:42', '2017-12-09 07:20:42'),
+(11, 'Pemilik', 'Julian Brekke II', '2173332705970009', 'Bradtkeport', '2002-06-28', 'Pria', 'Hindu', '3590 McGlynn Fort Apt. 626', '131231', '8563094333', '3123123', 'fiqy_a@yahoo.com', 'Mahasiswa', 'dai', '2017-12-09 12:09:07', '2017-12-09 12:09:07'),
+(12, 'Pemilik', 'Jerrod Mitchell', '8113692705970004', 'Lake Albaton', '2000-06-15', 'Pria', 'Kristen', '6415 Collins Mountain Apt. 951', '312391', '085731928391', '2049823', 'vreallyla@gmail.com', 'rahasia', 'rahsa', '2017-12-10 07:14:48', '2017-12-10 07:14:48'),
+(13, 'Pemilik', 'Helene Ortiz', '7327032705970009', 'East Deondrehaven', '2002-01-08', 'Pria', 'Hindu', '238 Norma Lockd', '20394', '085731928391', '20348230948', 'vreallyla@gmail.com', 'rahasia', 'rahasai', '2017-12-11 06:22:31', '2017-12-11 06:22:31');
 
 -- --------------------------------------------------------
 
@@ -7643,6 +7854,7 @@ CREATE TABLE `m_pemohons` (
   `nik` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` int(11) UNSIGNED DEFAULT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_Hygiene` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tempat_lahir` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tgl_lahir` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -7651,7 +7863,7 @@ CREATE TABLE `m_pemohons` (
   `phone` varchar(13) COLLATE utf8mb4_unicode_ci NOT NULL,
   `alamat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `kodepos` int(11) NOT NULL,
-  `pekerjaan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pekerjaan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `jabatan` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `no_sipa` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tgl_sipa` date DEFAULT NULL,
@@ -7665,11 +7877,21 @@ CREATE TABLE `m_pemohons` (
 -- Dumping data untuk tabel `m_pemohons`
 --
 
-INSERT INTO `m_pemohons` (`id`, `nik`, `user_id`, `name`, `email`, `tempat_lahir`, `tgl_lahir`, `jk`, `agama`, `phone`, `alamat`, `kodepos`, `pekerjaan`, `jabatan`, `no_sipa`, `tgl_sipa`, `npwp`, `tempat_sk`, `created_at`, `updated_at`) VALUES
-(10, '', 1, 'Kurtis Kub', 'fiqy_a@yahoo.com', 'New Peyton', '1998-12-10', 'Wanita', 'Hindu', '8563094333', '7777 Fay Curve', 234, 'Mahasiswa', 'asd', '123', NULL, '13423', 'UPTSA Timur', '2017-12-08 20:02:40', '2017-12-08 20:02:40'),
-(11, '', 1, 'Isadore Murazik', 'fiqy_a@yahoo.com', 'Schmelerberg', '2002-03-30', 'Pria', 'Katolik', '8563094333', '5206 Swift Trace Apt. 609', 19382, 'Mahasiswa', 'rahasia', '9283230', '2017-12-01', '32897', 'UPTSA Timur', '2017-12-09 07:13:26', '2017-12-09 07:13:26'),
-(12, '', 1, 'Prof. Bernice McClure DVM', 'fiqy_a@yahoo.com', 'Grantside', '2001-05-31', 'Pria', 'Budha', '8563094333', '246 Auer Forks Apt. 750', 23423, 'Mahasiswa', 'rahasia', '1344', '2017-01-01', '2304923', 'UPTSA Timur', '2017-12-09 11:37:44', '2017-12-09 11:37:44'),
-(14, '4668802705970001', 1, 'Prof. Bernice McClure DVM', 'fiqy_a@yahoo.com', 'Grantside', '2001-05-31', 'Pria', 'Budha', '8563094333', '246 Auer Forks Apt. 750', 342, 'Mahasiswa', '3245345', '23423', NULL, '4234', 'UPTSA Timur', '2017-12-09 11:51:32', '2017-12-09 11:51:32');
+INSERT INTO `m_pemohons` (`id`, `nik`, `user_id`, `name`, `no_Hygiene`, `email`, `tempat_lahir`, `tgl_lahir`, `jk`, `agama`, `phone`, `alamat`, `kodepos`, `pekerjaan`, `jabatan`, `no_sipa`, `tgl_sipa`, `npwp`, `tempat_sk`, `created_at`, `updated_at`) VALUES
+(10, '', 1, 'Kurtis Kub', NULL, 'fiqy_a@yahoo.com', 'New Peyton', '1998-12-10', 'Wanita', 'Hindu', '8563094333', '7777 Fay Curve', 234, 'Mahasiswa', 'asd', '123', NULL, '13423', 'UPTSA Timur', '2017-12-08 20:02:40', '2017-12-08 20:02:40'),
+(11, '', 1, 'Isadore Murazik', NULL, 'fiqy_a@yahoo.com', 'Schmelerberg', '2002-03-30', 'Pria', 'Katolik', '8563094333', '5206 Swift Trace Apt. 609', 19382, 'Mahasiswa', 'rahasia', '9283230', '2017-12-01', '32897', 'UPTSA Timur', '2017-12-09 07:13:26', '2017-12-09 07:13:26'),
+(12, '', 1, 'Prof. Bernice McClure DVM', NULL, 'fiqy_a@yahoo.com', 'Grantside', '2001-05-31', 'Pria', 'Budha', '8563094333', '246 Auer Forks Apt. 750', 23423, 'Mahasiswa', 'rahasia', '1344', '2017-01-01', '2304923', 'UPTSA Timur', '2017-12-09 11:37:44', '2017-12-09 11:37:44'),
+(14, '4668802705970001', 1, 'Prof. Bernice McClure DVM', NULL, 'fiqy_a@yahoo.com', 'Grantside', '2001-05-31', 'Pria', 'Budha', '8563094333', '246 Auer Forks Apt. 750', 342, 'Mahasiswa', '3245345', '23423', NULL, '4234', 'UPTSA Timur', '2017-12-09 11:51:32', '2017-12-09 11:51:32'),
+(16, '6868382705970004', 4, 'Isadore Murazik', NULL, 'vreallyla@gmail.com', 'Schmelerberg', '2002-03-30', 'Pria', 'Katolik', '085731928391', '5206 Swift Trace Apt. 609', 1321, NULL, NULL, NULL, NULL, NULL, 'UPTSA Pusat', '2017-12-09 18:53:42', '2017-12-09 18:53:42'),
+(17, '9498052705970005', 4, 'Keely Hettinger I', NULL, 'vreallyla@gmail.com', 'Yostchester', '1999-07-22', 'Wanita', 'Hindu', '085731928391', '516 Schulist Rapids Suite 201', 9876, 'rahasia', 'rafds', '654654', NULL, '543543', 'UPTSA Timur', '2017-12-09 20:48:36', '2017-12-09 20:48:36'),
+(18, '6574132705970009', 4, 'Ms. Lurline Stokes PhD', NULL, 'vreallyla@gmail.com', 'Conroyhaven', '2000-11-16', 'Pria', 'Hindu', '085731928391', '481 Mann Prairie', 3123, 'rahasia', 'pemerintah', '1231239', '2017-12-31', '1298313', 'UPTSA Pusat', '2017-12-10 06:56:16', '2017-12-10 06:56:16'),
+(19, '0336452705970003', 4, 'Eda Bartoletti', '31093812', 'vreallyla@gmail.com', 'Ceciltown', '2002-06-17', 'Pria', 'Kristen', '085731928391', '79011 Weissnat Glen Suite 168', 312312, NULL, NULL, NULL, NULL, NULL, 'UPTSA Timur', '2017-12-10 13:31:42', '2017-12-10 13:31:42'),
+(20, '6868382705970004', 4, 'Isadore Murazik', '31231', 'vreallyla@gmail.com', 'Schmelerberg', '2002-03-30', 'Pria', 'Katolik', '085731928391', '5206 Swift Trace Apt. 609', 31231, NULL, NULL, NULL, NULL, NULL, NULL, '2017-12-10 13:56:25', '2017-12-10 13:56:25'),
+(21, '8113692705970004', 4, 'Jerrod Mitchell', '12390123', 'vreallyla@gmail.com', 'Lake Albaton', '2000-06-15', 'Pria', 'Kristen', '085731928391', '6415 Collins Mountain Apt. 951', 21312, NULL, NULL, NULL, NULL, NULL, NULL, '2017-12-10 15:22:28', '2017-12-10 15:22:28'),
+(22, '8113692705970004', 4, 'Jerrod Mitchell', '342423', 'vreallyla@gmail.com', 'Lake Albaton', '2000-06-15', 'Pria', 'Kristen', '085731928391', '6415 Collins Mountain Apt. 951', 14423, NULL, NULL, NULL, NULL, NULL, 'UPTSA Pusat', '2017-12-10 15:34:32', '2017-12-10 15:34:32'),
+(23, '7518622705970007', 4, 'Dr. Horacio Durgan Sr.', NULL, 'vreallyla@gmail.com', 'East Alvera', '2001-10-01', 'Pria', 'Budha', '085731928391', '673 Lang Tunnel Apt. 520', 8333, 'rahasia', 'rhaisa', '30492830', '2018-12-31', '203948230948', 'UPTSA Pusat', '2017-12-11 06:20:57', '2017-12-11 06:20:57'),
+(24, '9474472705970007', 4, 'Wayne Witting DVM', NULL, 'vreallyla@gmail.com', 'North Nolaland', '1998-12-09', 'Pria', 'Hindu', '085731928391', '557 McGlynn Groves Suite 763', 234234, NULL, NULL, NULL, NULL, NULL, 'UPTSA Timur', '2017-12-11 06:28:42', '2017-12-11 06:28:42'),
+(25, '6574132705970009', 4, 'Ms. Lurline Stokes PhD', '052945823', 'vreallyla@gmail.com', 'Conroyhaven', '2000-11-16', 'Pria', 'Hindu', '085731928391', '481 Mann Prairie', 4234, NULL, NULL, NULL, NULL, NULL, 'UPTSA Pusat', '2017-12-11 06:30:37', '2017-12-11 06:30:37');
 
 -- --------------------------------------------------------
 
@@ -7681,11 +7903,26 @@ CREATE TABLE `m_perusahaans` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fax` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fax` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `provinsi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kota` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kecamatan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `desa` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `alamat` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `m_perusahaans`
+--
+
+INSERT INTO `m_perusahaans` (`id`, `name`, `phone`, `fax`, `provinsi`, `kota`, `kecamatan`, `desa`, `alamat`, `created_at`, `updated_at`) VALUES
+(1, 'ini hama ya', '0239283', NULL, 'KEPULAUAN BANGKA BELITUNG', 'KABUPATEN BANGKA SELATAN', 'TUKAK SADAI', 'TIRAM', '6415 Collins Mountain Apt. 951', '2017-12-10 14:12:32', '2017-12-10 14:12:32'),
+(2, 'hama situ lah', '0239842039', NULL, 'ACEH', 'KABUPATEN SIMEULUE', 'SIMEULUE TIMUR', 'KUALA MAKMUR', 'rahasia', '2017-12-10 15:17:07', '2017-12-10 15:17:07'),
+(3, 'sini lo ada hama', '0129381209', NULL, 'SUMATERA UTARA', 'KABUPATEN NIAS', 'BAWOLATO', 'SIOFA BANUA', '12091', '2017-12-10 15:22:47', '2017-12-10 15:22:47'),
+(4, 'hama lu', '0284023948', NULL, 'ACEH', 'KABUPATEN ACEH SELATAN', 'TRUMON', 'KUTA PADANG', '10391', '2017-12-10 15:35:26', '2017-12-10 15:35:26'),
+(5, 'hamalah', '029342', NULL, 'SUMATERA UTARA', 'KABUPATEN MANDAILING NATAL', 'BATANG NATAL', 'AMPUNG SIALA', 'rahasia', '2017-12-11 06:30:53', '2017-12-11 06:30:53');
 
 -- --------------------------------------------------------
 
@@ -8351,6 +8588,7 @@ CREATE TABLE `tr_perizinan_apotiks` (
   `id_apotek` int(10) UNSIGNED DEFAULT NULL,
   `user_id` int(11) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_Hygiene` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` int(10) UNSIGNED DEFAULT NULL,
   `file_berkas` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tgl_perizinan` date DEFAULT NULL,
@@ -8362,11 +8600,14 @@ CREATE TABLE `tr_perizinan_apotiks` (
 -- Dumping data untuk tabel `tr_perizinan_apotiks`
 --
 
-INSERT INTO `tr_perizinan_apotiks` (`id`, `id_admin`, `id_pemohon`, `id_pemilik`, `id_alat`, `id_apoteker`, `id_apotek`, `user_id`, `name`, `status`, `file_berkas`, `tgl_perizinan`, `created_at`, `updated_at`) VALUES
-(4, NULL, 10, 9, NULL, 2, 6, 1, 'Kurtis Kub', NULL, NULL, NULL, '2017-12-08 20:02:41', '2017-12-08 20:12:39'),
-(5, NULL, 11, 10, NULL, 3, 7, 1, 'Isadore Murazik', NULL, NULL, NULL, '2017-12-09 07:13:26', '2017-12-09 07:28:40'),
-(6, NULL, 12, NULL, NULL, NULL, NULL, 1, 'Prof. Bernice McClure DVM', NULL, NULL, NULL, '2017-12-09 11:37:44', '2017-12-09 11:37:44'),
-(7, NULL, 14, 11, NULL, 4, 8, 1, 'Prof. Bernice McClure DVM', 1, NULL, '2017-12-09', '2017-12-09 11:51:33', '2017-12-09 12:11:37');
+INSERT INTO `tr_perizinan_apotiks` (`id`, `id_admin`, `id_pemohon`, `id_pemilik`, `id_alat`, `id_apoteker`, `id_apotek`, `user_id`, `name`, `no_Hygiene`, `status`, `file_berkas`, `tgl_perizinan`, `created_at`, `updated_at`) VALUES
+(4, NULL, 10, 9, NULL, 2, 6, 1, 'Kurtis Kub', NULL, NULL, NULL, NULL, '2017-12-08 20:02:41', '2017-12-08 20:12:39'),
+(5, NULL, 11, 10, NULL, 3, 7, 1, 'Isadore Murazik', NULL, NULL, NULL, NULL, '2017-12-09 07:13:26', '2017-12-09 07:28:40'),
+(6, NULL, 12, NULL, NULL, NULL, NULL, 1, 'Prof. Bernice McClure DVM', NULL, NULL, NULL, NULL, '2017-12-09 11:37:44', '2017-12-09 11:37:44'),
+(7, NULL, 14, 11, NULL, 4, 8, 1, 'Prof. Bernice McClure DVM', NULL, 1, NULL, '2017-12-09', '2017-12-09 11:51:33', '2017-12-09 12:11:37'),
+(9, NULL, 17, NULL, NULL, NULL, NULL, 4, 'Keely Hettinger I', NULL, NULL, NULL, NULL, '2017-12-09 20:48:36', '2017-12-09 20:48:36'),
+(10, NULL, 18, 12, NULL, 5, 9, 4, 'Ms. Lurline Stokes PhD', NULL, 1, NULL, '2017-12-10', '2017-12-10 06:56:16', '2017-12-10 07:41:41'),
+(11, NULL, 23, 13, NULL, 6, 10, 4, 'Dr. Horacio Durgan Sr.', NULL, 1, NULL, '2017-12-11', '2017-12-11 06:20:57', '2017-12-11 06:25:02');
 
 -- --------------------------------------------------------
 
@@ -8376,15 +8617,28 @@ INSERT INTO `tr_perizinan_apotiks` (`id`, `id_admin`, `id_pemohon`, `id_pemilik`
 
 CREATE TABLE `tr_perizinan_depos` (
   `id` int(10) UNSIGNED NOT NULL,
-  `id_admin` int(10) UNSIGNED NOT NULL,
-  `id_pemohon` int(10) UNSIGNED NOT NULL,
-  `id_depo` int(10) UNSIGNED NOT NULL,
+  `user_id` int(11) UNSIGNED DEFAULT NULL,
+  `id_admin` int(10) UNSIGNED DEFAULT NULL,
+  `id_pemohon` int(10) UNSIGNED DEFAULT NULL,
+  `id_depo` int(10) UNSIGNED DEFAULT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `file_berkas` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tgl_perizinan` date NOT NULL,
+  `status` int(11) DEFAULT NULL,
+  `file_berkas` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tgl_perizinan` date DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `tr_perizinan_depos`
+--
+
+INSERT INTO `tr_perizinan_depos` (`id`, `user_id`, `id_admin`, `id_pemohon`, `id_depo`, `name`, `status`, `file_berkas`, `tgl_perizinan`, `created_at`, `updated_at`) VALUES
+(1, 4, NULL, 16, 2, 'Isadore Murazik', NULL, NULL, NULL, '2017-12-09 19:09:49', '2017-12-09 19:47:54'),
+(2, 4, NULL, 17, 3, 'Keely Hettinger I', 1, NULL, '2017-12-10', '2017-12-10 02:32:25', '2017-12-10 06:29:38'),
+(3, 4, NULL, 17, 4, 'Rosie Thiel', 1, NULL, '2017-12-10', '2017-12-10 06:33:26', '2017-12-10 06:34:55'),
+(4, 4, NULL, 19, 5, 'Eda Bartoletti', 1, NULL, '2017-12-10', '2017-12-10 13:31:42', '2017-12-10 15:29:46'),
+(5, 4, NULL, 24, 6, 'Wayne Witting DVM', 1, NULL, '2017-12-11', '2017-12-11 06:28:43', '2017-12-11 06:29:46');
 
 -- --------------------------------------------------------
 
@@ -8394,15 +8648,28 @@ CREATE TABLE `tr_perizinan_depos` (
 
 CREATE TABLE `tr_perizinan_hamas` (
   `id` int(10) UNSIGNED NOT NULL,
-  `id_admin` int(10) UNSIGNED NOT NULL,
+  `id_admin` int(10) UNSIGNED DEFAULT NULL,
   `id_pemohon` int(10) UNSIGNED NOT NULL,
-  `id_perusahaan` int(10) UNSIGNED NOT NULL,
+  `id_perusahaan` int(10) UNSIGNED DEFAULT NULL,
+  `user_id` int(100) UNSIGNED DEFAULT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `file_berkas` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tgl_perizinan` date NOT NULL,
+  `status` int(100) DEFAULT NULL,
+  `file_berkas` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tgl_perizinan` date DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `tr_perizinan_hamas`
+--
+
+INSERT INTO `tr_perizinan_hamas` (`id`, `id_admin`, `id_pemohon`, `id_perusahaan`, `user_id`, `name`, `status`, `file_berkas`, `tgl_perizinan`, `created_at`, `updated_at`) VALUES
+(1, NULL, 20, 1, 4, 'Isadore Murazik', 1, NULL, '2017-12-10', '2017-12-10 13:57:39', '2017-12-10 15:13:15'),
+(2, NULL, 20, 2, 4, 'Jerrod Mitchell', 1, NULL, '2017-12-10', '2017-12-10 15:16:28', '2017-12-10 15:19:45'),
+(3, NULL, 21, 3, 4, 'Jerrod Mitchell', 1, NULL, '2017-12-10', '2017-12-10 15:22:28', '2017-12-10 15:24:17'),
+(4, NULL, 22, 4, 4, 'Jerrod Mitchell', 1, NULL, '2017-12-10', '2017-12-10 15:34:32', '2017-12-10 15:36:28'),
+(5, NULL, 25, 5, 4, 'Ms. Lurline Stokes PhD', 1, NULL, '2017-12-11', '2017-12-11 06:30:37', '2017-12-11 06:31:30');
 
 -- --------------------------------------------------------
 
@@ -8432,7 +8699,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `ava`, `name`, `phone`, `alamat`, `pekerjaan`, `email`, `password`, `status`, `verifyToken`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'fq1.jpg', 'Fiqy Ainuzzaqy', '8563094333', 'Jl. Hikmat 50A Betro\r\nSedati', 'Mahasiswa', 'fiqy_a@yahoo.com', '$2y$10$Mtd34pk8GUDKrHKC7MHuHefY06qS8hM4bWPxCnrWb.n9rP8h0VlLG', 1, NULL, 'ENLdMxjKra7KHuAIZyKQx0y50CQqj7ho4YXGVdjKUUXtwrTiC3twvCg7W5kD', '2017-12-06 05:23:58', '2017-12-07 06:59:05'),
-(3, 'adi.JPG', 'Fiqy Ainuzzaqy', '8563094333', 'Jl. Hikmat 50A Betro\r\nSedati', 'Mahasiswa', 'fiqy_a@fq.com', '$2y$10$5JJJnthDz6ScTtU5lyqGg.zf5EYmQA8ey64GigFDIubONk65BheHy', 0, NULL, 'ENLdMxjKra7KHuAIZyKQx0y50CQqj7ho4YXGVdjKUUXtwrTiC3twvCg7W5kD', '2017-12-06 05:23:58', '2017-12-06 07:47:24');
+(3, 'adi.JPG', 'Fiqy Ainuzzaqy', '8563094333', 'Jl. Hikmat 50A Betro\r\nSedati', 'Mahasiswa', 'fiqy_a@fq.com', '$2y$10$5JJJnthDz6ScTtU5lyqGg.zf5EYmQA8ey64GigFDIubONk65BheHy', 0, NULL, 'ENLdMxjKra7KHuAIZyKQx0y50CQqj7ho4YXGVdjKUUXtwrTiC3twvCg7W5kD', '2017-12-06 05:23:58', '2017-12-06 07:47:24'),
+(4, 'fm.jpg', 'Fahmi Rizky', '085731928391', 'rahasia', 'rahasia', 'vreallyla@gmail.com', '$2y$10$Mtd34pk8GUDKrHKC7MHuHefY06qS8hM4bWPxCnrWb.n9rP8h0VlLG', 1, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -90577,6 +90845,20 @@ ALTER TABLE `berkas_apoteks`
   ADD KEY `berkas_apoteks_apotek_proses_id_foreign` (`apotek_proses_id`);
 
 --
+-- Indexes for table `berkas_depots`
+--
+ALTER TABLE `berkas_depots`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `berkas_depots_depot_proses_id_foreign` (`depot_proses_id`);
+
+--
+-- Indexes for table `berkas_hamas`
+--
+ALTER TABLE `berkas_hamas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `berkas_hamas_hama_proses_id_foreign` (`hama_proses_id`);
+
+--
 -- Indexes for table `contacts`
 --
 ALTER TABLE `contacts`
@@ -90711,7 +90993,8 @@ ALTER TABLE `tr_perizinan_depos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `tr_perizinan_depos_id_admin_foreign` (`id_admin`),
   ADD KEY `tr_perizinan_depos_id_depo_foreign` (`id_depo`),
-  ADD KEY `id_pemohon` (`id_pemohon`);
+  ADD KEY `id_pemohon` (`id_pemohon`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `tr_perizinan_hamas`
@@ -90720,7 +91003,8 @@ ALTER TABLE `tr_perizinan_hamas`
   ADD PRIMARY KEY (`id`),
   ADD KEY `tr_perizinan_hamas_id_admin_foreign` (`id_admin`),
   ADD KEY `tr_perizinan_hamas_id_perusahaan_foreign` (`id_perusahaan`),
-  ADD KEY `id_pemohon` (`id_pemohon`);
+  ADD KEY `id_pemohon` (`id_pemohon`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `users`
@@ -90749,12 +91033,22 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `berkas_apoteks`
 --
 ALTER TABLE `berkas_apoteks`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+--
+-- AUTO_INCREMENT for table `berkas_depots`
+--
+ALTER TABLE `berkas_depots`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+--
+-- AUTO_INCREMENT for table `berkas_hamas`
+--
+ALTER TABLE `berkas_hamas`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `data_niks`
 --
@@ -90779,42 +91073,42 @@ ALTER TABLE `kotas`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `m_alat_apotiks`
 --
 ALTER TABLE `m_alat_apotiks`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=217;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=289;
 --
 -- AUTO_INCREMENT for table `m_apotekers`
 --
 ALTER TABLE `m_apotekers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `m_apoteks`
 --
 ALTER TABLE `m_apoteks`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `m_depo_airs`
 --
 ALTER TABLE `m_depo_airs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `m_pemiliks`
 --
 ALTER TABLE `m_pemiliks`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `m_pemohons`
 --
 ALTER TABLE `m_pemohons`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `m_perusahaans`
 --
 ALTER TABLE `m_perusahaans`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `provinsis`
 --
@@ -90824,22 +91118,22 @@ ALTER TABLE `provinsis`
 -- AUTO_INCREMENT for table `tr_perizinan_apotiks`
 --
 ALTER TABLE `tr_perizinan_apotiks`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `tr_perizinan_depos`
 --
 ALTER TABLE `tr_perizinan_depos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tr_perizinan_hamas`
 --
 ALTER TABLE `tr_perizinan_hamas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
@@ -90849,6 +91143,18 @@ ALTER TABLE `users`
 --
 ALTER TABLE `berkas_apoteks`
   ADD CONSTRAINT `berkas_apoteks_apotek_proses_id_foreign` FOREIGN KEY (`apotek_proses_id`) REFERENCES `tr_perizinan_apotiks` (`id`);
+
+--
+-- Ketidakleluasaan untuk tabel `berkas_depots`
+--
+ALTER TABLE `berkas_depots`
+  ADD CONSTRAINT `berkas_depots_depot_proses_id_foreign` FOREIGN KEY (`depot_proses_id`) REFERENCES `tr_perizinan_depos` (`id`);
+
+--
+-- Ketidakleluasaan untuk tabel `berkas_hamas`
+--
+ALTER TABLE `berkas_hamas`
+  ADD CONSTRAINT `berkas_hamas_hama_proses_id_foreign` FOREIGN KEY (`hama_proses_id`) REFERENCES `tr_perizinan_hamas` (`id`);
 
 --
 -- Ketidakleluasaan untuk tabel `m_alat_apotiks`
@@ -90878,6 +91184,7 @@ ALTER TABLE `tr_perizinan_apotiks`
 --
 ALTER TABLE `tr_perizinan_depos`
   ADD CONSTRAINT `tr_perizinan_depos_ibfk_1` FOREIGN KEY (`id_pemohon`) REFERENCES `m_pemohons` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tr_perizinan_depos_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `tr_perizinan_depos_id_admin_foreign` FOREIGN KEY (`id_admin`) REFERENCES `admins` (`id`),
   ADD CONSTRAINT `tr_perizinan_depos_id_depo_foreign` FOREIGN KEY (`id_depo`) REFERENCES `m_depo_airs` (`id`);
 
@@ -90886,6 +91193,7 @@ ALTER TABLE `tr_perizinan_depos`
 --
 ALTER TABLE `tr_perizinan_hamas`
   ADD CONSTRAINT `tr_perizinan_hamas_ibfk_1` FOREIGN KEY (`id_pemohon`) REFERENCES `m_pemohons` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tr_perizinan_hamas_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `tr_perizinan_hamas_id_admin_foreign` FOREIGN KEY (`id_admin`) REFERENCES `admins` (`id`),
   ADD CONSTRAINT `tr_perizinan_hamas_id_perusahaan_foreign` FOREIGN KEY (`id_perusahaan`) REFERENCES `m_perusahaans` (`id`);
 COMMIT;
