@@ -78,13 +78,15 @@ class UserController extends Controller
 
     public function showRiwayat()
     {
+//        return Session::all();
         setlocale(LC_TIME, 'Indonesian');
-
         $c_apotek = trPerizinanApotik::count();
         $apotek=trPerizinanApotik::where('user_id', Auth::user()->id)->orderBy('id','desc')->get();
+        $depot=trPerizinanDepo::where('user_id', Auth::user()->id)->orderBy('id','desc')->get();
         $c_air = trPerizinanDepo::count();
         $c_hama = trPerizinanHama::count();
-        return view('auth.riwayat',compact('c_apotek','c_air','c_hama','apotek'));
+        $hama = trPerizinanHama::where('user_id', Auth::user()->id)->orderBy('id','desc')->get();
+        return view('auth.riwayat',compact('c_apotek','c_air','c_hama','apotek','depot','hama'));
     }
 
     public function printRiwayatApotek()

@@ -708,10 +708,8 @@
                                 <li class="has-dropdown">
                                     <a href="#" class="myBtn"><span>{{Auth::user()->name}}</span></a>
                                     <ul class="dropdown">
-                                        <li><a href="{{url('/member/'.Auth::user()->id.'/history')}}"><i
-                                                        class="fa fa-history"></i> Riwayat Perizinan</a></li>
-                                        <li><a href="{{url('/member/'.Auth::user()->id.'/settings')}}"><i
-                                                        class="fa fa-edit"></i> Edit
+                                        <li><a href="{{url('/member/history')}}"><i class="fa fa-history"></i> Riwayat Perizinan</a></li>
+                                        <li><a href="{{url('/member/'.Auth::user()->id.'/settings')}}"><i class="fa fa-edit"></i> Edit
                                                 Profile</a></li>
                                         <li>
                                             <a href="{{ route('logout') }}"

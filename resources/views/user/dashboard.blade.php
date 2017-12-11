@@ -19,7 +19,7 @@
                                 <div class="slider-text-inner">
                                     <h1>Perizinan Apotek</h1>
                                     <h2>Melakukan proses pengajuan permohonan Surat Izin Apotek</h2>
-                                    <p><a class="btn btn-primary btn-lg" href="{{route('apotek.dashboard')}}">AJUKAN
+                                    <p><a class="btn btn-primary btn-lg" href="{{route('apotek.dashboard').'#fh5co-contact'}}">AJUKAN
                                             PERMOHONAN SEKARANG</a></p>
                                 </div>
                             </div>
@@ -35,7 +35,7 @@
                                     <h1>Perizinan Depot Air Minum</h1>
                                     <h2>Melakukan proses pengajuan permohonan Surat Izin
                                         Penyelenggaraan Depot Air Minum</h2>
-                                    <p><a class="btn btn-primary btn-lg btn-learn" href="#air">
+                                    <p><a class="btn btn-primary btn-lg btn-learn" href="{{route('air.dashboard').'#fh5co-contact'}}">
                                             AJUKAN PERMOHONAN SEKARANG</a></p>
                                 </div>
                             </div>
@@ -51,7 +51,7 @@
                                     <h1>Perizinan Pengendalian Hama</h1>
                                     <h2>Melakukan proses pengajuan permohonan Surat Izin
                                         Operasional Perusahaan Pengendalian Hama</h2>
-                                    <p><a class="btn btn-primary btn-lg btn-learn" href="#hama">AJUKAN PERMOHONAN
+                                    <p><a class="btn btn-primary btn-lg btn-learn" href="{{route('hama.dashboard').'#fh5co-contact'}}">AJUKAN PERMOHONAN
                                             SEKARANG</a></p>
                                 </div>
                             </div>
@@ -72,25 +72,25 @@
             <div class="row">
                 <div class="col-md-3 text-center animate-box">
                     <span class="icon"><i class="fa fa-medkit"></i></span>
-                    <span class="fh5co-counter js-counter" data-from="0" data-to="1234" data-speed="5000"
+                    <span class="fh5co-counter js-counter" data-from="0" data-to="{{$apotik}}" data-speed="1000"
                           data-refresh-interval="50"></span>
                     <span class="fh5co-counter-label">Apotek</span>
                 </div>
                 <div class="col-md-3 text-center animate-box">
                     <span class="icon"><i class="fa fa-bitbucket"></i></span>
-                    <span class="fh5co-counter js-counter" data-from="0" data-to="56789" data-speed="5000"
+                    <span class="fh5co-counter js-counter" data-from="0" data-to="{{$depo}}" data-speed="1000"
                           data-refresh-interval="50"></span>
                     <span class="fh5co-counter-label">Depot Air Minum</span>
                 </div>
                 <div class="col-md-3 text-center animate-box">
                     <span class="icon"><i class="fa fa-bug"></i></span>
-                    <span class="fh5co-counter js-counter" data-from="0" data-to="1011" data-speed="5000"
+                    <span class="fh5co-counter js-counter" data-from="0" data-to="{{$hama}}" data-speed="1000"
                           data-refresh-interval="50"></span>
                     <span class="fh5co-counter-label">Pengendalian Hama</span>
                 </div>
                 <div class="col-md-3 text-center animate-box">
                     <span class="icon"><i class="icon-users"></i></span>
-                    <span class="fh5co-counter js-counter" data-from="0" data-to="1213" data-speed="5000"
+                    <span class="fh5co-counter js-counter" data-from="0" data-to="{{$user}}" data-speed="900"
                           data-refresh-interval="50"></span>
                     <span class="fh5co-counter-label">Member/Pemohon</span>
                 </div>

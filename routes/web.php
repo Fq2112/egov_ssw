@@ -32,10 +32,42 @@ Route::prefix('/')->group(function () {
 
 Route::prefix('depot-air')->group(function () {
     Route::get('/', 'User\DepotAirController@index')->name('air.dashboard');
+
+    Route::get('/data-pemohon', 'User\DepotAirController@pertama')->name('depot.data.pemohon');
+    Route::get('/data-tempat', 'User\DepotAirController@kedua')->name('depot.data.tempat');
+    Route::get('/data-cetak', 'User\DepotAirController@ketiga')->name('depot.data.pemilik');
+    Route::get('/data-upload', 'User\DepotAirController@keempat')->name('depot.data.upload');
+    Route::get('/data-konfirmasi', 'User\DepotAirController@kelima')->name('depot.data.konfirmasi');
+
+    Route::post('data-savepertama', 'User\DepotAirController@savepertama')->name('depot.save.pertama');
+    Route::post('data-savekedua', 'User\DepotAirController@savekedua')->name('depot.save.kedua');
+    Route::get('data-saveketiga', 'User\DepotAirController@setsessionketiga')->name('depot.save.ketiga');
+    Route::post('data-savekeempat', 'User\DepotAirController@savekeempat')->name('depot.save.keempat');
+    Route::get('data-selesai', 'User\DepotAirController@selesai')->name('depot.save.kelima');
+
+    Route::get('data-cetak-permohonan', 'User\DepotAirController@cetakpermohonan')->name('depot.cetak.permohonan');
+    Route::get('data-cetak-uu', 'User\DepotAirController@cetakuu')->name('depot.cetak.uu');
+    Route::get('data-cetak-bersedia', 'User\DepotAirController@bersedia')->name('depot.cetak.bersedia');
+
 });
 
 Route::prefix('hama')->group(function () {
     Route::get('/', 'User\HamaController@index')->name('hama.dashboard');
+
+    Route::get('/data-pemohon', 'User\HamaController@pertama')->name('hama.data.pemohon');
+    Route::get('/data-tempat', 'User\HamaController@kedua')->name('hama.data.tempat');
+    Route::get('/data-cetak', 'User\HamaController@ketiga')->name('hama.data.pemilik');
+    Route::get('/data-upload', 'User\HamaController@keempat')->name('hama.data.upload');
+    Route::get('/data-konfirmasi', 'User\HamaController@kelima')->name('hama.data.konfirmasi');
+
+
+    Route::post('data-savepertama', 'User\HamaController@savepertama')->name('hama.save.pertama');
+    Route::post('data-savekedua', 'User\HamaController@savekedua')->name('hama.save.kedua');
+    Route::get('data-saveketiga', 'User\HamaController@setsessionketiga')->name('hama.save.ketiga');
+    Route::post('data-savekeempat', 'User\HamaController@savekeempat')->name('hama.save.keempat');
+    Route::get('data-selesai', 'User\HamaController@selesai')->name('hama.save.kelima');
+
+    Route::get('data-cetak-permohonan', 'User\HamaController@cetakpermohonan')->name('hama.cetak.permohonan');
 });
 
 Route::get('apotek', 'User\ApotekController@index')->name('apotek.dashboard');

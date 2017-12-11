@@ -4,13 +4,21 @@ namespace App\Http\Controllers\User;
 
 use App\Contact;
 use App\Http\Controllers\Controller;
+use App\trPerizinanApotik;
+use App\trPerizinanDepo;
+use App\trPerizinanHama;
+use App\User;
 use Illuminate\Http\Request;
 
 class EgovController extends Controller
 {
     public function index()
     {
-        return view('user.dashboard');
+        $apotik=trPerizinanApotik::count();
+        $hama=trPerizinanHama::count();
+        $depo=trPerizinanDepo::count();
+$user=User::count();
+        return view('user.dashboard', compact('apotik','hama','depo','user'));
     }
 
     public function showBlog()

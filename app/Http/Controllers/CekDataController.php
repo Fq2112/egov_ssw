@@ -183,7 +183,7 @@ class CekDataController extends Controller
             trPerizinanApotik::findOrFail(\session('tr_apotik'))->update(['id_pemilik' => $sess ['id']]);
 
             Session::put('pemilik', $sess ['id']);
-            return view('cb_ajax.keempat');
+            return redirect()->route('apotik.data.alat');
         } else {
             Session::flash('status', 'cek data kembali');
             return back();
@@ -309,7 +309,6 @@ class CekDataController extends Controller
 
     public function kelima()
     {
-
         if (\Session::has('apoteker')) {
             Session::flash('status', 'sebelumnya data apoteker sudah di isi');
             return redirect()->route('apotik.data.cetak');
