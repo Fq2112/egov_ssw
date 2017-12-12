@@ -117,7 +117,6 @@
                                         </div>
                                         <div class="col-lg-6">
                                             <input class="form-control" placeholder="Phone" type="text" name="phone"
-                                                   value="{{\Illuminate\Support\Facades\Auth::user()->phone}}"
                                                    maxlength="13" onkeypress="return hanyaAngka(event, false)"
                                                    required>
                                         </div>

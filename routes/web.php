@@ -125,7 +125,3 @@ Route::prefix('admin')->group(function () {
     Route::get('{admin}/settings', 'Admin\AdminController@showEditProfileForm');
     Route::put('{admin}', 'Admin\AdminController@updateAdmin');
 });
-
-Route::get('test', function () {
-    return view('test');
-});

@@ -343,7 +343,13 @@ class CekDataController extends Controller
 
     public function keenam()
     {
-        if (\Session::has('cetak')) {
+        if (\Session::has('cetak') &&
+            \Session::has('cetakalat') &&
+            \Session::has('cetakapoteker') &&
+            \Session::has('cetaksarana') &&
+            \Session::has('cetakuu') &&
+            \Session::has('cetakpermohonan')
+        ) {
             Session::flash('status', 'sebelumnya data apoteker sudah di isi');
             return redirect()->route('apotik.data.upload');
         }
@@ -360,6 +366,7 @@ class CekDataController extends Controller
     public function cetakpermohonan()
     {
         $data = mPemohon::findOrFail(\session('pemohon'));
+        Session::put('cetakpermohonan', true);
         $data2 = mApotek::findOrFail(\session('apotek'));
         return view('cb_ajax.cetak.permohonan', compact('data', 'data2'));
     }
@@ -367,6 +374,7 @@ class CekDataController extends Controller
     public function cetakalat()
     {
         $data = trPerizinanApotik::findOrFail(\session('tr_apotik'));
+        Session::put('cetakalat', true);
         $data2 = mAlatApotik::where('pemohon_id', $data->id)->get();
 
         return view('cb_ajax.cetak.alat', compact('data', 'data2'));
@@ -376,7 +384,7 @@ class CekDataController extends Controller
     {
         $data = mApoteker::findOrFail(\session('apoteker'));
         $data2 = mApotek::findOrFail(\session('apotek'));
-
+        Session::put('cetakapoteker', true);
         return view('cb_ajax.cetak.apoteker', compact('data', 'data2'));
     }
 
@@ -384,6 +392,7 @@ class CekDataController extends Controller
     {
 
         $data = mPemilik::findOrFail(\session('pemilik'));
+        Session::put('cetaksarana', true);
         $data2 = mApotek::findOrFail(\session('apotek'));
 
         return view('cb_ajax.cetak.sarana', compact('data', 'data2'));
@@ -393,6 +402,7 @@ class CekDataController extends Controller
     public function cetakuu()
     {
         $data = mApoteker::findOrFail(\session('apoteker'));
+        Session::put('cetakuu', true);
         $data2 = mApotek::findOrFail(\session('apotek'));
 
         return view('cb_ajax.cetak.uuapoteker', compact('data', 'data2'));
@@ -407,6 +417,16 @@ class CekDataController extends Controller
 
     public function ketujuh()
     {
+        if (\Session::has('apoteker') &&
+            is_null(\session('cetakalat'))
+            || is_null(\session('cetakapoteker')) ||
+            is_null(\session('cetaksarana')) ||
+            is_null(\session('cetakuu')) ||
+            is_null(\session('cetakpermohonan'))
+        ) {
+            Session::flash('status', 'harap cetak semua berkas terlebih dahulu');
+            return redirect()->route('apotik.data.cetak');
+        }
         if (\Session::has('upload')) {
             Session::flash('status', 'sebelumnya data cetak sudah dilihat');
             return redirect()->route('apotik.data.konfirmasi');
@@ -415,6 +435,7 @@ class CekDataController extends Controller
             Session::flash('status', 'akses tidak ada silakan isi data sebelumnya terlebih dahulu');
             return redirect()->route('apotik.data.cetak');
         }
+
         return view('cb_ajax.ketujuh');
     }
 
@@ -559,7 +580,11 @@ class CekDataController extends Controller
             Session::forget('apoteker');
             Session::forget('cetak');
             Session::forget('upload');
-
+            \Session::forget('cetakalat');
+            \Session::forget('cetakapoteker');
+            \Session::forget('cetaksarana');
+            \Session::forget('cetakuu');
+            \Session::forget('cetakpermohonan');
             return redirect()->action('User\UserController@showRiwayat');
         }
         else{

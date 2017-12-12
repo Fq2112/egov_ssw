@@ -101,8 +101,13 @@ class DepotAirController extends Controller
 
     public function ketiga()
     {
+//return Session::all();
 
-        if (\Session::has('depot_cetak')) {
+        if (\Session::has('depot_cetak') &&
+            \Session::has('depotcetakpermohonan') &&
+            \Session::has('depotbersedia') &&
+            \Session::has('depotcetakuu')
+        ) {
             Session::flash('status', 'sebelumnya data Pemilik sudah di isi');
             return redirect()->route('depot.data.upload');
         }
@@ -117,12 +122,14 @@ class DepotAirController extends Controller
     public function cetakpermohonan(Request $request)
     {
         $data = mPemohon::findOrFail(\session('depot_pemohon'));
+        Session::put('depotcetakpermohonan', true);
         $data2 = mDepoAir::findOrFail(\session('depot'));
         return view('user.air.cetak.permohonan', compact('data', 'data2'));
     }
 
     public function cetakuu()
     {
+        Session::put('depotcetakuu', true);
         $data = mPemohon::findOrFail(\session('depot_pemohon'));
         $data2 = mDepoAir::findOrFail(\session('depot'));
         return view('user.air.cetak.uuadepot', compact('data', 'data2'));
@@ -130,6 +137,7 @@ class DepotAirController extends Controller
 
     public function bersedia()
     {
+        Session::put('depotbersedia', true);
         $data = mPemohon::findOrFail(\session('depot_pemohon'));
         $data2 = mDepoAir::findOrFail(\session('depot'));
         return view('user.air.cetak.bersedia', compact('data', 'data2'));
@@ -145,6 +153,15 @@ class DepotAirController extends Controller
     public function keempat()
     {
 //        return Session::all();
+        if (\Session::has('depot') &&
+            is_null(\session('depotcetakpermohonan')) ||
+            is_null(\session('depotbersedia')) ||
+            is_null(\session('depotcetakuu'))
+
+        ) {
+            Session::flash('status', 'harap cetak semua data terlebih dahulu');
+            return redirect()->route('depot.data.pemilik');
+        }
         if (\Session::has('depot_upload')) {
             Session::flash('status', 'sebelumnya data cetak sudah di dillihat');
             return redirect()->route('depot.data.konfirmasi');
@@ -273,6 +290,7 @@ class DepotAirController extends Controller
             Session::flash('status', 'akses tidak ada silakan isi data sebelumnya terlebih dahulu');
             return redirect()->route('depot.data.upload');
         }
+
         setlocale(LC_TIME, 'Indonesian');
         $data = mPemohon::findOrFail(\session('depot_pemohon'));
         $data2 = mPemohon::findOrFail(\session('depot_pemohon'));
@@ -293,6 +311,9 @@ class DepotAirController extends Controller
             Session::forget('depot');
             Session::forget('depot_cetak');
             Session::forget('depot_upload');
+            Session::forget('depotcetakpermohonan');
+            Session::forget('depotbersedia');
+            Session::forget('depotcetakuu');
             Session::flash('status', 'Pendaftaran berhasil, silakan tunggu konfirmasi');
             return redirect()->action('User\UserController@showRiwayat');
         }

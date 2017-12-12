@@ -101,7 +101,7 @@ class HamaController extends Controller
     public function ketiga()
     {
 
-        if (\Session::has('perusahaan_cetak')) {
+        if (\Session::has('perusahaan_cetak') && \Session::has('hamacetakpermohonan')) {
             Session::flash('status', 'sebelumnya data Pemilik sudah di isi');
             return redirect()->route('hama.data.upload');
         }
@@ -115,6 +115,7 @@ class HamaController extends Controller
 
     public function cetakpermohonan()
     {
+        Session::put('hamacetakpermohonan', true);
         $data = mPemohon::findOrFail(\session('hama_pemohon'));
         $data2 = mPerusahaan::findOrFail(\session('perusahaan'));
         return view('user.hama.cetak.permohonan', compact('data', 'data2'));
@@ -123,13 +124,16 @@ class HamaController extends Controller
     public function setsessionketiga()
     {
         Session::put('hama_cetak', true);
-
         return redirect()->route('hama.data.upload');
     }
 
     public function keempat()
     {
 //        return Session::all();
+        if (is_null(\session('hamacetakpermohonan')) && \Session::has('perusahaan')) {
+            Session::flash('status', 'mohon cetak semuanya');
+            return redirect()->route('hama.data.pemilik');
+        }
         if (\Session::has('hama_upload')) {
             Session::flash('status', 'sebelumnya data cetak sudah di dillihat');
             return redirect()->route('hama.data.konfirmasi');
@@ -278,6 +282,7 @@ class HamaController extends Controller
             Session::forget('hama_tr_apotik') ;
             Session::forget('perusahaan') ;
             Session::forget('hama_cetak') ;
+            Session::forget('hamacetakpermohonan');
             Session::forget('hama_upload');
             Session::flash('status', 'Pendaftaran berhasil, silakan tunggu konfirmasi');
             return redirect()->action('User\UserController@showRiwayat');
