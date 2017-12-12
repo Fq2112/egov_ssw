@@ -43,10 +43,10 @@ class UserController extends Controller
         }
         else {
             if ($request->hasFile('ava')) {
-                $old = Storage::files('public/member');
+                /*$old = Storage::files('public/member');
                 if ($old) {
                     Storage::delete('public/member/' . $user->ava);
-                }
+                }*/
 
                 $img = $request->file('ava');
                 $name = $img->getClientOriginalName();
