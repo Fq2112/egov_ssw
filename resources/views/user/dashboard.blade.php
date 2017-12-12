@@ -32,9 +32,9 @@
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
                                 <div class="slider-text-inner">
-                                    <h1>Perizinan Depot Air Minum</h1>
+                                    <h1>Perizinan Depo Air Minum</h1>
                                     <h2>Melakukan proses pengajuan permohonan Surat Izin
-                                        Penyelenggaraan Depot Air Minum</h2>
+                                        Penyelenggaraan Depo Air Minum</h2>
                                     <p><a class="btn btn-primary btn-lg btn-learn" href="{{route('air.dashboard').'#fh5co-contact'}}">
                                             AJUKAN PERMOHONAN SEKARANG</a></p>
                                 </div>
@@ -80,7 +80,7 @@
                     <span class="icon"><i class="fa fa-bitbucket"></i></span>
                     <span class="fh5co-counter js-counter" data-from="0" data-to="{{$depo}}" data-speed="1000"
                           data-refresh-interval="50"></span>
-                    <span class="fh5co-counter-label">Depot Air Minum</span>
+                    <span class="fh5co-counter-label">Depo Air Minum</span>
                 </div>
                 <div class="col-md-3 text-center animate-box">
                     <span class="icon"><i class="fa fa-bug"></i></span>
@@ -130,8 +130,8 @@
                                 <i class="fa fa-bitbucket"></i>
                             </span>
                             <div class="desc">
-                                <h3><a href="{{route('air.dashboard')}}">Depot Air Minum</a></h3>
-                                <p>Apakah Anda ingin mengajukan perizinan Penyelenggaraan Depot Air Minum?
+                                <h3><a href="{{route('air.dashboard')}}">Depo Air Minum</a></h3>
+                                <p>Apakah Anda ingin mengajukan perizinan Penyelenggaraan Depo Air Minum?
                                     Kami {{config('app.name')}} akan membantu dan memudahkan Anda untuk mendapatkan surat
                                     izin tersebut.</p>
                             </div>

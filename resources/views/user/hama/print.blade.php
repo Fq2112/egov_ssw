@@ -5,8 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/logo-sby.png')}}">
-    <title>SSWS - Surabaya Single Window Sanitary | Riwayat Perizinan Pengendalian Hama</title>
+    <title>SSWS - Surabaya Single Window Sanitary | Riwayat Perizinan Operasional Pengendalian Hama</title>
+    <link rel="shortcut icon" type="image/x-icon" href="http://ssw.surabaya.go.id/assets/img/logo-sby.png">
 </head>
 <body onload="window.print()">
 <div>

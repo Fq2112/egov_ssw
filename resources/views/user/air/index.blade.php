@@ -1,5 +1,5 @@
 @extends('layouts.user.mst_user')
-@section('title', 'SSWS - Surabaya Single Window Sanitary | Depot Air Minum')
+@section('title', 'SSWS - Surabaya Single Window Sanitary | Depo Air Minum')
 @section('nav')
     <li><a href="{{route('dashboard')}}">Home</a></li>
     <li><a href="{{route('dashboard.about')}}">About</a></li>
@@ -17,8 +17,9 @@
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
                                 <div class="slider-text-inner">
-                                    <h1>Perizinan Depot Air Minum</h1>
-                                    <h2>Melakukan proses pengajuan permohonan Surat Izin Penyelenggaraan Depot Air Minum</h2>
+                                    <h1>Perizinan Depo Air Minum</h1>
+                                    <h2>Melakukan proses pengajuan permohonan Surat Izin Penyelenggaraan Depo Air
+                                        Minum</h2>
                                     <p><a class="btn btn-primary btn-lg"
                                           href="{{route('air.dashboard')}}#fh5co-contact">AJUKAN PERMOHONAN
                                             SEKARANG</a></p>
@@ -35,7 +36,7 @@
         <div class="container">
             <div class="row animate-box">
                 <div class="col-md-8 col-md-offset-2 text-center fh5co-heading" style="margin-bottom: 3em">
-                    <h2><i class="fa fa-bitbucket"></i> Surat Izin Penyelenggaraan Depot Air Minum</h2>
+                    <h2><i class="fa fa-bitbucket"></i> Surat Izin Penyelenggaraan Depo Air Minum</h2>
                 </div>
                 <div class="col-lg-6" style="margin-bottom: 3em">
                     @if(Auth::guest())

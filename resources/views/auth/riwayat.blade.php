@@ -13,7 +13,7 @@
                     <div class="col-lg-12 text-center" style="margin-bottom: 3em">
                         <ul class="nav nav-tabs">
                             <li class="active"><a data-toggle="tab" href="#apotek">Apotek</a></li>
-                            <li><a data-toggle="tab" href="#air">Depot Air Minum</a></li>
+                            <li><a data-toggle="tab" href="#air">Depo Air Minum</a></li>
                             <li><a data-toggle="tab" href="#hama">Pengendalian Hama</a></li>
                         </ul>
                         <div class="tab-content" style="margin-top: 1em">
@@ -124,7 +124,7 @@
                                 </table>
                             </div>
                             <div id="air" class="tab-pane fade text-center">
-                                <h3>Penyelenggaraan Depot Air Minum</h3>
+                                <h3>Penyelenggaraan Depo Air Minum</h3>
                                 <div class="text-right">
                                     @if($c_apotek > 0 || $c_air > 0 || $c_hama > 0)
                                         <a target="_blank"
@@ -136,9 +136,9 @@
                                         </a>
                                     @else
                                         <a>
-                                            <button onclick="return alert('Tidak ada riwayat perizinan depot air minum..')"
+                                            <button onclick="return alert('Tidak ada riwayat perizinan Depo air minum..')"
                                                     data-toggle="tooltip"
-                                                    title="Print Riwayat Depot Air Minum"
+                                                    title="Print Riwayat Depo Air Minum"
                                                     class="btn btn-primary">
                                                 <i class="fa fa-print"></i>
                                             </button>
@@ -173,7 +173,7 @@
                                             <td>{{$item->name}}</td>
 
                                             @if ($item->id_depo==null)
-                                                <td>Mengisi data alamat depot</td>
+                                                <td>Mengisi data alamat depo</td>
                                             @elseif ($item->status==null&&is_null($berkas2))
                                                 <td>Mengupload/cetak data</td>
                                             @elseif ($item->status==null&&!is_null($berkas2))

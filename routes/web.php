@@ -29,9 +29,8 @@ Route::prefix('/')->group(function () {
     Route::post('contact', 'User\EgovController@postContact')->name('submit_contact');
 });
 
-
-Route::prefix('depot-air')->group(function () {
-    Route::get('/', 'User\DepotAirController@index')->name('air.dashboard');
+Route::get('depot-air', 'User\DepotAirController@index')->name('air.dashboard');
+Route::group(['middleware' => ['auth'], 'prefix' => 'depot-air'], function () {
 
     Route::get('/data-pemohon', 'User\DepotAirController@pertama')->name('depot.data.pemohon');
     Route::get('/data-tempat', 'User\DepotAirController@kedua')->name('depot.data.tempat');
@@ -50,9 +49,8 @@ Route::prefix('depot-air')->group(function () {
     Route::get('data-cetak-bersedia', 'User\DepotAirController@bersedia')->name('depot.cetak.bersedia');
 
 });
-
-Route::prefix('hama')->group(function () {
-    Route::get('/', 'User\HamaController@index')->name('hama.dashboard');
+Route::get('hama', 'User\HamaController@index')->name('hama.dashboard');
+Route::group(['middleware' => ['auth'], 'prefix' => 'hama'], function () {
 
     Route::get('/data-pemohon', 'User\HamaController@pertama')->name('hama.data.pemohon');
     Route::get('/data-tempat', 'User\HamaController@kedua')->name('hama.data.tempat');
@@ -71,7 +69,6 @@ Route::prefix('hama')->group(function () {
 });
 
 Route::get('apotek', 'User\ApotekController@index')->name('apotek.dashboard');
-
 Route::group(['middleware' => ['auth'], 'prefix' => 'apotek'], function () {
     Route::get('cekdata', 'CekDataController@carinik');
     Route::get('carikota', 'CekDataController@carikota');
@@ -129,3 +126,6 @@ Route::prefix('admin')->group(function () {
     Route::put('{admin}', 'Admin\AdminController@updateAdmin');
 });
 
+Route::get('test', function () {
+    return view('test');
+});

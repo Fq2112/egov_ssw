@@ -110,7 +110,8 @@
             <div class="row animate-box">
                 <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
                     <h2>Legal Advice</h2>
-                    <p>Kami ada untuk memudahkan Anda melakukan proses permohonan Surat Izin Apotek, Penyelenggaraan Depot Air Minum, dan Operasional Perusahaan Pengendalian Hama.</p>
+                    <p>Kami ada untuk memudahkan Anda melakukan proses permohonan Surat Izin Apotek, Penyelenggaraan
+                        Depo Air Minum, dan Operasional Perusahaan Pengendalian Hama.</p>
                 </div>
             </div>
             <div class="row animate-box">
