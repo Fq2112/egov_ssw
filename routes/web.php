@@ -124,4 +124,30 @@ Route::prefix('admin')->group(function () {
     Route::get('adminlist/{admin}/restore', 'Admin\AdminController@TableAdminRestore');
     Route::get('{admin}/settings', 'Admin\AdminController@showEditProfileForm');
     Route::put('{admin}', 'Admin\AdminController@updateAdmin');
+
+    Route::get('tables/member-feedback', 'Admin\Tables\MemFeedController@index')->name('admin.tables.memfback');
+    Route::get('tables/member-{id}/banned', 'Admin\Tables\MemFeedController@banned')->name('admin.tables.ban');
+    Route::get('tables/member-{id}/restore', 'Admin\Tables\MemFeedController@restore')->name('admin.tables.res');
+
+    Route::get('tables/perizinan', 'Admin\Tables\PerizinanController@index')->name('admin.tables.perizinan');
+});
+
+Route::group(['middleware' => ['uptsa'], 'prefix' => 'uptsa'], function () {
+    Route::get('dashboard', 'Admin\Sub\UPTSAController@index')->name('uptsa.dashboard');
+});
+
+Route::group(['middleware' => ['kasie'], 'prefix' => 'kasie'], function () {
+    Route::get('dashboard', 'Admin\Sub\KASIEController@index')->name('kasie.dashboard');
+});
+
+Route::group(['middleware' => ['kabid'], 'prefix' => 'kabid'], function () {
+    Route::get('dashboard', 'Admin\Sub\KABIDController@index')->name('kabid.dashboard');
+});
+
+Route::group(['middleware' => ['sekretaris'], 'prefix' => 'sekretaris'], function () {
+    Route::get('dashboard', 'Admin\Sub\SEKRETARISController@index')->name('sekretaris.dashboard');
+});
+
+Route::group(['middleware' => ['kadin'], 'prefix' => 'kadin'], function () {
+    Route::get('dashboard', 'Admin\Sub\KADINController@index')->name('kadin.dashboard');
 });

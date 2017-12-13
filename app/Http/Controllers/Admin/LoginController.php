@@ -16,40 +16,41 @@ class LoginController extends Controller
 
     public function __construct()
     {
-        $this->middleware('guest:admin')->except('logout');
+        $this->middleware('guest:admin', ['except' => 'logout']);
+    }
+
+    protected function sendLoginResponse(Request $request)
+    {
+        $request->session()->regenerate();
+
+        $this->clearLoginAttempts($request);
+
+        foreach ($this->guard()->user()->role as $role) {
+            if ($role->name == 'SUPER ADMIN') {
+                Session::put('nama', 'SUPER ADMIN');
+                return redirect('admin/dashboard');
+            } elseif ($role->name == 'UPTSA') {
+                Session::put('nama', 'UPTSA');
+                return redirect('uptsa/dashboard');
+            } elseif ($role->name == 'KASIE') {
+                Session::put('nama', 'KASIE');
+                return redirect('kasie/dashboard');
+            } elseif ($role->name == 'KABID') {
+                Session::put('nama', 'KABID');
+                return redirect('kabid/dashboard');
+            } elseif ($role->name == 'SEKRETARIS') {
+                Session::put('nama', 'SEKRETARIS');
+                return redirect('sekretaris/dashboard');
+            } elseif ($role->name == 'KADIN') {
+                Session::put('nama', 'KADIN');
+                return redirect('kadin/dashboard');
+            }
+        }
     }
 
     public function showLoginForm()
     {
         return view('auth.admin.login');
-    }
-
-    public function login(Request $request)
-    {
-        // Validat the form data
-        $this->validate($request, [
-            'lastname' => 'required|min:6',
-            'email' => 'required|email',
-            'password' => 'required|min:6',
-        ]);
-
-        // Attempt to log the user in
-        if (Auth::guard('admin')->attempt(['lastname' => $request->lastname, 'email' => $request->email, 'password' => $request->password], $request->remember)) {
-            // if successful, then redirect to their intended location
-            return redirect()->route('admin.dashboard');
-        }
-        // if unsuccessful, then redirect back to the login with the form data
-        Session::flash('status', 'You`re not an ADMIN!');
-        return redirect()->back()->withInput($request->only('email', 'remember'));
-    }
-
-    public function logout(Request $request)
-    {
-        $this->guard('admin')->logout();
-        $request->session('admin')->invalidate();
-        /*$request->session('admin')->flush();
-        $request->session('admin')->regenerate();*/
-        return redirect('/');
     }
 
     protected function guard()

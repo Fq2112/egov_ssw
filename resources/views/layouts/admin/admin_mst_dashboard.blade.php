@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SSWS - ADMIN PANEL</title>
+    <title>@yield('title')</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/logo-sby.png')}}">
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -23,6 +23,9 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{asset('dist/css/skins/_all-skins.min.css')}}">
 
+    <script src="{{ asset('sweetalert2/sweetalert2.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('/sweetalert2/sweetalert2.min.css') }}">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -33,214 +36,442 @@
     <!-- Google Font -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+    <style>
+        .tgl {
+            position: relative;
+            outline: 0;
+            display: inline-block;
+            cursor: pointer;
+            user-select: none;
+            margin: 0 0 5px 0;
+            width: 100%;
+        }
+
+        .tgl,
+        .tgl:after,
+        .tgl:before,
+        .tgl *,
+        .tgl *:after,
+        .tgl *:before,
+        .tgl + .tgl-btn {
+            box-sizing: border-box;
+        }
+
+        .tgl::selection,
+        .tgl:after::selection,
+        .tgl:before::selection,
+        .tgl *::selection,
+        .tgl *:after::selection,
+        .tgl *:before::selection,
+        .tgl + .tgl-btn::selection {
+            background: none;
+        }
+
+        .tgl span {
+            position: relative;
+            display: block;
+            height: 1.8em;
+            line-height: 1.2em;
+            overflow: hidden;
+            font-weight: normal;
+            text-align: center;
+            border-radius: 2em;
+            padding: 0.2em 1em;
+            border: 1px solid #fafafa;
+            box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.2), 0 2px 0 rgba(255, 255, 255, 0.7);
+            transition: color 0.3s ease, padding 0.3s ease-in-out, background 0.3s ease-in-out;
+        }
+
+        .tgl span:before {
+            position: relative;
+            display: block;
+            line-height: 1.3em;
+            padding: 0 0.2em;
+            font-size: 1em;
+        }
+
+        .tgl span:after {
+            position: absolute;
+            display: block;
+            content: '';
+            border-radius: 2em;
+            width: 1.3em;
+            height: 1.3em;
+            margin-left: -1.45em;
+            top: 0.2em;
+            background: #FFFFFF;
+            transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 0.97), background 0.3s ease-in-out;
+        }
+
+        .tgl input[type="checkbox"] {
+            display: none !important;
+        }
+
+        .tgl input[type="checkbox"]:not(:checked) + span {
+            background: #f85858;
+            color: #FFFFFF;
+            padding-left: 1.6em;
+            padding-right: 0.4em;
+        }
+
+        .tgl input[type="checkbox"]:not(:checked) + span:before {
+            content: attr(data-off);
+            color: #FFFFFF;
+        }
+
+        .tgl input[type="checkbox"]:not(:checked) + span:after {
+            background: #FFFFFF;
+            left: 1.6em;
+        }
+
+        .tgl input[type="checkbox"]:checked + span {
+            background: #00a65a;
+            color: #FFFFFF;
+            padding-left: 0.4em;
+            padding-right: 1.6em;
+        }
+
+        .tgl input[type="checkbox"]:checked + span:before {
+            content: attr(data-on);
+        }
+
+        .tgl input[type="checkbox"]:checked + span:after {
+            background: #FFFFFF;
+            left: 100%;
+        }
+
+        .tgl input[type="checkbox"]:disabled,
+        .tgl input[type="checkbox"]:disabled + span,
+        .tgl input[type="checkbox"]:read-only,
+        .tgl input[type="checkbox"]:read-only + span {
+            cursor: not-allowed;
+        }
+
+        .tgl-gray input[type="checkbox"]:not(:checked) + span {
+            background: #dbdbdb;
+            color: #999999;
+        }
+
+        .tgl-gray input[type="checkbox"]:not(:checked) + span:before {
+            color: #999999;
+        }
+
+        .tgl-gray input[type="checkbox"]:not(:checked) + span:after {
+            background: #ffffff;
+        }
+
+        .tgl-inline {
+            display: inline-block !important;
+            vertical-align: top;
+        }
+
+        .tgl-inline.tgl {
+            font-size: 16px;
+        }
+
+        .tgl-inline.tgl span {
+            min-width: 50px;
+        }
+
+        .tgl-inline.tgl span:before {
+            line-height: 1.4em;
+            padding-left: 0.4em;
+            padding-right: 0.4em;
+        }
+
+        .tgl-inline-label {
+            display: inline-block !important;
+            vertical-align: top;
+            line-height: 26px;
+        }
+    </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-
+    <script>
+        @if(session('warning'))
+            swal({
+            title: '{{ session('warning') }}',
+            type: 'warning',
+            timer: '1500'
+        });
+        @elseif(session('ban'))
+            swal({
+            title: '{{ session('ban') }}',
+            type: 'success',
+            timer: '1500'
+        });
+        @elseif(session('res'))
+            swal({
+            title: '{{ session('res') }}',
+            type: 'success',
+            timer: '1500'
+        });
+        @elseif(session('add_admin'))
+            swal({
+            title: '{{ session('add_admin') }}',
+            type: 'success',
+            timer: '1500'
+        });
+        @elseif(session('update_admin'))
+            swal({
+            title: '{{ session('update_admin') }}',
+            type: 'success',
+            timer: '1500'
+        });
+        @endif
+    </script>
     <header class="main-header">
 
         <!-- Logo -->
-        <a href="{{route('admin.dashboard')}}" class="logo">
-            <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b><span class="fa fa-user"></span></b> SSWS</span>
-            <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b><span class="fa fa-user"></span> SSWS</b> ADMIN</span>
-        </a>
+        @if(session('nama')== 'SUPER ADMIN')
+            <a href="{{route('admin.dashboard')}}" class="logo">
+                @elseif(session('nama')== 'UPTSA')
+                    <a href="{{route('uptsa.dashboard')}}" class="logo">
+                        @elseif(session('nama')== 'KASIE')
+                            <a href="{{route('kasie.dashboard')}}" class="logo">
+                                @elseif(session('nama')== 'KABID')
+                                    <a href="{{route('kabid.dashboard')}}" class="logo">
+                                        @elseif(session('nama')== 'SEKRETARIS')
+                                            <a href="{{route('sekretaris.dashboard')}}" class="logo">
+                                                @elseif(session('nama')== 'KADIN')
+                                                    <a href="{{route('kadin.dashboard')}}" class="logo">
+                                                    @endif
+                                                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                                                        <span class="logo-mini"><b><span class="fa fa-user"></span></b> SSWS</span>
+                                                        <!-- logo for regular state and mobile devices -->
+                                                        @if(session('nama')== 'SEKRETARIS' || session('nama')== 'SUPER ADMIN')
+                                                            <span class="logo-lg"><span
+                                                                        class="fa fa-user"></span> {{session('nama')}}</span>
+                                                        @else
+                                                            <span class="logo-lg"><b><span class="fa fa-user"></span> SSWS</b> {{session('nama')}}</span>
+                                                        @endif
+                                                    </a>
 
-        <!-- Header Navbar: style can be found in header.less -->
-        <nav class="navbar navbar-static-top">
-            <!-- Sidebar toggle button-->
-            <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-                <span class="sr-only">Toggle navigation</span>
-            </a>
-            <!-- Navbar Right Menu -->
-            <div class="navbar-custom-menu">
-                <ul class="nav navbar-nav">
-                    <!-- Messages: style can be found in dropdown.less-->
-                    <li class="dropdown messages-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-envelope-o"></i>
-                            <span class="label label-success">{{$feedback}}</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have {{$feedback}} messages</li>
-                            <li>
-                                <!-- inner menu: contains the actual data -->
-                                <ul class="menu">
-                                    @foreach($feedback_t as $row)
-                                        @if($feedback > 0)
-                                            <li><!-- start message -->
-                                                <a href="#">
-                                                    <div class="pull-left">
-                                                        <img src="{{asset('dist/img/user.png')}}" class="img-circle"
-                                                             alt="User Image">
-                                                    </div>
-                                                    <h4>
-                                                        {{$row->name}}
-                                                        <small><i class="fa fa-clock-o"></i> {{$row->updated_at}}
-                                                        </small>
-                                                    </h4>
-                                                    <p>{{$row->message}}</p>
-                                                </a>
-                                            </li>
-                                    @endif
-                                @endforeach
-                                <!-- end message -->
-                                </ul>
-                            </li>
-                            <li class="footer"><a href="">&nbsp;</a></li>
-                        </ul>
-                    </li>
-                    <!-- Notifications: style can be found in dropdown.less -->
-                    <li class="dropdown notifications-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-bell-o"></i>
-                            <span class="label label-warning">{{$notif}}</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have {{$notif}} notifications</li>
-                            <li>
-                                <!-- inner menu: contains the actual data -->
-                                <ul class="menu">
-                                    @if($c_apotik >= 1)
-                                        <li>
-                                            <a href="{{url('admin/tables#apotek')}}">
-                                                @if($c_apotik > 1)
-                                                    <i class="fa fa-medkit text-teal"></i> {{$c_apotik}} new apotek
-                                                    orders submitted today
-                                                @else
-                                                    <i class="fa fa-medkit text-teal"></i> a new apotek
-                                                    order submitted today
-                                                @endif
-                                            </a>
-                                        </li>
-                                    @endif
-                                    @if($c_air >= 1)
-                                        <li>
-                                            <a href="{{url('admin/tables#air')}}#">
-                                                @if($c_air > 1)
-                                                    <i class="fa fa-bitbucket text-teal"></i> {{$c_air}} new depot air
-                                                    orders submitted today
-                                                @else
-                                                    <i class="fa fa-bitbucket text-teal"></i> a new depot air
-                                                    order submitted today
-                                                @endif
-                                            </a>
-                                        </li>
-                                    @endif
-                                    @if($c_hama >= 1)
-                                        <li>
-                                            <a href="{{url('admin/tables#hama')}}#">
-                                                @if($c_hama > 1)
-                                                    <i class="fa fa-bug text-purple"></i> {{$c_hama}} new pengendalian hama
-                                                    orders submitted today
-                                                @else
-                                                    <i class="fa fa-bug text-purple"></i> a new pengendalian hama
-                                                    order submitted today
-                                                @endif
-                                            </a>
-                                        </li>
-                                    @endif
-                                    @if($member >= 1)
-                                        <li>
-                                            <a href="{{url('admin/tables#member')}}">
-                                                @if($member > 1)
-                                                    <i class="fa fa-users text-yellow"></i> {{$member}} new members
-                                                    joined
-                                                    today
-                                                @else
-                                                    <i class="fa fa-users text-yellow"></i> a new member joined
-                                                    today
-                                                @endif
-                                            </a>
-                                        </li>
-                                    @endif
-                                    @if($feedback >= 1)
-                                        <li>
-                                            <a href="{{url('admin/tables#feedback')}}">
-                                                @if($feedback > 1)
-                                                    <i class="fa fa-envelope text-red"></i> We got {{$feedback}} new
-                                                    feedback
-                                                    today
-                                                @else
-                                                    <i class="fa fa-envelope text-red"></i> We got a feedback
-                                                    today
-                                                @endif
-                                            </a>
-                                        </li>
-                                    @endif
-                                </ul>
-                            </li>
-                            <li class="footer"><a>&nbsp;</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown messages-menu">
-                        <a href="{{route('dashboard')}}">
-                            <i class="fa fa-eye"></i>
-                            <span class="label label-info">WEB</span>
-                        </a>
-                    </li>
-                    <!-- User Account: style can be found in dropdown.less -->
-                    <li class="dropdown user user-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            @if(Auth::user()->url == null)
-                                <img src="{{asset('admin')}}" class="user-image"
-                                     alt="User Image">
-                            @else
-                                <img src="{{asset('storage/admin/'.Auth::user()->url)}}" class="user-image"
-                                     alt="User Image">
-                            @endif
-                            <span class="hidden-xs">{{Auth::user()->name}}</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <!-- User image -->
-                            <li class="user-header">
-                                @if(Auth::user()->url == null)
-                                    <img src="{{asset('admin')}}" class="img-circle"
-                                         alt="User Image">
-                                @else
-                                    <img src="{{asset('storage/admin/'.Auth::user()->url)}}" class="img-circle"
-                                         alt="User Image">
-                                @endif
-                                <p>{{Auth::user()->name}}
-                                    <small>{{Auth::user()->lastname}}</small>
-                                </p>
-                            </li>
-                            <!-- Menu Body -->
-                            <li class="user-body">
-                                <div class="row">
-                                    <div class="col-xs-12 text-center">
-                                        <a href="#">{{Auth::user()->email}}</a>
-                                    </div>
-                                </div>
-                                <!-- /.row -->
-                            </li>
-                            <!-- Menu Footer-->
-                            <li class="user-footer">
-                                <div class="pull-left">
-                                    <a href="{{url('admin/'.Auth::user()->id.'/settings')}}"
-                                       class="btn btn-default btn-flat">Settings</a>
-                                </div>
-                                <div class="pull-right">
-                                    <a href="{{ route('admin.logout') }}" class="btn btn-default btn-flat"
-                                       onclick="event.preventDefault();document.getElementById('logout-form').submit();">Sign
-                                        out</a>
-                                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST"
-                                          style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- Control Sidebar Toggle Button -->
-                    <li>
-                        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                    </li>
-                </ul>
-            </div>
+                                                    <!-- Header Navbar: style can be found in header.less -->
+                                                    <nav class="navbar navbar-static-top">
+                                                        <!-- Sidebar toggle button-->
+                                                        <a href="#" class="sidebar-toggle" data-toggle="push-menu"
+                                                           role="button">
+                                                            <span class="sr-only">Toggle navigation</span>
+                                                        </a>
+                                                        <!-- Navbar Right Menu -->
+                                                        <div class="navbar-custom-menu">
+                                                            <ul class="nav navbar-nav">
+                                                                <!-- Messages: style can be found in dropdown.less-->
+                                                                <li class="dropdown messages-menu">
+                                                                    <a href="#" class="dropdown-toggle"
+                                                                       data-toggle="dropdown">
+                                                                        <i class="fa fa-envelope-o"></i>
+                                                                        <span class="label label-success">{{$feedback}}</span>
+                                                                    </a>
+                                                                    <ul class="dropdown-menu">
+                                                                        <li class="header">You have {{$feedback}}
+                                                                            messages
+                                                                        </li>
+                                                                        <li>
+                                                                            <!-- inner menu: contains the actual data -->
+                                                                            <ul class="menu">
+                                                                                @foreach($feedback_t as $row)
+                                                                                    @if($feedback > 0)
+                                                                                        <li><!-- start message -->
+                                                                                            <a href="#">
+                                                                                                <div class="pull-left">
+                                                                                                    <img src="{{asset('storage/admin/dummy-profile.jpg')}}"
+                                                                                                         class="img-circle"
+                                                                                                         alt="User Image">
+                                                                                                </div>
+                                                                                                <h4>
+                                                                                                    {{$row->name}}
+                                                                                                    <small>
+                                                                                                        <i class="fa fa-clock-o"></i> {{$row->updated_at}}
+                                                                                                    </small>
+                                                                                                </h4>
+                                                                                                <p>{{$row->message}}</p>
+                                                                                            </a>
+                                                                                        </li>
+                                                                                @endif
+                                                                            @endforeach
+                                                                            <!-- end message -->
+                                                                            </ul>
+                                                                        </li>
+                                                                        <li class="footer"><a href="">&nbsp;</a></li>
+                                                                    </ul>
+                                                                </li>
+                                                                <!-- Notifications: style can be found in dropdown.less -->
+                                                                <li class="dropdown notifications-menu">
+                                                                    <a href="#" class="dropdown-toggle"
+                                                                       data-toggle="dropdown">
+                                                                        <i class="fa fa-bell-o"></i>
+                                                                        <span class="label label-warning">{{$notif}}</span>
+                                                                    </a>
+                                                                    <ul class="dropdown-menu">
+                                                                        <li class="header">You have {{$notif}}
+                                                                            notifications
+                                                                        </li>
+                                                                        <li>
+                                                                            <!-- inner menu: contains the actual data -->
+                                                                            <ul class="menu">
+                                                                                @if($c_apotik >= 1)
+                                                                                    <li>
+                                                                                        <a href="{{url('admin/tables#apotek')}}">
+                                                                                            @if($c_apotik > 1)
+                                                                                                <i class="fa fa-medkit text-teal"></i> {{$c_apotik}}
+                                                                                                new apotek
+                                                                                                orders submitted today
+                                                                                            @else
+                                                                                                <i class="fa fa-medkit text-teal"></i>
+                                                                                                a new apotek
+                                                                                                order submitted today
+                                                                                            @endif
+                                                                                        </a>
+                                                                                    </li>
+                                                                                @endif
+                                                                                @if($c_air >= 1)
+                                                                                    <li>
+                                                                                        <a href="{{url('admin/tables#air')}}#">
+                                                                                            @if($c_air > 1)
+                                                                                                <i class="fa fa-bitbucket text-teal"></i> {{$c_air}}
+                                                                                                new depot air
+                                                                                                orders submitted today
+                                                                                            @else
+                                                                                                <i class="fa fa-bitbucket text-teal"></i>
+                                                                                                a new depot air
+                                                                                                order submitted today
+                                                                                            @endif
+                                                                                        </a>
+                                                                                    </li>
+                                                                                @endif
+                                                                                @if($c_hama >= 1)
+                                                                                    <li>
+                                                                                        <a href="{{url('admin/tables#hama')}}#">
+                                                                                            @if($c_hama > 1)
+                                                                                                <i class="fa fa-bug text-purple"></i> {{$c_hama}}
+                                                                                                new pengendalian hama
+                                                                                                orders submitted today
+                                                                                            @else
+                                                                                                <i class="fa fa-bug text-purple"></i>
+                                                                                                a new pengendalian hama
+                                                                                                order submitted today
+                                                                                            @endif
+                                                                                        </a>
+                                                                                    </li>
+                                                                                @endif
+                                                                                @if($member >= 1)
+                                                                                    <li>
+                                                                                        <a href="{{url('admin/tables#member')}}">
+                                                                                            @if($member > 1)
+                                                                                                <i class="fa fa-users text-yellow"></i> {{$member}}
+                                                                                                new members
+                                                                                                joined
+                                                                                                today
+                                                                                            @else
+                                                                                                <i class="fa fa-users text-yellow"></i>
+                                                                                                a new member joined
+                                                                                                today
+                                                                                            @endif
+                                                                                        </a>
+                                                                                    </li>
+                                                                                @endif
+                                                                                @if($feedback >= 1)
+                                                                                    <li>
+                                                                                        <a href="{{url('admin/tables#feedback')}}">
+                                                                                            @if($feedback > 1)
+                                                                                                <i class="fa fa-envelope text-red"></i>
+                                                                                                We got {{$feedback}} new
+                                                                                                feedback
+                                                                                                today
+                                                                                            @else
+                                                                                                <i class="fa fa-envelope text-red"></i>
+                                                                                                We got a feedback
+                                                                                                today
+                                                                                            @endif
+                                                                                        </a>
+                                                                                    </li>
+                                                                                @endif
+                                                                            </ul>
+                                                                        </li>
+                                                                        <li class="footer"><a>&nbsp;</a></li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li class="dropdown messages-menu">
+                                                                    <a href="{{route('dashboard')}}">
+                                                                        <i class="fa fa-eye"></i>
+                                                                        <span class="label label-info">WEB</span>
+                                                                    </a>
+                                                                </li>
+                                                                <!-- User Account: style can be found in dropdown.less -->
+                                                                <li class="dropdown user user-menu">
+                                                                    <a href="#" class="dropdown-toggle"
+                                                                       data-toggle="dropdown">
+                                                                        @if(Auth::user()->url == "avatar.png")
+                                                                            <img src="{{asset('storage/admin/dummy-profile.jpg')}}"
+                                                                                 class="user-image"
+                                                                                 alt="User Image">
+                                                                        @else
+                                                                            <img src="{{asset('storage/admin/'.Auth::user()->url)}}"
+                                                                                 class="user-image"
+                                                                                 alt="User Image">
+                                                                        @endif
+                                                                        <span class="hidden-xs">{{Auth::user()->name}}</span>
+                                                                    </a>
+                                                                    <ul class="dropdown-menu">
+                                                                        <!-- User image -->
+                                                                        <li class="user-header">
+                                                                            @if(Auth::user()->url == "avatar.png")
+                                                                                <img src="{{asset('storage/admin/dummy-profile.jpg')}}"
+                                                                                     class="img-circle"
+                                                                                     alt="User Image">
+                                                                            @else
+                                                                                <img src="{{asset('storage/admin/'.Auth::user()->url)}}"
+                                                                                     class="img-circle"
+                                                                                     alt="User Image">
+                                                                            @endif
+                                                                            <?php $dt = \App\role::findOrFail(Auth::user()->lastname) ?>
+                                                                            <p>{{Auth::user()->name}}
+                                                                                <small>{{$dt->ket}}</small>
+                                                                            </p>
+                                                                        </li>
+                                                                        <!-- Menu Body -->
+                                                                        <li class="user-body">
+                                                                            <div class="row">
+                                                                                <div class="col-xs-12 text-center">
+                                                                                    <a href="#">{{Auth::user()->email}}</a>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!-- /.row -->
+                                                                        </li>
+                                                                        <!-- Menu Footer-->
+                                                                        <li class="user-footer">
+                                                                            <div class="pull-left">
+                                                                                <a href="{{url('admin/'.Auth::user()->id.'/settings')}}"
+                                                                                   class="btn btn-default btn-flat">Settings</a>
+                                                                            </div>
+                                                                            <div class="pull-right">
+                                                                                <a href="{{ route('admin.logout') }}"
+                                                                                   class="btn btn-default btn-flat"
+                                                                                   onclick="event.preventDefault();document.getElementById('logout-form').submit();">Sign
+                                                                                    out</a>
+                                                                                <form id="logout-form"
+                                                                                      action="{{ route('admin.logout') }}"
+                                                                                      method="POST"
+                                                                                      style="display: none;">
+                                                                                    {{ csrf_field() }}
+                                                                                </form>
+                                                                            </div>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                                <!-- Control Sidebar Toggle Button -->
+                                                                <li>
+                                                                    <a href="#" data-toggle="control-sidebar"><i
+                                                                                class="fa fa-gears"></i></a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
 
-        </nav>
+                                                    </nav>
     </header>
     <!-- Left side column. contains the logo and sidebar -->
     <aside class="main-sidebar">
@@ -249,7 +480,7 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    @if(Auth::user()->url == null)
+                    @if(Auth::user()->url == "avatar.png")
                         <img src="{{asset('storage/admin/dummy-profile.jpg')}}" class="img-circle" alt="User Image">
                     @else
                         <img src="{{asset('storage/admin/'.Auth::user()->url)}}" class="img-circle" alt="User Image">
@@ -261,77 +492,19 @@
                 </div>
             </div>
             <!-- search form -->
-            <form action="#" method="get" class="sidebar-form">
-                <div class="input-group">
-                    <input type="text" name="q" class="form-control" placeholder="Search...">
-                    <span class="input-group-btn">
-            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-              <i class="fa fa-search"></i>
-            </button>
-          </span>
-                </div>
-            </form>
+        {{--<form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Search...">
+                <span class="input-group-btn">
+        <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+          <i class="fa fa-search"></i>
+        </button>
+      </span>
+            </div>
+        </form>--}}
             <!-- /.search form -->
             <!-- sidebar menu: : style can be found in sidebar.less -->
-            <ul class="sidebar-menu" data-widget="tree">
-                <li class="header">FROM USERS</li>
-                <li class="active treeview menu-open">
-                    <a href="{{route('admin.dashboard')}}">
-                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                    </a>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-table"></i> <span>Tables</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="{{url('admin/tables#apotek')}}"><i class="fa fa-globe text-aqua"></i> Apotek Orders</a>
-                        </li>
-                        <li><a href="{{url('admin/tables#depot air')}}"><i class="fa fa-bus text-teal"></i> depot air
-                                Orders</a></li>
-                        <li><a href="{{url('admin/tables#member')}}"><i class="fa fa-users text-yellow"></i> Member
-                                Lists</a></li>
-                        <li><a href="{{url('admin/tables#feedback')}}"><i class="fa fa-comments text-red"></i> Feedback
-                                Received</a></li>
-                    </ul>
-                </li>
-                <li class="header">FOR USERS</li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-globe"></i> <span>apotek</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="{{url('admin/apotekcontent#addapotek')}}"><i
-                                        class="fa fa-pencil-square-o text-aqua"></i> Add apotek</a>
-                        </li>
-                        <li><a href="{{url('admin/apotekcontent#apotek')}}"><i class="fa fa-table text-aqua"></i> View
-                                apotek</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-bus"></i> <span>depot air</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="{{url('admin/depot aircontent#adddepot air')}}"><i
-                                        class="fa fa-pencil-square-o text-teal"></i> Add
-                                depot air</a></li>
-                        <li><a href="{{url('admin/depot aircontent#depot air')}}"><i class="fa fa-table text-teal"></i>
-                                View
-                                depot air</a>
-                    </ul>
-                </li>
-            </ul>
+            @yield('sidenav')
         </section>
         <!-- /.sidebar -->
     </aside>
@@ -572,6 +745,7 @@
         $("#example2").DataTable();
         $("#example3").DataTable();
         $("#example4").DataTable();
+        $("#example5").DataTable();
         /*$('#example2').DataTable({
          "paging": true,
          "lengthChange": false,
@@ -611,5 +785,6 @@
 
     });
 </script>
+@yield('script')
 </body>
 </html>

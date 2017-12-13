@@ -12,20 +12,6 @@
                                 <form style="padding: 5%" method="POST" action="{{ route('admin.login') }}">
                                     {{ csrf_field() }}
 
-                                    <div class="row form-group{{ $errors->has('lastname') ? ' has-error' : '' }} has-feedback">
-                                        <div class="col-md-12">
-                                            <select class="form-control" name="lastname" id="lastname">
-                                                <option value="0" disabled selected>-- Choose Title --</option>
-                                                <option value="Super Admin">SUPER ADMIN</option>
-                                                <option value="UPTSA">UPTSA</option>
-                                                <option value="KASIE">KASIE</option>
-                                                <option value="KABID">KEPALA BIDANG</option>
-                                                <option value="SEKRETARIS">SEKRETARIS</option>
-                                                <option value="KADIN">KEPALA DINAS</option>
-                                            </select>
-                                            <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                                        </div>
-                                    </div>
                                     <div class="row form-group{{ $errors->has('email') ? ' has-error' : '' }} has-feedback">
                                         <div class="col-md-12">
                                             <input name="email" type="email" id="email" class="form-control"

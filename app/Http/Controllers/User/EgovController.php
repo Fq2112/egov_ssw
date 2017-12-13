@@ -9,6 +9,8 @@ use App\trPerizinanDepo;
 use App\trPerizinanHama;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class EgovController extends Controller
 {
@@ -17,7 +19,7 @@ class EgovController extends Controller
         $apotik=trPerizinanApotik::count();
         $hama=trPerizinanHama::count();
         $depo=trPerizinanDepo::count();
-$user=User::count();
+        $user = User::count();
         return view('user.dashboard', compact('apotik','hama','depo','user'));
     }
 

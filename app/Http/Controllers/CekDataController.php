@@ -368,7 +368,8 @@ class CekDataController extends Controller
         $data = mPemohon::findOrFail(\session('pemohon'));
         Session::put('cetakpermohonan', true);
         $data2 = mApotek::findOrFail(\session('apotek'));
-        return view('cb_ajax.cetak.permohonan', compact('data', 'data2'));
+        $data3 = mPemilik::findOrFail(\session('pemilik'));
+        return view('cb_ajax.cetak.permohonan', compact('data', 'data2', 'data3'));
     }
 
     public function cetakalat()
@@ -384,6 +385,7 @@ class CekDataController extends Controller
     {
         $data = mApoteker::findOrFail(\session('apoteker'));
         $data2 = mApotek::findOrFail(\session('apotek'));
+        setlocale(LC_TIME, 'Indonesian');
         Session::put('cetakapoteker', true);
         return view('cb_ajax.cetak.apoteker', compact('data', 'data2'));
     }
@@ -404,8 +406,9 @@ class CekDataController extends Controller
         $data = mApoteker::findOrFail(\session('apoteker'));
         Session::put('cetakuu', true);
         $data2 = mApotek::findOrFail(\session('apotek'));
+        $data3 = mPemohon::findOrFail(\session('pemohon'));
 
-        return view('cb_ajax.cetak.uuapoteker', compact('data', 'data2'));
+        return view('cb_ajax.cetak.uuapoteker', compact('data', 'data2', 'data3'));
     }
 
     public function setsessionkeenam()

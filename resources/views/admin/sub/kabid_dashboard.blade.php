@@ -43,6 +43,53 @@
                         Received</a></li>
             </ul>
         </li>
+        <li class="header">FOR USERS</li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-medkit"></i> <span>Apotek Contents</span>
+                <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="{{url('admin/apotekcontent#addapotek')}}"><i
+                                class="fa fa-pencil-square-o text-aqua"></i> Add Content</a>
+                </li>
+                <li><a href="{{url('admin/apotekcontent#apotek')}}"><i class="fa fa-table text-aqua"></i> View
+                        Content</a>
+                </li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-bitbucket"></i> <span>Depo Air Minum Contents</span>
+                <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="{{url('admin/aircontent#addair')}}"><i
+                                class="fa fa-pencil-square-o text-teal"></i> Add
+                        Content</a></li>
+                <li><a href="{{url('admin/aircontent#air')}}"><i class="fa fa-table text-teal"></i>
+                        View Content</a>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-bug"></i> <span>Hama Contents</span>
+                <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="{{url('admin/hamacontent#addhama')}}"><i
+                                class="fa fa-pencil-square-o text-teal"></i> Add
+                        Content</a></li>
+                <li><a href="{{url('admin/hamacontent#hama')}}"><i class="fa fa-table text-teal"></i>
+                        View Content</a>
+            </ul>
+        </li>
     </ul>
 @endsection
 @section('content')
@@ -143,7 +190,6 @@
                 </div>
                 <!-- ./col -->
             </div>
-            <!-- /.row -->
         </section>
         <!-- /.content -->
     </div>

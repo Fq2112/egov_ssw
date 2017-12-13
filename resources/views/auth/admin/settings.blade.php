@@ -1,5 +1,97 @@
 @extends('layouts.admin.admin_mst_dashboard')
-@section('title', 'SSWS - Surabaya Single Window Sanitary | '.Auth::user()->name.'`s Profile')
+@section('title', 'SSWS - '.Auth::user()->name.'`s Profile')
+@section('sidenav')
+    <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">FROM USERS</li>
+        <li class="active treeview menu-open">
+            @if(session('nama')== 'SUPER ADMIN')
+                <a href="{{route('admin.dashboard')}}">
+                    @elseif(session('nama')== 'UPTSA')
+                        <a href="{{route('uptsa.dashboard')}}">
+                            @elseif(session('nama')== 'KASIE')
+                                <a href="{{route('kasie.dashboard')}}">
+                                    @elseif(session('nama')== 'KABID')
+                                        <a href="{{route('kabid.dashboard')}}">
+                                            @elseif(session('nama')== 'SEKRETARIS')
+                                                <a href="{{route('sekretaris.dashboard')}}">
+                                                    @elseif(session('nama')== 'KADIN')
+                                                        <a href="{{route('kadin.dashboard')}}">
+                                                            @endif
+                                                            <i class="fa fa-dashboard"></i>
+                                                            <span>Dashboard</span>
+                                                        </a>
+        </li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-table"></i> <span>Tables</span>
+                <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="{{url('admin/tables/perizinan#apotek')}}"><i class="fa fa-medkit text-aqua"></i>
+                        Perizinan Apotek</a>
+                </li>
+                <li><a href="{{url('admin/tables/perizinan#air')}}"><i class="fa fa-bitbucket text-teal"></i>
+                        Perizinan
+                        Depo Air Minum</a></li>
+                <li><a href="{{url('admin/tables/perizinan#hama')}}"><i class="fa fa-bug text-yellow"></i>
+                        Perizinan
+                        Pengendalian Hama</a></li>
+                <li><a href="{{url('admin/tables/member-feedback#feedback')}}"><i
+                                class="fa fa-comments text-red"></i> Feedback
+                        Received</a></li>
+            </ul>
+        </li>
+        <li class="header">FOR USERS</li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-medkit"></i> <span>Apotek Contents</span>
+                <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="{{url('admin/apotekcontent#addapotek')}}"><i
+                                class="fa fa-pencil-square-o text-aqua"></i> Add Content</a>
+                </li>
+                <li><a href="{{url('admin/apotekcontent#apotek')}}"><i class="fa fa-table text-aqua"></i> View
+                        Content</a>
+                </li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-bitbucket"></i> <span>Depo Air Minum Contents</span>
+                <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="{{url('admin/aircontent#addair')}}"><i
+                                class="fa fa-pencil-square-o text-teal"></i> Add
+                        Content</a></li>
+                <li><a href="{{url('admin/aircontent#air')}}"><i class="fa fa-table text-teal"></i>
+                        View Content</a>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-bug"></i> <span>Hama Contents</span>
+                <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="{{url('admin/hamacontent#addhama')}}"><i
+                                class="fa fa-pencil-square-o text-teal"></i> Add
+                        Content</a></li>
+                <li><a href="{{url('admin/hamacontent#hama')}}"><i class="fa fa-table text-teal"></i>
+                        View Content</a>
+            </ul>
+        </li>
+    </ul>
+@endsection
 @section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -8,7 +100,22 @@
                 {{Auth::user()->name}} Profile
             </h1>
             <ol class="breadcrumb">
-                <li><a href="{{route('admin.dashboard')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li>
+                    @if(session('nama')== 'SUPER ADMIN')
+                        <a href="{{route('admin.dashboard')}}">
+                            @elseif(session('nama')== 'UPTSA')
+                                <a href="{{route('uptsa.dashboard')}}">
+                                    @elseif(session('nama')== 'KASIE')
+                                        <a href="{{route('kasie.dashboard')}}">
+                                            @elseif(session('nama')== 'KABID')
+                                                <a href="{{route('kabid.dashboard')}}">
+                                                    @elseif(session('nama')== 'SEKRETARIS')
+                                                        <a href="{{route('sekretaris.dashboard')}}">
+                                                            @elseif(session('nama')== 'KADIN')
+                                                                <a href="{{route('kadin.dashboard')}}">
+                                                                    @endif
+                                                                    <i class="fa fa-dashboard"></i> Home</a>
+                </li>
                 <li><a href="{{url('admin/'.Auth::user()->id.'/settings')}}">Edit Profile</a></li>
                 <li class="active">{{Auth::user()->name}}</li>
             </ol>
@@ -18,62 +125,12 @@
         <section class="content">
 
             <div class="row">
-                @if(session('sukses'))
-                    <div class="alert alert-success alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
-                        </button>
-                        <h4><i class="icon fa fa-check"></i> Alert!</h4>
-                        {{session('sukses')}}
-                    </div>
-                @elseif(session('gagal'))
-                    <div class="alert alert-danger alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
-                        </button>
-                        <h4><i class="icon fa fa-ban"></i> Alert!</h4>
-                        {{session('gagal')}}
-                    </div>
-                @elseif(session('berhasil'))
-                    <div class="alert alert-success alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
-                        </button>
-                        <h4><i class="icon fa fa-check"></i> Alert!</h4>
-                        {{session('berhasil')}}
-                    </div>
-                @elseif(session('ban'))
-                    <div class="alert alert-danger alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
-                        </button>
-                        <h4><i class="icon fa fa-ban"></i> Alert!</h4>
-                        {{session('ban')}}
-                    </div>
-                @elseif(session('restore'))
-                    <div class="alert alert-success alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
-                        </button>
-                        <h4><i class="icon fa fa-refresh"></i> Alert!</h4>
-                        {{session('restore')}}
-                    </div>
-                @elseif(session('ok'))
-                    <div class="alert alert-success alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
-                        </button>
-                        <h4><i class="icon fa fa-check"></i> Alert!</h4>
-                        {{session('ok')}}
-                    </div>
-                @elseif(session('no'))
-                    <div class="alert alert-danger alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
-                        </button>
-                        <h4><i class="icon fa fa-ban"></i> Alert!</h4>
-                        {{session('no')}}
-                    </div>
-                @endif
                 <div class="col-md-3">
 
                     <!-- Profile Image -->
                     <div class="box box-primary">
                         <div class="box-body box-profile">
-                            @if(Auth::user()->url == null)
+                            @if(Auth::user()->url == "avatar.png")
                                 <img class="profile-user-img img-responsive img-circle"
                                      src="{{asset('storage/admin/dummy-profile.jpg')}}" alt="User profile picture">
                             @else
@@ -82,7 +139,8 @@
                             @endif
 
                             <h3 class="profile-username text-center">{{Auth::user()->name}}</h3>
-                            <p class="text-muted text-center">{{Auth::user()->lastname}}</p>
+                            <?php $dt = \App\role::findOrFail(Auth::user()->lastname) ?>
+                            <p class="text-muted text-center">{{$dt->ket}}</p>
 
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">
@@ -141,7 +199,7 @@
                     <div class="nav-tabs-custom">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#settings" data-toggle="tab">Settings</a></li>
-                            @if(Auth::user()->lastname=='Super Admin')
+                            @if(Auth::user()->lastname=='1')
                                 <li><a href="#add" data-toggle="tab">Add an Admin</a></li>
                                 <li><a href="#adminlist" data-toggle="tab">Admin List</a></li>
                             @endif
@@ -162,8 +220,7 @@
                                                                              style="display: none;" multiple>
                                                     </span>
                                                 </label>
-                                                <input type="text" value="{{$admin->url}}" id="img_gallery"
-                                                       class="form-control" readonly>
+                                                <input type="text" id="img_gallery" class="form-control" readonly>
                                                 @if(session('file'))
                                                     <span class="help-block">
                                                         <strong>{{ session('file') }}</strong>
@@ -188,34 +245,15 @@
                                     <div class="form-group">
                                         <label for="inputName" class="col-sm-2 control-label">Job Title</label>
                                         <div class="col-sm-10">
-                                            @if(Auth::user()->lastname=='Super Admin')
-                                                <input name="lastname" class="form-control" type="text"
-                                                       value="{{$admin->lastname}}" readonly>
-                                            @else
-                                                <select class="form-control" name="lastname">
+                                            <?php $dt2 = \App\role::findOrFail($admin->lastname) ?>
+                                            <select class="form-control" name="lastname" disabled>
                                                     <option value="" disabled selected>-- Choose Title --</option>
-                                                    <option value="UPTSA" <?php if ('UPTSA' == $admin->lastname) {
-                                                        echo 'selected';
-                                                    } ?>>UPTSA
-                                                    </option>
-                                                    <option value="KASIE" <?php if ('KASIE' == $admin->lastname) {
-                                                        echo 'selected';
-                                                    } ?>>KASIE
-                                                    </option>
-                                                    <option value="KABID" <?php if ('KABID' == $admin->lastname) {
-                                                        echo 'selected';
-                                                    } ?>>KEPALA BIDANG
-                                                    </option>
-                                                    <option value="SEKRETARIS" <?php if ('SEKRETARIS' == $admin->lastname) {
-                                                        echo 'selected';
-                                                    } ?>>SEKRETARIS
-                                                    </option>
-                                                    <option value="KADIN" <?php if ('KADIN' == $admin->lastname) {
-                                                        echo 'selected';
-                                                    } ?>>KEPALA DINAS
-                                                    </option>
+                                                @foreach($ro as $row)
+                                                    <option value="{{$row->id}}"
+                                                    <?php if ($row->name == $dt2->name) echo 'selected'
+                                                        ?>>{{$row->ket}}</option>
+                                                @endforeach
                                                 </select>
-                                            @endif
                                             @if ($errors->has('lastname'))
                                                 <span class="help-block">
                                                     <strong>{{ $errors->first('lastname') }}</strong>
@@ -335,7 +373,7 @@
                                 </form>
                             </div>
                             <div class="tab-pane" id="add">
-                                @if(Auth::user()->lastname=='Super Admin')
+                                @if(Auth::user()->lastname=='1')
                                     <form method="post" class="form-horizontal" action="{{route('admin.add')}}">
                                         {{ csrf_field() }}
                                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }} has-feedback">
@@ -356,11 +394,11 @@
                                             <div class="col-sm-9">
                                                 <select class="form-control" name="lastname">
                                                     <option value="" disabled selected>-- Choose Title --</option>
-                                                    <option value="UPTSA">UPTSA</option>
-                                                    <option value="KASIE">KASIE</option>
-                                                    <option value="KABID">KEPALA BIDANG</option>
-                                                    <option value="SEKRETARIS">SEKRETARIS</option>
-                                                    <option value="KADIN">KEPALA DINAS</option>
+                                                    @foreach($ro as $row)
+                                                        @if($row->id != '1')
+                                                            <option value="{{$row->id}}">{{$row->name}}</option>
+                                                        @endif
+                                                    @endforeach
                                                 </select>
                                                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
                                                 @if ($errors->has('lastname'))
@@ -417,11 +455,11 @@
                                 @endif
                             </div>
                             <div class="tab-pane" id="adminlist">
-                                @if(Auth::user()->lastname=='Super Admin')
+                                @if(Auth::user()->lastname=='1')
                                     <table id="example1" class="table table-bordered table-striped table-hover">
                                         <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <th>NO</th>
                                             <th>Name</th>
                                             <th>Job_Title</th>
                                             <th>E-mail</th>
@@ -431,14 +469,16 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        <?php $no = 1;?>
                                         @foreach($admins as $row)
+                                            <?php $dt = \App\role::findOrFail($row->lastname) ?>
                                             <tr>
-                                                <td>{{$row->id}}</td>
+                                                <td>{{$no++}}</td>
                                                 <td>{{$row->name}}</td>
-                                                <td>{{$row->lastname}}</td>
+                                                <td>{{$dt->ket}}</td>
                                                 <td>{{$row->email}}</td>
                                                 <td>{{$row->created_at}}</td>
-                                                @if($row->lastname=='Super Admin')
+                                                @if($row->lastname=='1')
                                                     <td><span class="label label-primary">Super Active</span></td>
                                                 @else
                                                     @if(is_null($row->deleted_at))
@@ -447,8 +487,8 @@
                                                         <td><span class="label label-danger">Banned</span></td>
                                                     @endif
                                                 @endif
-                                                <td style="text-align: center">
-                                                    @if($row->lastname=='Super Admin')
+                                                <td class="text-center">
+                                                    @if($row->lastname=='1')
                                                         <a>
                                                             <button class="btn btn-warning" disabled>
                                                                 <i class="fa fa-refresh" data-toggle="tooltip"
@@ -483,7 +523,7 @@
                                                                        title="BANNED"></i>
                                                                 </button>
                                                             </a>
-                                                            <a onclick="return confirm('Are you sure wanna ban {{$row->name}} ?')"
+                                                            <a onclick="return confirm('Are you sure wanna restore {{$row->name}} ?')"
                                                                href="{{url('admin/adminlist/'.$row->id.'/restore')}}"
                                                                data-toggle="tooltip" title="RESTORE">
                                                                 <button class="btn btn-warning">

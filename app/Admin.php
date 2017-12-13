@@ -13,6 +13,10 @@ class Admin extends Authenticatable
     use SoftDeletes;
     protected $guard = 'admin';
 
+    public function role()
+    {
+        return $this->belongsToMany(role::class, 'role_admins');
+    }
     /**
      * Send the password reset notification.
      *

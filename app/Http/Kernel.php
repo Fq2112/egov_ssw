@@ -57,5 +57,12 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+
+        'super_admin' => \App\Http\Middleware\Admin\SuperAdminMiddleware::class,
+        'uptsa' => \App\Http\Middleware\Admin\UPTSAMiddleware::class,
+        'kasie' => \App\Http\Middleware\Admin\KASIEMiddleware::class,
+        'kabid' => \App\Http\Middleware\Admin\KABIDMiddleware::class,
+        'sekretaris' => \App\Http\Middleware\Admin\SEKRETARISMiddleware::class,
+        'kadin' => \App\Http\Middleware\Admin\KADINMiddleware::class,
     ];
 }

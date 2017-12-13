@@ -33,6 +33,9 @@
     <!-- Bootstrap  -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
 
+    <script src="{{ asset('sweetalert2/sweetalert2.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('/sweetalert2/sweetalert2.min.css') }}">
+
     <!-- Magnific Popup -->
     <link rel="stylesheet" href="{{asset('css/magnific-popup.css')}}">
 
@@ -54,11 +57,21 @@
 
 </head>
 <body>
-@if(session('success'))
-    <script>
-        alert("{{session('success')}}");
-    </script>
-@endif
+<script>
+    @if(session('success'))
+        swal({
+        title: '{{ session('success') }}',
+        type: 'success',
+        timer: '3500'
+    });
+    @elseif(session('warning'))
+        swal({
+        title: '{{ session('warning') }}',
+        type: 'warning',
+        timer: '3500'
+    });
+    @endif
+</script>
 <div id="page">
     <nav class="fh5co-nav" role="navigation">
         <div class="top-menu">
@@ -77,10 +90,12 @@
                                 <li class="btn-cta"><a href="{{route('register')}}"><span>Register</span></a></li>
                             @else
                                 <li class="has-dropdown">
-                                <a href="#" class="myBtn"><span>{{Auth::user()->name}}</span></a>
+                                    <a href="#" class="myBtn"><span>{{Auth::user()->name}}</span></a>
                                     <ul class="dropdown">
-                                        <li><a href="{{url('/member/history')}}"><i class="fa fa-history"></i> Riwayat Perizinan</a></li>
-                                        <li><a href="{{url('/member/'.Auth::user()->id.'/settings')}}"><i class="fa fa-edit"></i> Edit
+                                        <li><a href="{{url('/member/history')}}"><i class="fa fa-history"></i> Riwayat
+                                                Perizinan</a></li>
+                                        <li><a href="{{url('/member/'.Auth::user()->id.'/settings')}}"><i
+                                                        class="fa fa-edit"></i> Edit
                                                 Profile</a></li>
                                         <li>
                                             <a href="{{ route('logout') }}"
@@ -117,7 +132,8 @@
             <div class="row animate-box">
                 <div class="col-md-8 col-md-offset-2 text-center">
                     <p>
-                        <a href="{{route('dashboard')}}#fh5co-practice" class="btn btn-default btn-lg">DAFTAR SEKARANG</a>
+                        <a href="{{route('dashboard')}}#fh5co-practice" class="btn btn-default btn-lg">DAFTAR
+                            SEKARANG</a>
                     </p>
                 </div>
             </div>
@@ -128,7 +144,8 @@
             <div class="row row-pb-md">
                 <div class="col-md-3 fh5co-widget">
                     <h4><a href="http://kerjanyata.id">#KE2JANYATA</a></h4>
-                    <p style="text-transform: uppercase">"Surabaya kota sentosa, berkarakter, berdaya saing global, berbasis ekologi."</p>
+                    <p style="text-transform: uppercase">"Surabaya kota sentosa, berkarakter, berdaya saing global,
+                        berbasis ekologi."</p>
                 </div>
                 <div class="col-md-3 col-md-push-1">
                     <h4>Navigation</h4>
@@ -167,8 +184,10 @@
                 <div class="col-md-12 text-center">
                     <p>
                         <small class="block">Copyright &copy; 2017 SSW. All Rights Reserved.</small>
-                        <small class="block">Designed by <a href="http://rabbit-media.net/" target="_blank">Rabbit Media</a>
-                            &mdash; System by <a href="https://github.com/vreallyla" target="_blank">Fahmi Rizky</a></small>
+                        <small class="block">Designed by <a href="http://rabbit-media.net/" target="_blank">Rabbit
+                                Media</a>
+                            &mdash; System by <a href="https://github.com/vreallyla" target="_blank">Fahmi Rizky</a>
+                        </small>
                     </p>
                     <p>
                     <ul class="fh5co-social-icons">
@@ -220,7 +239,6 @@
 <script src="{{asset('js/google_map.js')}}"></script>
 <!-- Main -->
 <script src="{{asset('js/main.js')}}"></script>
-
 </body>
 </html>
 

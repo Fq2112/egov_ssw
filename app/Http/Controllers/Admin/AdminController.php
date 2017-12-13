@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\order;
 use App\order_recorder;
 use App\order_studio;
+use App\role;
+use App\role_admin;
 use App\trPerizinanApotik;
 use App\trPerizinanDepo;
 use App\trPerizinanHama;
@@ -20,9 +22,15 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->middleware('auth:admin');
+        $this->middleware('super_admin')->except(['showEditProfileForm', 'updateAdmin']);
     }
 
     public function index()
@@ -34,7 +42,6 @@ class AdminController extends Controller
         $feedback_t = Contact::whereraw('created_at = curdate()')->get();
         $member = User::whereraw('created_at = curdate()')->count();
         $notif = $c_apotik + $c_air + $c_hama + $feedback + $member;
-
         return view('admin.dashboard', compact('c_apotik','c_air', 'c_hama', 'feedback', 'feedback_t', 'member', 'notif'));
     }
 
@@ -47,16 +54,16 @@ class AdminController extends Controller
         $feedback_t = Contact::whereraw('created_at = curdate()')->get();
         $member = User::whereraw('created_at = curdate()')->count();
         $notif = $c_apotik + $c_air + $c_hama + $feedback + $member;
-        $admins = Admin::all();
+        $admins = Admin::withTrashed()->get();
+        $ro = role::all();
 
-        return view('auth.admin.settings', compact('c_apotik','c_air', 'c_hama', 'feedback', 'feedback_t', 'member', 'notif','admins','admin'));
+        return view('auth.admin.settings', compact('c_apotik', 'ro', 'c_air', 'c_hama', 'feedback', 'feedback_t', 'member', 'notif', 'admins', 'admin'));
     }
 
     public function updateAdmin(Request $request, Admin $admin)
     {
         $this->validate($request, [
             'name' => 'required|string|max:255',
-            'lastname' => 'required|string|max:255',
             'password' => 'required|string|min:6',
             'new_password' => 'required|string|min:6',
             'password_confirmation' => 'required|same:new_password',
@@ -68,19 +75,18 @@ class AdminController extends Controller
             return back();
         } else {
             if ($request->hasFile('url')) {
-                $old = Storage::files('public/profile');
+                $old = Storage::files('public/admin');
                 if ($old) {
-                    Storage::delete('public/profile/' . $admin->url);
+                    Storage::delete('public/admin/' . $admin->url);
                 }
 
                 $img = $request->file('url');
                 $name = $img->getClientOriginalName();
                 if ($request->file('url')->isValid()) {
-                    $request->url->storeAs('public/profile', $name);
+                    $request->url->storeAs('public/admin', $name);
                     $admin->update([
                         'url' => $name,
                         'name' => $request->name,
-                        'lastname' => $request->lastname,
                         'email' => $request->email,
                         'password' => bcrypt($request->new_password),
                         'address' => $request->address,
@@ -88,7 +94,7 @@ class AdminController extends Controller
                         'skills' => $request->skills,
                         'biography' => $request->biography
                     ]);
-                    Session::flash('ok', 'Successfully, updated!');
+                    Session::flash('update_admin', 'Successfully, updated!');
                     return back();
                 }
             } else {
@@ -117,7 +123,10 @@ class AdminController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password),
         ]);
-        Session::flash('berhasil', 'Successfully, add an Admin');
+
+        $data = Admin::orderBy('id', 'desc')->first();
+        role_admin::create(['admin_id' => $data->id, 'role_id' => $request->lastname]);
+        Session::flash('add_admin', 'Successfully, add an Admin');
         return back();
     }
 
@@ -131,7 +140,7 @@ class AdminController extends Controller
     public function TableAdminRestore($admin)
     {
         Admin::withTrashed()->find($admin)->restore();
-        Session::flash('restore', 'Successfully, restored!');
+        Session::flash('res', 'Successfully, restored!');
         return back();
     }
 }

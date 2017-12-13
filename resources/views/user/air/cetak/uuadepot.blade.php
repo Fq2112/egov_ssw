@@ -5,67 +5,98 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SSWS - Surabaya Single Window Sanitary | Perizinan Depo Air Minum</title>
+    <title>&nbsp;</title>
     <link rel="shortcut icon" type="image/x-icon" href="http://ssw.surabaya.go.id/assets/img/logo-sby.png">
 </head>
 <body onload="window.print()">
-<center><strong>SURAT PERNYATAAN DEPOT AIR <br>  TIDAK TERLIBAT PELANGGARAN PERATURAN PERUNDANGAN-UNDANGAN
-        </strong></center>
-<br><br><br>
+<p align="center">
+    <strong><u>SURAT PERNYATAAN TUNDUK DAN TAAT TERHADAP <br>PERARTURAN DAN UNDANG-UNDANG</u></strong>
+</p><br><br>
 
-Yang bertanda tangan dibawah ini:
+Yang bertanda tangan dibawah ini:<br><br>
 <table>
     <tr>
-        <td>
-            nama
-        </td>
+        <td>Nama</td>
         <td>:</td>
-        <td>{{$data->name}}</td>
+        <td style="text-transform: uppercase">{{$data->name}}</td>
     </tr>
     <tr>
-        <td>No KTP</td>
+        <td>Nomor KTP</td>
         <td>:</td>
         <td>{{$data->nik}}</td>
     </tr>
     <tr>
-        <td>Alamat</td>
+        <td>Alamat Rumah</td>
         <td>:</td>
         <td>{{$data->alamat}}</td>
     </tr>
-</table>
-<br><br>
-
-Sebagai penanggung jawab mengelolah apotek pada:
-
-<table>
     <tr>
-        <td>
-            nama
-        </td>
+        <td>Kelurahan/Desa</td>
+        <td>:</td>
+        <td>{{$data2->desa}}</td>
+    </tr>
+    <tr>
+        <td>Kecamatan</td>
+        <td>:</td>
+        <td>{{$data2->kecamatan}}</td>
+    </tr>
+    <tr>
+        <td>Kode Pos</td>
+        <td>:</td>
+        <td>{{$data->kodepos}}</td>
+    </tr>
+    <tr>
+        <td>No. Telepon Rumah & HP</td>
+        <td>:</td>
+        <td>{{$data->phone}}</td>
+    </tr>
+    <tr>
+        <td>Nama Depo Air Minum</td>
         <td>:</td>
         <td>{{$data2->name}}</td>
     </tr>
     <tr>
-        <td>Alamat</td>
+        <td>Alamat Depo Air Minum</td>
         <td>:</td>
-        <td>{{$data2->alamat}}, {{$data2->kecamatan}}, {{$data2->kota}}, {{$data2->provinsi}}</td>
+        <td>{{$data2->alamat}}</td>
+    </tr>
+    <tr>
+        <td>Kelurahan/Desa</td>
+        <td>:</td>
+        <td>{{$data2->desa}}</td>
+    </tr>
+    <tr>
+        <td>Kecamatan</td>
+        <td>:</td>
+        <td>{{$data2->kecamatan}}</td>
+    </tr>
+    <tr>
+        <td>Kode Pos</td>
+        <td>:</td>
+        <td>{{$data->kodepos}}</td>
+    </tr>
+    <tr>
+        <td>No. Telepon Depo</td>
+        <td>:</td>
+        <td>{{$data2->phone}}</td>
     </tr>
 </table>
 <br>
-Dengan ini menyatakan bahwa tidak pernah terlibat peraturan perundan-undangang mengenai usaha depot air isi ulang.<br>
-<br><br>
+<p align="justify">
+    Dengan ini menyatakan tunduk dan taan terhadap ketentuan, peraturan dan
+    perundang-undangan yang berlaku dalam pengelolaan Depot Air Minum yang saya kelola.
+</p><br><br>
+<p align="justify" style="text-indent: 50px">
+    Demikian Pernyataan ini dibuat dan dapat dipergunakan sebagaimana mestinya,
+    pernyataan ini digunakan untuk kelengkapan persyaratan Izin Pengelolaan Depot Air Minum
+</p><br><br>
 <div align="right">
 
-    &nbsp;&nbsp;&nbsp;Surabaya, ....  ........................ {{\Illuminate\Support\Carbon::now()->format('Y')}}<br>
-    &nbsp;&nbsp;&nbsp;Yang membuat pernyataan,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br><br><br>
-
-
-
-
-    &nbsp;&nbsp;&nbsp;..........................................................
-
+    &nbsp;&nbsp;&nbsp;Surabaya, .............................. {{\Illuminate\Support\Carbon::now()->format('Y')}}<br>
+    &nbsp;&nbsp;&nbsp;Yang membuat pernyataan,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br><br>
+    <em>Materai Rp6.000,-</em><br><br>
+    <span style="text-transform: uppercase">({{$data->name}})</span>
 </div>
-
 
 
 </body>
