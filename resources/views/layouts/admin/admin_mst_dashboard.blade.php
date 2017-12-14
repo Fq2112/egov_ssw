@@ -273,7 +273,7 @@
                                                                         <li>
                                                                             <!-- inner menu: contains the actual data -->
                                                                             <ul class="menu">
-                                                                                @foreach($feedback_t as $row)
+                                                                                @foreach($dtsub as $row)
                                                                                     @if($feedback > 0)
                                                                                         <li><!-- start message -->
                                                                                             <a href="#">
@@ -285,7 +285,7 @@
                                                                                                 <h4>
                                                                                                     {{$row->name}}
                                                                                                     <small>
-                                                                                                        <i class="fa fa-clock-o"></i> {{$row->updated_at}}
+                                                                                                        <i class="fa fa-clock-o"></i> {{$row->created_at}}
                                                                                                     </small>
                                                                                                 </h4>
                                                                                                 <p>{{$row->message}}</p>

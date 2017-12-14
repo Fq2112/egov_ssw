@@ -130,6 +130,10 @@ Route::prefix('admin')->group(function () {
     Route::get('tables/member-{id}/restore', 'Admin\Tables\MemFeedController@restore')->name('admin.tables.res');
 
     Route::get('tables/perizinan', 'Admin\Tables\PerizinanController@index')->name('admin.tables.perizinan');
+
+    Route::get('aktif/{id}', 'Admin\Tables\PerizinanController@aktif')->name('admin.tables.perizinan.aktif');
+    Route::get('aktif/depo/{id}', 'Admin\Tables\PerizinanController@aktifdepo')->name('admin.tables.perizinan.aktif.depo');
+    Route::get('aktif/hama/{id}', 'Admin\Tables\PerizinanController@aktifhama')->name('admin.tables.perizinan.aktif.hama');
 });
 
 Route::group(['middleware' => ['uptsa'], 'prefix' => 'uptsa'], function () {

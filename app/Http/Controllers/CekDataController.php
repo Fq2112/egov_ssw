@@ -343,6 +343,7 @@ class CekDataController extends Controller
 
     public function keenam()
     {
+       
         if (\Session::has('cetak') &&
             \Session::has('cetakalat') &&
             \Session::has('cetakapoteker') &&

@@ -111,7 +111,7 @@
 
 
                 $.ajax({
-                    type: 'get',
+                    type: 'post',
                     url: '{!!URL::to('apotek/carikota/')!!}',
                     data: {'id': kota_id},
                     success: function (data) {

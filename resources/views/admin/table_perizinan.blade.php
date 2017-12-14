@@ -1,6 +1,15 @@
 @extends('layouts.admin.admin_mst_dashboard')
 @section('title', 'SSWS - '.session('nama').' PANEL')
 @section('sidenav')
+    <script>
+        @if(\Session::has('status'))
+        swal({
+            title: '{{ session('status') }}',
+            type: 'success',
+            timer: '1500'
+        });
+        @endif
+    </script>
     <ul class="sidebar-menu" data-widget="tree">
         <li class="header">FROM USERS</li>
         <li class="treeview">
@@ -94,14 +103,14 @@
                                             class="fa fa-times"></i></button>
                             </div>
                         </div>
-                        @if(session('status'))
-                            <div class="alert alert-success alert-dismissible">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
-                                </button>
-                                <h4><i class="icon fa fa-check"></i> Alert!</h4>
-                                {{session('status')}}
-                            </div>
-                    @endif
+                        {{--@if(session('status'))--}}
+                            {{--<div class="alert alert-success alert-dismissible">--}}
+                                {{--<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;--}}
+                                {{--</button>--}}
+                                {{--<h4><i class="icon fa fa-check"></i> Alert!</h4>--}}
+                                {{--{{session('status')}}--}}
+                            {{--</div>--}}
+                    {{--@endif--}}
                     <!-- /.box-header -->
                         <div class="box-body">
                             <table id="example1" class="table table-bordered table-striped table-hover">
@@ -120,11 +129,13 @@
                                 <tbody>
                                 <?php $no = 1 ?>
                                 @foreach(\App\trPerizinanApotik::all() as $row)
+                                    @if($row->status==1)
                                     <tr>
                                         <td>{{$no++}}</td>
                                         <td>{{$row->name}}</td>
-                                        <td>email...</td>
-                                        <td>phone...</td>
+                                        <?php $pemohon = \App\mPemohon::findOrFail($row->id_pemohon) ?>
+                                        <td>{{$pemohon->email}}</td>
+                                        <td>{{$pemohon->phone}}</td>
                                         <td style="width: 25px" class="text-center">
                                             <a href="#detail" data-toggle="tooltip" data-placement="left"
                                                title="lihat lampiran!">
@@ -132,17 +143,95 @@
                                                      src="{{asset('images/user.png')}}">
                                             </a>
                                         </td>
-                                        <td>{{$row->status}}</td>
-                                        <td>{{$row->created_at}}</td>
-                                        <td class="text-center">
-                                            <label class="tgl">
-                                                <input onChange="if (this.checked) set_check(this);" id="status"
-                                                       name="status" type="checkbox">
+                                        <?php $berkas = \App\berkasApotek::where('apotek_proses_id', $row->id)->first()?>
 
-                                                <span data-on="Approve" data-off="Deny"></span>
-                                            </label>
-                                        </td>
+                                        @if ($row->id_apotek==null)
+                                            <td>Mengisi Data Apotek</td>
+                                        @elseif ($row->id_pemilik==null)
+                                            <?php $alat = \App\mAlatApotik::where('pemohon_id', $row->id)->first()?>
+                                            @if(is_null($alat))
+                                                <td>Mengisi Data Alat</td>
+                                            @else
+                                                <td>Data Pemilik</td>
+                                            @endif
+                                        @elseif ($row->id_apoteker==null)
+                                            <td>Data Apoteker</td>
+
+                                        @elseif ($row->status==null&&is_null($berkas))
+                                            <td>belum upload data /cetak</td>
+                                        @elseif ($row->status==null&&!is_null($berkas))
+                                            <td>belum konfirmasi ketentuan</td>
+                                        @elseif ($row->status==1)
+                                            <td>Menunggu Konfirmasi</td>
+                                        @elseif ($row->status==2)
+                                            <td>Terkonfirmasi</td>
+                                            @endif
+
+                                            <td>{{$row->created_at->diffForHumans()}}</td>
+
+
+                                        @if ($row->status==1)
+                                            <td class="text-center"> <a onclick="apotekuptsa({{ $row->id }})" class="btn btn-success btn-xs "><i class='glyphicon glyphicon-check'></i> approve</a></td>
+                                                @elseif($row->status>=2)
+                                            <td class="text-center">   <a class="btn btn-default btn-xs "><i class='glyphicon glyphicon-check' disabled></i> approved</a></td>
+                                            @else
+                                            <td class="text-center">menunggu</td>
+                                            @endif
+
+
                                     </tr>
+                                        @else
+                                        <tr>
+                                            <td>{{$no++}}</td>
+                                            <td>{{$row->name}}</td>
+                                            <?php $pemohon = \App\mPemohon::findOrFail($row->id_pemohon) ?>
+                                            <td>{{$pemohon->email}}</td>
+                                            <td>{{$pemohon->phone}}</td>
+                                            <td style="width: 25px" class="text-center">
+                                                <a href="#detail" data-toggle="tooltip" data-placement="left"
+                                                   title="lihat lampiran!">
+                                                    <img style="width: 100%" class="img-responsive"
+                                                         src="{{asset('images/user.png')}}">
+                                                </a>
+                                            </td>
+                                            <?php $berkas = \App\berkasApotek::where('apotek_proses_id', $row->id)->first()?>
+
+                                            @if ($row->id_apotek==null)
+                                                <td>Mengisi Data Apotek</td>
+                                            @elseif ($row->id_pemilik==null)
+                                                <?php $alat = \App\mAlatApotik::where('pemohon_id', $row->id)->first()?>
+                                                @if(is_null($alat))
+                                                    <td>Mengisi Data Alat</td>
+                                                @else
+                                                    <td>Data Pemilik</td>
+                                                @endif
+                                            @elseif ($row->id_apoteker==null)
+                                                <td>Data Apoteker</td>
+
+                                            @elseif ($row->status==null&&is_null($berkas))
+                                                <td>belum upload data /cetak</td>
+                                            @elseif ($row->status==null&&!is_null($berkas))
+                                                <td>belum konfirmasi ketentuan</td>
+                                            @elseif ($row->status==1)
+                                                <td>Menunggu Konfirmasi</td>
+                                            @elseif ($row->status==2)
+                                                <td>Terkonfirmasi</td>
+                                            @endif
+
+                                            <td>{{$row->created_at->diffForHumans()}}</td>
+
+
+                                            @if ($row->status==1)
+                                                <td class="text-center"> <a onclick="apotekuptsa({{ $row->id }})" class="btn btn-success btn-xs "><i class='glyphicon glyphicon-check'></i> approve</a></td>
+                                            @elseif($row->status>=2)
+                                                <td class="text-center">   <a class="btn btn-default btn-xs "><i class='glyphicon glyphicon-check' disabled></i> approved</a></td>
+                                            @else
+                                                <td class="text-center">menunggu</td>
+                                            @endif
+
+
+                                        </tr>
+                                    @endif
                                 @endforeach
                                 </tbody>
                                 <tfoot>
@@ -178,14 +267,14 @@
                                             class="fa fa-times"></i></button>
                             </div>
                         </div>
-                        @if(session('status'))
-                            <div class="alert alert-success alert-dismissible">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
-                                </button>
-                                <h4><i class="icon fa fa-check"></i> Alert!</h4>
-                                {{session('status')}}
-                            </div>
-                    @endif
+                        {{--@if(session('status'))--}}
+                            {{--<div class="alert alert-success alert-dismissible">--}}
+                                {{--<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;--}}
+                                {{--</button>--}}
+                                {{--<h4><i class="icon fa fa-check"></i> Alert!</h4>--}}
+                                {{--{{session('status')}}--}}
+                            {{--</div>--}}
+                    {{--@endif--}}
                     <!-- /.box-header -->
                         <div class="box-body">
                             <table id="example2" class="table table-bordered table-striped table-hover">
@@ -207,8 +296,9 @@
                                     <tr>
                                         <td>{{$no++}}</td>
                                         <td>{{$row->name}}</td>
-                                        <td>email...</td>
-                                        <td>phone...</td>
+                                        <?php $pemohon=\App\mPemohon::findOrFail($row->id_pemohon)?>
+                                        <td>{{$pemohon->email}}</td>
+                                        <td>{{$pemohon->phone}}</td>
                                         <td style="width: 25px" class="text-center">
                                             <a href="#detail" data-toggle="tooltip" data-placement="left"
                                                title="lihat lampiran!">
@@ -216,16 +306,29 @@
                                                      src="{{asset('images/user.png')}}">
                                             </a>
                                         </td>
-                                        <td>{{$row->status}}</td>
-                                        <td>{{$row->created_at}}</td>
-                                        <td>
-                                            <label class="tgl ">
-                                                <input onChange="if (this.checked) set_check(this);" id="status"
-                                                       name="status" type="checkbox">
+                                        <?php $berkas2 = \App\berkasDepot::where('depot_proses_id', $row->id)->first()?>
+                                        @if ($row->id_depo==null)
+                                            <td>Mengisi data alamat depo</td>
+                                        @elseif ($row->status==null&&is_null($berkas2))
+                                            <td>Mengupload/cetak data</td>
+                                        @elseif ($row->status==null&&!is_null($berkas2))
+                                            <td>pemohon belum konfirmasi ketentuan</td>
+                                        @elseif ($row->status==1)
+                                            <td>Menunggu konfirmasi</td>
+                                        @elseif ($row->status>1)
+                                            <td>Terkonfirmasi</td>
+                                        @endif
 
-                                                <span data-on="Approve" data-off="Reject"></span>
-                                            </label>
-                                        </td>
+                                        <td>{{$row->created_at->diffForHumans()}}</td>
+
+                                        @if ($row->status==1)
+                                            <td class="text-center"> <a onclick="airuptsa({{ $row->id }})" class="btn btn-success btn-xs "><i class='glyphicon glyphicon-check'></i> approve</a></td>
+                                        @elseif($row->status>=2)
+                                            <td class="text-center">   <a class="btn btn-default btn-xs "><i class='glyphicon glyphicon-check' disabled></i> approved</a></td>
+                                        @else
+                                            <td class="text-center">menunggu</td>
+                                            @endif
+
                                     </tr>
                                 @endforeach
 
@@ -290,10 +393,12 @@
                                 <?php $no = 1 ?>
                                 @foreach(\App\trPerizinanHama::all() as $row)
                                     <tr>
+
                                         <td>{{$no++}}</td>
                                         <td>{{$row->name}}</td>
-                                        <td>email...</td>
-                                        <td>phone...</td>
+                                        <?php $pemohon=\App\mPemohon::findOrFail($row->id_pemohon)?>
+                                        <td>{{$pemohon->email}}</td>
+                                        <td>{{$pemohon->phone}}</td>
                                         <td style="width: 25px" class="text-center">
                                             <a href="#detail" data-toggle="tooltip" data-placement="left"
                                                title="lihat lampiran!">
@@ -301,16 +406,26 @@
                                                      src="{{asset('images/user.png')}}">
                                             </a>
                                         </td>
-                                        <td>{{$row->status}}</td>
-                                        <td>{{$row->created_at}}</td>
-                                        <td>
-                                            <label class="tgl ">
-                                                <input onChange="if(this.checked)set_check(this);" id="status"
-                                                       name="status" type="checkbox">
+                                        @if ($row->id_perusahaan==null)
+                                            <td>Mengisi data alamat perusahaan</td>
+                                        @elseif ($row->status==null&&is_null($berkas2))
+                                            <td>Mengupload/cetak data</td>
+                                        @elseif ($row->status==null&&!is_null($berkas2))
+                                            <td>pemohon belum konfirmasi ketentuan</td>
+                                        @elseif ($row->status==1)
+                                            <td>Menunggu konfirmasi</td>@elseif ($row->status>1)
+                                            <td>Terkonfirmasi</td>
+                                        @endif
+                                        <td>{{$row->created_at->diffForHumans()}}</td>
+                                        @if ($row->status==1)
+                                            <td class="text-center"> <a onclick="hamauptsa({{ $row->id }})" class="btn btn-success btn-xs "><i class='glyphicon glyphicon-check'></i> approve</a></td>
+                                        @elseif($row->status>=2)
+                                            <td class="text-center">   <a class="btn btn-default btn-xs "><i class='glyphicon glyphicon-check' disabled></i> approved</a></td>
+                                        @else
+                                            <td class="text-center">menunggu</td>
+                                        @endif
 
-                                                <span data-on="Approve" data-off="Reject"></span>
-                                            </label>
-                                        </td>
+
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -340,37 +455,55 @@
 @endsection
 @section('script')
     <script>
+        var table=$('#example1');
         $(document).ready(function () {
             $('[data-toggle="tooltip"]').tooltip();
         });
 
-        function set_check(me) {
+        function apotekuptsa(id){
+
             swal({
-                    title: "Are you sure?",
-                    type: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#00a65a",
-                    confirmButtonText: "Yes!",
-                    timer: 20000,
-                    closeOnConfirm: true
-                },
-                function (isConfirm) {
-                    if (me.checked && isConfirm) {
-                        setCookie(me.value, me.checked, 1);
-                        console.log(me.value);
-                        console.log(me.checked);
-                        console.log(document.cookie);
-                        window.location.reload();
-                    } else if (me.checked && !isConfirm) {
-                        window.location.reload();
-                    } else if (!me.checked) {
-                        setCookie(me.value, me.checked, -1);
-                        console.log(me.value);
-                        console.log(me.checked);
-                        console.log(document.cookie);
-                        window.location.reload();
-                    }
+                title: 'Are you sure?',
+                text: "You want be approve this!",
+                type: 'warning',
+                showCancelButton: true,
+                cancelButtonColor: '#d33',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, i do!'
+            })
+                .then(function () {
+                    window.location = "{!!URL::to('admin/aktif/')!!}"+'/'+id;
                 });
         }
+        function airuptsa(id){
+
+            swal({
+                title: 'Are you sure?',
+                text: "You want be approve this!",
+                type: 'warning',
+                showCancelButton: true,
+                cancelButtonColor: '#d33',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, i do!'
+            })
+                .then(function () {
+                    window.location = "{!!URL::to('admin/aktif/depo/')!!}"+'/'+id;
+                });
+        }function hamauptsa(id){
+
+            swal({
+                title: 'Are you sure?',
+                text: "You want be approve this!",
+                type: 'warning',
+                showCancelButton: true,
+                cancelButtonColor: '#d33',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, i do!'
+            })
+                .then(function () {
+                    window.location = "{!!URL::to('admin/aktif/hama/')!!}"+'/'+id;
+                });
+        }
+
     </script>
 @endsection

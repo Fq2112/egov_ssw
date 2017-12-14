@@ -16,6 +16,7 @@ class EgovController extends Controller
 {
     public function index()
     {
+        
         $apotik=trPerizinanApotik::count();
         $hama=trPerizinanHama::count();
         $depo=trPerizinanDepo::count();
