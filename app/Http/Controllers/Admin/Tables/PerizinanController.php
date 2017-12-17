@@ -10,6 +10,7 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class PerizinanController extends Controller
@@ -126,27 +127,87 @@ class PerizinanController extends Controller
             }
         }
 //        dd($dthama,count($dtair),$dtapotek);
+        $awal=null;
+        $akhir=null;
+
+if (Auth::user()->lastname==2){
+    $awal=1; $akhir=2;
+}
+if (Auth::user()->lastname==3){
+    $awal=2; $akhir=3;
+}
+if (Auth::user()->lastname==4){
+    $awal=3; $akhir=4;
+}
+if (Auth::user()->lastname==5){
+    $awal=4; $akhir=5;
+}
+if (Auth::user()->lastname==6){
+    $awal=5; $akhir=6;
+}
 
         $member = count($dtuser);
         $notif = $c_apotik + $c_air + $c_hama + $feedback + $member;
-        return view('admin.table_perizinan', compact('dtapotek', 'dthama', 'dtair', 'dtsub', 'dtuser','c_apotik', 'c_air', 'c_hama', 'feedback', 'feedback_t', 'member', 'notif'));
+        return view('admin.table_perizinan', compact('awal','akhir','dtapotek', 'dthama', 'dtair', 'dtsub', 'dtuser','c_apotik', 'c_air', 'c_hama', 'feedback', 'feedback_t', 'member', 'notif'));
     }
 
     public function aktif($id)
     {
-        trPerizinanApotik::findOrFail($id)->update(['status' => 2]);
+        if (Auth::user()->lastname==2){
+            trPerizinanApotik::findOrFail($id)->update(['status' => 2]);
+        }
+        if (Auth::user()->lastname==3){
+            trPerizinanApotik::findOrFail($id)->update(['status' => 3]);
+        }
+        if (Auth::user()->lastname==4){
+            trPerizinanApotik::findOrFail($id)->update(['status' => 4]);
+        }
+        if (Auth::user()->lastname==5){
+            trPerizinanApotik::findOrFail($id)->update(['status' => 5]);
+        }
+        if (Auth::user()->lastname==6){
+            trPerizinanApotik::findOrFail($id)->update(['status' => 6]);
+        }
 Session::flash('status','Approve is successful');
         return back();
 
     }public function aktifdepo($id)
     {
-        trPerizinanDepo::findOrFail($id)->update(['status' => 2]);
+        if (Auth::user()->lastname==2){
+            trPerizinanDepo::findOrFail($id)->update(['status' => 2]);
+        }
+        if (Auth::user()->lastname==3){
+            trPerizinanDepo::findOrFail($id)->update(['status' => 3]);
+        }
+        if (Auth::user()->lastname==4){
+            trPerizinanDepo::findOrFail($id)->update(['status' => 4]);
+        }
+        if (Auth::user()->lastname==5){
+            trPerizinanDepo::findOrFail($id)->update(['status' => 5]);
+        }
+        if (Auth::user()->lastname==6){
+            trPerizinanDepo::findOrFail($id)->update(['status' => 6]);
+        }
 Session::flash('status','Approve is successful');
         return back();
 
     }public function aktifhama($id)
     {
-        trPerizinanHama::findOrFail($id)->update(['status' => 2]);
+        if (Auth::user()->lastname==2){
+            trPerizinanHama::findOrFail($id)->update(['status' => 2]);
+        }
+        if (Auth::user()->lastname==3){
+            trPerizinanHama::findOrFail($id)->update(['status' => 3]);
+        }
+        if (Auth::user()->lastname==4){
+            trPerizinanHama::findOrFail($id)->update(['status' => 4]);
+        }
+        if (Auth::user()->lastname==5){
+            trPerizinanHama::findOrFail($id)->update(['status' => 5]);
+        }
+        if (Auth::user()->lastname==6){
+            trPerizinanHama::findOrFail($id)->update(['status' => 6]);
+        }
 Session::flash('status','Approve is successful');
         return back();
 

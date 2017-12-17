@@ -80,12 +80,12 @@
                                         active
                                 @elseif($apotek2 > 0 &&$depo2 > 0 || $apotek2 > 0 &&$hama2 > 0)
                                         active
-@elseif($apotek2 > 0 && $depo2 <= 0 || $hama2 <= 0)
+@elseif($apotek2 > 0 && $depo2 <= 0 && $hama2 <= 0)
                                         active
 @endif text-center">
                                     <h3>Apotek</h3>
                                     <div class="text-right">
-                                        @if($c_apotek > 0 || $c_air > 0 || $c_hama > 0)
+                                        @if($c_apotek > 0 && $c_air > 0 && $c_hama > 0)
                                             <a target="_blank"
                                                href="{{url('/member/'.Auth::user()->id.'/history/print-apotek')}}">
                                                 <button data-toggle="tooltip" title="Print Riwayat"
@@ -135,46 +135,66 @@
                                                 @if ($item->id_apotek==null)
                                                     <td>Mengisi Data Apotek</td>
                                                 @elseif ($item->id_pemilik==null)
+                                                    <td>Mengisi Data Pemilik</td>
+                                                @elseif (!is_null($item->id_pemilik))
                                                     <?php $alat = \App\mAlatApotik::where('pemohon_id', $item->id)->first()?>
                                                     @if(is_null($alat))
                                                         <td>Mengisi Data Alat</td>
-                                                    @else
-                                                        <td>Mengisi Data Pemilik</td>
-                                                    @endif
-                                                @elseif ($item->id_apoteker==null)
-                                                    <td>Mengisi Data Apoteker</td>
+                                                    @elseif ($item->id_apoteker==null)
+                                                        <td>Mengisi Data Apoteker</td>
 
-                                                @elseif ($item->status==null&&is_null($berkas))
-                                                    <td>Pemohon belum upload data /cetak</td>
-                                                @elseif ($item->status==null&&!is_null($berkas))
-                                                    <td>Pemohon belum konfirmasi ketentuan</td>
-                                                @elseif ($item->status==1)
-                                                    <td>Menunggu Konfirmasi</td>
+                                                    @elseif ($item->status==null&&is_null($berkas))
+                                                        <td>Pemohon belum upload data /cetak</td>
+                                                    @elseif ($item->status==null&&!is_null($berkas))
+                                                        <td>Pemohon belum konfirmasi ketentuan</td>
+                                                    @elseif ($item->status==1)
+                                                        <td>Menunggu Konfirmasi UPTSA</td>
+                                                    @elseif ($item->status==2)
+                                                        <td>Menunggu Konfirmasi KASIE</td>
+                                                    @elseif ($item->status==3)
+                                                        <td>Menunggu Konfirmasi KABID</td>
+                                                    @elseif ($item->status==4)
+                                                        <td>Menunggu Konfirmasi SEKRETARIS</td>
+                                                    @elseif ($item->status==5)
+                                                        <td>Menunggu Konfirmasi KADIN</td>
+                                                    @elseif ($item->status==6)
+                                                        <td>Permohonan diterima</td>
+                                                    @endif
+
                                                 @endif
 
                                                 @if ($item->id_apotek==null)
                                                     <td><a href="#">Lanjutkan Pendaftaran</a></td>
                                                 @elseif ($item->id_pemilik==null)
+                                                    <td><a href="#">Lanjutkan Pendaftaran</a></td>
+                                                @elseif (!is_null($item->id_pemilik))
                                                     <?php $alat = \App\mAlatApotik::where('pemohon_id', $item->id)->first()?>
                                                     @if(is_null($alat))
                                                         <td><a href="#">Lanjutkan Pendaftaran</a></td>
-                                                    @else
+                                                    @elseif ($item->id_apoteker==null)
                                                         <td><a href="#">Lanjutkan Pendaftaran</a></td>
-                                                    @endif
-                                                @elseif ($item->id_apoteker==null)
-                                                    <td><a href="#">Lanjutkan Pendaftaran</a></td>
 
-                                                @elseif ($item->status==null&&is_null($berkas))
-                                                    <td><a href="#">Upload Data</a></td>
-                                                @elseif ($item->status==null&&!is_null($berkas))
-                                                    <td><a href="#">Konfirmasi Pendaftaran</a></td>
-                                                @elseif ($item->status==1)
-                                                    <td>Proses</td>
+                                                    @elseif ($item->status==null&&is_null($berkas))
+                                                        <td><a href="#">Upload Data</a></td>
+                                                    @elseif ($item->status==null&&!is_null($berkas))
+                                                        <td><a href="#">Konfirmasi Pendaftaran</a></td>
+                                                    @elseif ($item->status==1)
+                                                        <td>Proses</td>
+                                                    @elseif ($item->status==2)
+                                                        <td>Proses</td>
+                                                    @elseif ($item->status==3)
+                                                        <td>Proses</td>
+                                                    @elseif ($item->status==4)
+                                                        <td>Proses</td>
+                                                    @elseif ($item->status==5)
+                                                        <td>proses</td>
+                                                    @elseif ($item->status==6)
+                                                        <td><a <a target="_blank" href="{{url('member/'.$item->id.'/printakhir')}}">print</a></td>
+                                                    @endif
                                                 @endif
                                                 <?php $alat = \App\mAlatApotik::where('pemohon_id', $item->id)->first()?>
                                             </tr>
                                         @endforeach
-
                                         </tbody>
                                         <tfoot>
                                         <tr>
@@ -248,7 +268,17 @@
                                                 @elseif ($item->status==null&&!is_null($berkas2))
                                                     <td>pemohon belum konfirmasi ketentuan</td>
                                                 @elseif ($item->status==1)
-                                                    <td>Menunggu konfirmasi</td>
+                                                    <td>Menunggu Konfirmasi UPTSA</td>
+                                                @elseif ($item->status==2)
+                                                    <td>Menunggu Konfirmasi KASIE</td>
+                                                @elseif ($item->status==3)
+                                                    <td>Menunggu Konfirmasi KABID</td>
+                                                @elseif ($item->status==4)
+                                                    <td>Menunggu Konfirmasi SEKRETARIS</td>
+                                                @elseif ($item->status==5)
+                                                    <td>Menunggu Konfirmasi KADIN</td>
+                                                @elseif ($item->status==6)
+                                                    <td>Permohonan diterima</td>
                                                 @endif
 
                                                 @if ($item->id_depo==null)
@@ -259,6 +289,18 @@
                                                     <td><a href="#">Konfirmasi Pendaftaran</a></td>
                                                 @elseif ($item->status==1)
                                                     <td>Proses</td>
+                                                @elseif ($item->status==1)
+                                                    <td>Proses</td>
+                                                @elseif ($item->status==2)
+                                                    <td>Proses</td>
+                                                @elseif ($item->status==3)
+                                                    <td>Proses</td>
+                                                @elseif ($item->status==4)
+                                                    <td>Proses</td>
+                                                @elseif ($item->status==5)
+                                                    <td>proses</td>
+                                                @elseif ($item->status==6)
+                                                    <td><a target="_blank" href="{{url('member/'.$item->id.'/printakhirdepo')}}">print</a></td>
                                                 @endif
 
                                             </tr>
@@ -337,7 +379,17 @@
                                                 @elseif ($item->status==null&&!is_null($berkas2))
                                                     <td>pemohon belum konfirmasi ketentuan</td>
                                                 @elseif ($item->status==1)
-                                                    <td>Menunggu konfirmasi</td>
+                                                    <td>Menunggu Konfirmasi UPTSA</td>
+                                                @elseif ($item->status==2)
+                                                    <td>Menunggu Konfirmasi KASIE</td>
+                                                @elseif ($item->status==3)
+                                                    <td>Menunggu Konfirmasi KABID</td>
+                                                @elseif ($item->status==4)
+                                                    <td>Menunggu Konfirmasi SEKRETARIS</td>
+                                                @elseif ($item->status==5)
+                                                    <td>Menunggu Konfirmasi KADIN</td>
+                                                @elseif ($item->status==6)
+                                                    <td>Permohonan diterima</td>
                                                 @endif
 
                                                 @if ($item->id_perusahaan==null)

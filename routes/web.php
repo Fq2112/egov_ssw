@@ -108,6 +108,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'member'], function () {
     Route::get('{user}/history/print-apotek', 'User\UserController@printRiwayatApotek');
     Route::get('{user}/history/print-air', 'User\UserController@printRiwayatDepotAir');
     Route::get('{user}/history/print-hama', 'User\UserController@printRiwayatHama');
+
+    Route::get('{id}/printakhir','LanjutDataController@cetakakhir')->name('cettak.akhir');
+    Route::get('{id}/printakhirdepo','LanjutDataController@cetakdepo')->name('cettak.akhir.depo');
+    Route::get('{id}/printakhirhama','LanjutDataController@cetakhama')->name('cettak.akhir.hama');
 });
 
 Route::prefix('admin')->group(function () {
@@ -134,6 +138,10 @@ Route::prefix('admin')->group(function () {
     Route::get('aktif/{id}', 'Admin\Tables\PerizinanController@aktif')->name('admin.tables.perizinan.aktif');
     Route::get('aktif/depo/{id}', 'Admin\Tables\PerizinanController@aktifdepo')->name('admin.tables.perizinan.aktif.depo');
     Route::get('aktif/hama/{id}', 'Admin\Tables\PerizinanController@aktifhama')->name('admin.tables.perizinan.aktif.hama');
+
+    Route::get('aktif/kasie/{id}', 'Admin\Tables\PerizinanController@aktif1')->name('admin.tables.perizinan.aktif.kasie');
+    Route::get('aktif/depo/kasie/{id}', 'Admin\Tables\PerizinanController@aktifdepo1')->name('admin.tables.perizinan.aktif.depo.kasie');
+    Route::get('aktif/hama/kasie/{id}', 'Admin\Tables\PerizinanController@aktifhama1')->name('admin.tables.perizinan.aktif.hama.kasie');
 });
 
 Route::group(['middleware' => ['uptsa'], 'prefix' => 'uptsa'], function () {
